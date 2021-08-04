@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Consumer } from 'src/app/models/consumer';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  consumer=new Consumer();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  login(form:NgForm){
+    console.log(form.value.userName);
+    console.log(form.value.password);
+    form.resetForm();
   }
 
 }
