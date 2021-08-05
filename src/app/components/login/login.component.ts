@@ -9,7 +9,7 @@ import { Consumer } from 'src/app/models/consumer';
 })
 export class LoginComponent implements OnInit {
 
-  consumer=new Consumer();
+  consumer=new Consumer("",new Date(),"","","","","","",false,"","","");
 
   constructor() { }
 

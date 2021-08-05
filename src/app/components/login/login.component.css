@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+
+.error{
+  color: red;
+  font-size: 12px;
+}
+
+.container{
+  font-family:'Product Sans';
+}
+
+.spContainer{
+  width:100%;
+  max-width:380px
+}
+.card{
+  border-radius:8px;
+  transition:.25s;
+}
+.card:hover{
+  transition:.25s;
+}
+
+.btn-primary{
+  border-radius:4px;
+  border:none;
+  background-color:#ff425f;
+  box-shadow:0px 0px 0px 0px rgba(34, 36, 38, 0.15) inset, 0px -0.4em 0px 0px rgba(34, 36, 38, 0.15) inset;
+  width: 70%;
+  font-size: 20px;
+}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{
+  border-radius:4px;
+  border:none;
+  background-color:#e63852;
+  box-shadow:0px 0px 0px 0px rgba(34, 36, 38, 0.15) inset, 0px -0.4em 0px 0px rgba(34, 36, 38, 0.15) inset;
+  width: 80%;
+  font-size: 20px;
+}
+
+.inpSp{
+  background-color:#ebebeb;
+  border:none;
+  transition:.25s;
+  padding-left:25px;
+  font-weight:light !important;
+  font-family: 'Product Sans'; 
+  border-radius:4px
+}
+.inpSp:hover{
+  transition:.25s;
+  background-color:#dbdbdb;
+}
+.inpSp:focus{
+  background-color:#ebebeb;
+  box-shadow:0 8px 8px 0px #f1f1f1;
+}
+.regStr{
+  transition:.25s;
+  padding-bottom:4px;
+  border-bottom:2px solid gray;
+  color:#212519;
+}
+.regStr:hover{
+  border-bottom:2px solid #ff425f;
+  padding-bottom:8px;
+  transition:.25s;
+  text-decoration:none;
+  color:#212519;
+}
+
+.btn-sm{
+  font-weight:300;
+}
+.btn-sm:hover{
+  font-weight:900;
+}
+
+.centStyle{
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+}
