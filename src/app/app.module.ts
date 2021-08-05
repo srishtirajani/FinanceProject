@@ -17,6 +17,7 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
 import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -44,7 +45,8 @@ const routes: Routes = [
     ProductInfoComponent,
     AdminComponent,
     PaymentComponent,
-    VerifyUserComponent
+    VerifyUserComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
