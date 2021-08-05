@@ -1,18 +1,39 @@
-<div>
-    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-        <table>
-            <tr>
-                <td> Username: </td>
-                <td><input type="text" name="userName" #userName="ngModel" ngModel placeholder="Enter Username" required></td>
-            </tr>
-            <tr>
-                <td> Password: </td>
-                <td><input type="password" name="password" #password="ngModel" ngModel placeholder="Enter Password" required></td>
-            </tr>
-            <a routerLink="/dashboard"><input class="login" type="submit" value="Login" [disabled]="loginForm.invalid"></a>
-        </table>
-    </form>
-    <a routerLink="/forgotpassword">Forgot Password</a>
-    <br>
-    New User? <a href="">Register</a>
+<div class="container">
+    <div class="row mt-5">
+        <div class="spContainer mx-auto">
+            <div class="card px-4 py-5 border-0 shadow">
+                <div class="d-inline text-left mb-3">
+                    <h3 class="font-weight-bold">Login to your Account!</h3>
+                </div>
+                <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                    <div class="d-inline mb-0">
+                        <label class="form-label">Username: </label>
+                        <div class="form-group mx-auto">
+                            <input class="form-control inpSp" type="text" name="userName" #userName="ngModel" ngModel placeholder="Enter Username" required>
+                            <span class="error" *ngIf="userName.invalid && (userName.touched && !userName.dirty)">*Mandatory!</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="d-inline mb-0">
+                        <label class="form-label">Password: </label>
+                        <div class="form-group mx-auto">
+                            <input class="form-control inpSp" type="password" name="password" #password="ngModel" ngModel placeholder="Enter Password" required>
+                            <span class="error" *ngIf="password.invalid && (password.touched && !password.dirty)">*Mandatory!</span>
+                        </div>
+                    </div>
+                    <br><br>
+                        <div class="form-group mx-auto centStyle">
+                            <button class="btn btn-primary" type="submit" value="Login" [disabled]="loginForm.invalid">Login</button>
+                        </div>
+                        <div class="form-group mx-auto centStyle">
+                            <a class="small text-black-50 pl-2 ml-2 border-left" href=""> Forgot Password?</a>
+                        </div>
+                        <br>
+                        <div class="form-group mx-auto centStyle">
+                            <p>New User? <a class="small text-black-50 pl-2 ml-2 border-left" href="" style="font-size: 18px;">Register now!</a></p>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
