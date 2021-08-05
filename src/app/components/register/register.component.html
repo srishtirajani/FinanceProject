@@ -1,0 +1,91 @@
+<div class="container-fluid mb-5 container center_div w-50 p-3">
+    <h1>Register</h1><br>
+  
+    <form #uf="ngForm">
+      <!--{{obj | json}}-->
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" name = "name" class = "form-control" [(ngModel)]="obj.name">
+        <small class="text-danger" [class.d-none] ="name.valid || name.untouched">Name required</small>
+      </div><br>
+  
+      <div class="form-group">
+        <label>Date of birth</label>
+        <input type="date" required #date="ngModel" [class.is-invalid]="date.invalid && date.touched" name = "dob" class = "form-control" [(ngModel)]="obj.dob">
+      </div><br>
+  
+      <div class="form-group">
+        <label>Email ID</label>
+        <input type="email" required email #email="ngModel" [class.is-invalid]="email.invalid && email.touched" name = "emailID" class = "form-control" [(ngModel)]="obj.emailID"> 
+        <small class="text-danger" [class.d-none] ="email.valid || email.untouched">Invalid email ID</small>
+      </div><br>
+  
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input type="tel" required pattern="^\d{10}$" #pn="ngModel" [class.is-invalid]="pn.invalid && pn.touched" name= "phone" class = "form-control" [(ngModel)]="obj.phone"> 
+        <small class="text-danger" [class.d-none] ="pn.valid || pn.untouched">Invalid Mobile number</small>
+      </div><br>
+  
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" required #un="ngModel" [class.is-invalid]="un.invalid && un.touched" name = "username" class = "form-control" [(ngModel)]="obj.username">
+        <small class="text-danger" [class.d-none] ="un.valid || un.untouched">Username Required</small>
+      </div><br>
+  
+      <div class="form-group">
+        <label>Password</label>
+        <input type="text" [(ngModel)]="opw" required #pw="ngModel" [class.is-invalid]="pw.invalid && pw.touched" name = "password" class = "form-control" [(ngModel)]="obj.password">
+        <small class="text-danger" [class.d-none] ="pw.valid || pw.untouched">Password Required</small>
+      </div><br>
+  
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="text" [(ngModel)]="rp" required #cp="ngModel" [class.is-invalid]="(cp.invalid || rp!=opw) && cp.touched" name = "cp" class = "form-control" [(ngModel)]="obj.cp">
+        <small class="text-danger" [class.d-none] ="cp.valid || cp.untouched">Confirm your password</small>
+      </div><br>
+  
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" required #ad="ngModel" [class.is-invalid]="ad.invalid && ad.touched" name = "address" class = "form-control" [(ngModel)]="obj.address">
+        <small class="text-danger" [class.d-none] ="ad.valid || ad.untouched">Address required</small>
+      </div><br>
+  
+      <div class="form-group">
+        <p>Please select your preferred card type:</p>
+          <input type="radio" required (click) = "radioClicked()" name = "CardType" id="gold" name="pref_card" value="true" [(ngModel)]="obj.CardType">
+          <label for="gold">Gold</label>
+          <input type="radio" required (click) = "radioClicked()" name = "CardType" id="titm" name="pref_card" value="false" [(ngModel)]="obj.CardType">
+          <label for="titm">Titanium</label><br>
+      </div><br>
+  
+      <div class="form-group">
+        <p>Please select your bank:</p>
+        <select required #bank = "ngModel" class = "custom-select" name = "bank" [(ngModel)]="obj.bank">
+          <option *ngFor = "let bank of banks"> {{bank}} </option>
+        </select>
+        <small class="text-danger" [class.d-none] ="bank.valid || bank.untouched">Bank Required</small>
+      </div><br>
+  
+      <div class="form-group">
+        <label>Savings Account Number</label>
+        <input type="text" required #an="ngModel" [class.is-invalid]="an.invalid && an.touched" name = "savingsAccount" class = "form-control" [(ngModel)]="obj.savingsAccount">
+        <small class="text-danger" [class.d-none] ="an.valid || an.untouched">Account number required</small>
+      </div><br>
+  
+      <div class="form-group">
+        <label>IFSC Code</label>
+        <input type="text" required #ifsc="ngModel" [class.is-invalid]="ifsc.invalid && ifsc.touched" name = "IFSC" class = "form-control" [(ngModel)]="obj.IFSC">
+        <small class="text-danger" [class.d-none] ="ifsc.valid || ifsc.untouched">IFSC Code required</small>
+      </div><br>
+  
+      <div id="outer">
+        <div class="inner"> <button [disabled]="uf.form.invalid || !flag || (opw!=rp)" style="margin:10px;" class="btn btn-primary" type="submit">Register</button><br> </div>
+        <div class="inner"> <button type="reset" value="Reset" style="margin:10px;" class="btn btn-primary">Reset</button> </div>
+      </div>
+      <div id="outer">
+        <div class="inner"> <p style="margin:10px; padding-top: 10%;">Already a member?</p> </div>
+        <div class="inner"> <a routerLink="/login" style="margin:3px;">login</a> </div>
+      </div>
+  
+    </form>
+  </div>
