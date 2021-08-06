@@ -5,8 +5,8 @@
       <!--{{obj | json}}-->
       <div class="form-group">
         <label>Name</label>
-        <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" name = "name" class = "form-control" [(ngModel)]="obj.name">
-        <small class="text-danger" [class.d-none] ="name.valid || name.untouched">Name required</small>
+        <input type="text" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" name = "name" class = "form-control" [(ngModel)]="obj.name">
+        <small class="text-danger" [class.d-none] ="name.valid || name.untouched">Invalid name</small>
       </div><br>
   
       <div class="form-group">
