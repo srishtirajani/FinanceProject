@@ -22,6 +22,8 @@ import { RegisterComponent } from './components/register/register.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,7 @@ import { RegisterComponent } from './components/register/register.component';
     AdminComponent,
     PaymentComponent,
     VerifyUserComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
