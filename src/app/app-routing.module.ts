@@ -12,7 +12,6 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { RegisterComponent } from './components/register/register.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
-import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
