@@ -10,6 +10,7 @@ import { Consumer } from 'src/app/models/consumer';
 export class LoginComponent implements OnInit {
 
   //consumer=new Consumer("",new Date(),"","","","","","",false,"","","");
+  //consumer=new Consumer("",new Date(),"","","","","","",false,"","","", false);
 
   constructor() { }
 

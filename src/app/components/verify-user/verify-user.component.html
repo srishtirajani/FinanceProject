@@ -1,1 +1,8 @@
-<p>verify-user works!</p>
+<div class="form-group">
+    <p>Verify:</p>
+      <input type="radio" required name = "Verify" id="yes" value="true" [(ngModel)]="consumer.isVerfied">
+      <label for="gold">Yes</label>
+      <input type="radio" required name = "Verify" id="no" value="false" [(ngModel)]="consumer.isVerfied">
+      <label for="titm">No</label><br>
+    <button (click)="verifyConsumer()" class="btn btn-primary">Submit</button>
+</div><br>
