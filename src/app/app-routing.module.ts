@@ -11,10 +11,12 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path:'terms', component:TermsComponent},
   { path:'forgotpassword', component:ForgotpasswordComponent},
   { path:'changepassword', component:ChangepasswordComponent},
