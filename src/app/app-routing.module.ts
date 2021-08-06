@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { RegisterComponent } from './components/register/register.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path:'payment', component:PaymentComponent},
   { path:'admin', component:AdminComponent},
   { path:'verify', component:VerifyUserComponent},
+  { path:'register', component:RegisterComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
