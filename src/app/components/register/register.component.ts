@@ -9,11 +9,10 @@ import { Consumer } from 'src/app/models/consumer';
 })
 export class RegisterComponent {
   banks = ['IDFC','HSBC','HDFC','ICICI']
-  obj = new Consumer("",new Date(),"","","","","","",false,"","","");
-  flag : boolean = false
-  rp : string = "";
+  obj = new Consumer(0,"","",new Date(),"","","","","",false,"","","",false);
   opw : string = "";
-  card : string =""
+  card : string ="";
+  flag : boolean = false;
 
   radioClicked() {
     this.flag = true;
