@@ -9,7 +9,7 @@ export class Consumer {
       public userName : string,
       public cAddress : string,
       public cPassword : string,
-      public cardType : boolean,
+      public cardType : string,
       public bankName : string,
       public accNo : string,
       public ifscCode : string,
