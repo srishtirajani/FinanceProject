@@ -9,7 +9,7 @@ import { Consumer } from 'src/app/models/consumer';
 })
 export class RegisterComponent {
   banks = ['IDFC','HSBC','HDFC','ICICI']
-  obj = new Consumer("",new Date(),"","","","","","",false,"","","");
+  obj = new Consumer("",new Date(),"","","","","","",false,"","","", false);
   flag : boolean = false
   rp : string = "";
   opw : string = "";

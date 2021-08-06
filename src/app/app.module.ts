@@ -18,7 +18,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { RegisterComponent } from './components/register/register.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CardTypePipe } from './pipes/card-type.pipe';
+import { AdminService, Data } from './services/admin.service';
 
 
 
@@ -36,15 +38,16 @@ import { RegisterComponent } from './components/register/register.component';
     PaymentComponent,
     VerifyUserComponent,
     RegisterComponent,
+    CardTypePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [Data, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
