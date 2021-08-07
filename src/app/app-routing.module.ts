@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 
+
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent },

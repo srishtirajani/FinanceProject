@@ -20,6 +20,9 @@ import { VerifyUserComponent } from './components/verify-user/verify-user.compon
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordvalidatorDirective } from './passwordvalidator.directive';
 
+import { HttpClientModule } from '@angular/common/http';
+import { CardTypePipe } from './pipes/card-type.pipe';
+import { AdminService, Data } from './services/admin.service';
 
 
 
@@ -40,15 +43,16 @@ import { PasswordvalidatorDirective } from './passwordvalidator.directive';
     VerifyUserComponent,
     RegisterComponent,
     PasswordvalidatorDirective
+    CardTypePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [Data, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
