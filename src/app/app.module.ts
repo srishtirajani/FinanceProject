@@ -23,9 +23,7 @@ import { PasswordvalidatorDirective } from './passwordvalidator.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { CardTypePipe } from './pipes/card-type.pipe';
 import { AdminService, Data } from './services/admin.service';
-
-
-
+import { NavbarLoggedInComponent } from './components/navbar-logged-in/navbar-logged-in.component';
 
 
 @NgModule({
@@ -42,8 +40,9 @@ import { AdminService, Data } from './services/admin.service';
     PaymentComponent,
     VerifyUserComponent,
     RegisterComponent,
-    PasswordvalidatorDirective
+    PasswordvalidatorDirective,
     CardTypePipe,
+    NavbarLoggedInComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Consumer } from 'src/app/models/consumer';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,27 @@ import { Consumer } from 'src/app/models/consumer';
 })
 export class LoginComponent implements OnInit {
 
-  //consumer=new Consumer("",new Date(),"","","","","","",false,"","","");
-  //consumer=new Consumer("",new Date(),"","","","","","",false,"","","", false);
-
-  constructor() { }
+  constructor(private loginService:LoginService, private router:Router) { }
 
   ngOnInit(): void {
+    this.loginService.GetAllLogins().subscribe(data=>{
+      this.loginService.logins=data;
+    });
   }
 
   login(form:NgForm){
-    console.log(form.value.userName);
-    console.log(form.value.password);
+    var result=this.loginService.login(form.value.userName, form.value.password);
+
+    if(result)
+    {
+      localStorage.setItem("userName",form.value.userName);
+      this.router.navigate(['dashboard']);
+    }
+    else
+    {
+      console.log("Invalid Credentials!");
+    }
+    
     form.resetForm();
   }
 
