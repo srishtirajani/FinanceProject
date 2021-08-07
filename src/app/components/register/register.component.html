@@ -41,6 +41,32 @@
         <input type="password" [(ngModel)]="opw" required #pw="ngModel" [class.is-invalid]="pw.invalid && pw.touched" name = "password" class = "form-control" [(ngModel)]="service.formData.cPassword">
         <small class="text-danger" [class.d-none] ="pw.valid || pw.untouched">Password Required</small>
       </div><br>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+
+        <div class="col-md-8">
+        <input class="form-control"
+               id="CnfrmPasswordId"
+               type="password"
+               placeholder="Confirm Password (required)"
+               required
+               appPasswordvalidator = "password"
+               ngModel
+               name="CnfmPasswordVar"
+               #CnfmPasswordVar="ngModel"
+               [ngClass]="{'is-invalid': (CnfmPasswordVar.touched && CnfmPasswordVar.dirty) && !CnfmPasswordVar.valid }" />
+          <span class="invalid-feedback">
+          <span *ngIf="CnfmPasswordVar.hasError('required')">
+            Confirm Password is required.
+          </span>
+          <span *ngIf="CnfmPasswordVar.hasError('passwordMatchError')">
+            Passwords do not match.
+          </span>
+        </span>
+        </div>
+      </div>
+      <br>
   
       <!--<div class="form-group">
         <label>Confirm Password</label>
