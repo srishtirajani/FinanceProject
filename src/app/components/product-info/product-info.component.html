@@ -1,17 +1,22 @@
 <app-navbar-logged-in></app-navbar-logged-in>
 <h3><u>Product Info</u></h3>
 <div class="card" style="padding-top: 20px;padding-bottom: 10px;">
-    <div class="row">
+    <div class="row" style="padding-top: 20px;padding-bottom: 10px;">
       <div class="col-sm-6">
-          
-          <img class="img-right"src="assets/images/oneplus9.jpg" style="height:300px; margin-left:25px" />
+          <img class="img-right" class="img-thumbnail" src="{{product.img}}" style="height:300px; margin-left:50px" />
           </div>
       <div class="col-sm-6" style="padding-top: 20px;">  
           <h3></h3>
-          <p class="font-weight-bold" class="text-left" >Product Name: OnePlus 9</p>
-          <p class="font-weight-bold" class="text-left" >Product Details: OnePlus 9</p>
-          <p class="font-weight-bold" class="text-left" >Cost: OnePlus 9</p>
-          <a routerLink="/payment"><button class="btn btn-primary">Buy Now</button></a>
+          <p><u>Product Name:</u> {{product.productName}}</p>
+          <p>Product Details: {{product.prodDetails}}</p>
+          <p>Cost: {{product.price}}</p>
+          <p class="text-danger">EMI Period</p>
+          <select [(ngModel)]="selectedEmi">
+              <option *ngFor="let emi of emiPeriod" [ngValue]="emi">{{emi.name}}</option>
+          </select><br><br>
+          <p class="font-weight-bold">EMI Starting {{product.price/selectedEmi.value}} per month</p>
+          <button class="btn btn-primary">Pay Now</button>
+          
       </div>
   </div>
   </div>

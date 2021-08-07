@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Product } from 'src/app/models/product';
+import { ProductInfoService } from 'src/app/services/product-info.service';
+import { Data } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-info',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductInfoComponent implements OnInit {
 
-  constructor() { }
+  pid:number=this.data.pid;
+  product:any;
+  emi:number=0;
+  selectedEmi:any;
 
-  ngOnInit(): void {
-  }
+  emiPeriod: any=[
+    {name: '3 Months', value: 3}, 
+    {name: '6 Months', value: 6}, 
+    {name: '9 Months', value: 9}, 
+    {name: '1 Year', value: 12}
+  ];
+
+  constructor(private productService:ProductInfoService, private router:Router,private data: Data) { }
+
+  
+  ngOnInit(): void { this.productService.GetProdById(this.pid).subscribe(data=>{
+    this.product=data;
+    console.log(this.product);
+  });
+  console.log(this.product);
+  console.log(new Date().getMonth()); 
+  this.selectedEmi = new Object();
 
 }
+}
+  
