@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-changepassword',
@@ -7,27 +7,18 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./changepassword.component.css']
 })
 export class ChangepasswordComponent implements OnInit {
-  [x: string]: any;
-  changePass!: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    
-  }
+  errorMessage!: string;
   ngOnInit(): void {
-    
-    this.changePass=this.fb.group({
-      pass:new FormControl("",[Validators.required,Validators.minLength(3)]),
-      cpass:new FormControl("",[Validators.required,Validators.minLength(3)])
-    },
-    {validator: this.passwordMatchValidator})
   }
-  passwordMatchValidator(frm: FormGroup) {
-    return frm.controls['pass'].value === frm.controls['cpass'].value ? null : {'mismatch': true};
+  login(loginForm: NgForm) {
+    if (loginForm && loginForm.valid) {
+      //const userEmail = loginForm.form.value.userEmail;
+      const password = loginForm.form.value.passwordVar;
+      //alert('Welcome..!!');
+      //console.log( password);
+      console.log(password);
+    } else {
+      this.errorMessage = 'Please enter a password.';
+    }
   }
-  
-  Change(){
-    //alert('success');
-    console.log(this.changePass.value);
-  }
-  
 }
