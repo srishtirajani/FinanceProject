@@ -20,7 +20,13 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  req:string="https://localhost:44327/api/Consumers"
+  req:string="https://localhost:44327/api/Consumers";
+
+  consumers:Consumer[]=[];
+
+  consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
+
+  id:number=0;
 
   showAllConsumers():Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.req,
@@ -33,6 +39,48 @@ export class AdminService {
       }
     );
   }
+
+  getId(userName?:string):number{
+    for(let c of this.consumers){
+      if(c.userName==userName){
+        return c.cid;
+      }
+    }
+    return 0;
+  }
+
+  getConsumer(id:number):Consumer{
+    for(let c of this.consumers){
+      if(c.cid==id){
+        return c;
+      }
+    }
+    return this.consumer;
+  }
+
+  verifyConsumer(id:number, consumer:Consumer):Observable<Consumer>{
+    this.consumer = consumer;
+    console.log(id+ " "+this.consumer);
+    return this.http.put<Consumer>(this.req+"/"+id,consumer,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
+
+  // updateUser(id:number,player:Player):Observable<any>
+  // {
+    
+  //   return this.http.put<any>(this.req+"/"+id,player,{
+  //     headers:new HttpHeaders({
+  //       'Content-Type':'application/json;charset=UTF-8',
+  //       'Access-Control-Allow-Origin':'*',
+  //       'Access-Control-Allow-Method':'*'
+  //     })
+  //   });
+  // }
   
   //Method to verify an existing player.
   // updateUser(consumer:any):Observable<Consumer[]>

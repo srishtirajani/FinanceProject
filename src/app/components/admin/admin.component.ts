@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Consumer } from 'src/app/models/consumer';
 import { AdminService, Data } from 'src/app/services/admin.service';
 
@@ -17,12 +17,14 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.aService.showAllConsumers().subscribe(data=>{
+      this.aService.consumers=data;
       this.consumers=data;
     });
   }
   
-  toVerify(){
-    this.data.storage=this.consumers;
-    this.router.navigate(['verify']);
+  toVerify(uname:string){
+    // this.data.storage=this.consumers;
+    localStorage.setItem("userName",uname)
+    this.router.navigate(['verify',{consumer:this.consumers}]);
   }
 }
