@@ -16,22 +16,33 @@ export class LoginComponent implements OnInit {
     this.loginService.GetAllLogins().subscribe(data=>{
       this.loginService.logins=data;
     });
+    this.loginService.GetAllConsumers().subscribe(data=>{
+      this.loginService.consumers=data;
+    });
+    this.loginService.GetAllAdmins().subscribe(data=>{
+      this.loginService.admins=data;
+    });
   }
 
   login(form:NgForm){
+    console.log(this.loginService.logins);
+    console.log(this.loginService.consumers);
+    console.log(this.loginService.admins);
     var result=this.loginService.login(form.value.userName, form.value.password);
 
-    if(result)
+    if(result=="consumer")
     {
       localStorage.setItem("userName",form.value.userName);
       this.router.navigate(['dashboard']);
     }
-    else
+    else if(result=="admin")
     {
+      localStorage.setItem("userName",form.value.userName);
+      this.router.navigate(['admin']);
+    }
+    else{
       console.log("Invalid Credentials!");
     }
-    
     form.resetForm();
   }
-
 }
