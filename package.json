@@ -20,6 +20,7 @@
     "@angular/router": "~12.1.0-",
     "@pdftron/webviewer": "^8.0.0",
     "bootstrap": "^5.1.0",
+    "ng-password-validator": "^1.2.2",
     "ng2-pdf-viewer": "^7.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

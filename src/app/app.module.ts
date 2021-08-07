@@ -18,6 +18,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordvalidatorDirective } from './passwordvalidator.directive';
 
 
 
@@ -37,7 +38,8 @@ import { RegisterComponent } from './components/register/register.component';
     AdminComponent,
     PaymentComponent,
     VerifyUserComponent,
-    RegisterComponent
+    RegisterComponent,
+    PasswordvalidatorDirective
   ],
   imports: [
     BrowserModule,
