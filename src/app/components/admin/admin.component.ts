@@ -18,17 +18,9 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.aService.showAllConsumers().subscribe(data=>{
       this.consumers=data;
-      // console.log(this.consumers);
     });
   }
-
-  // showConsumers():void{
-  //   this.aService.showAllConsumers().subscribe(data=>{
-  //     this.consumers=data;
-  //     console.log(this.consumers);
-  //   });
-  //   // console.log(this.consumer);
-  // }
+  
   toVerify(){
     this.data.storage=this.consumers;
     this.router.navigate(['verify']);

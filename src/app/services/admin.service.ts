@@ -23,8 +23,6 @@ export class AdminService {
   req:string="https://localhost:44353/api/Consumers"
 
   showAllConsumers():Observable<Consumer[]>{
-    console.log("Hi!");
-    // {{debugger}}
     return this.http.get<Consumer[]>(this.req,
       {
         headers:new HttpHeaders({

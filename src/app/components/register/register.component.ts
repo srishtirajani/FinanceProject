@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm, Validator } from '@angular/forms';
 import { Consumer } from 'src/app/models/consumer';
-import { RegService } from 'src/app/reg.service';
+import { RegService } from 'src/app/services/reg.service';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +17,8 @@ export class RegisterComponent {
   card : string ="";
   flag : boolean = false;
 
+  // msg:string="";
+
   radioClicked() {
     this.flag = true;
   }
@@ -27,6 +29,15 @@ export class RegisterComponent {
       err => {console.log(err);}
     )
   }
+
+  // onSubmit(form:NgForm):void
+  // {
+  //   this.service.createUser(form).subscribe(data=>{
+  //   this.msg="Successfully created "+data.cName;
+  //   //Logging the response received from web api.
+  //   console.log(data);
+  //   })
+  // }
 
 }
 
