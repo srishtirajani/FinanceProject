@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardTypePipe } from './pipes/card-type.pipe';
 import { AdminService, Data } from './services/admin.service';
+import { NavbarLoggedInComponent } from './components/navbar-logged-in/navbar-logged-in.component';
 
 
 
@@ -41,6 +42,7 @@ import { AdminService, Data } from './services/admin.service';
     VerifyUserComponent,
     RegisterComponent,
     CardTypePipe,
+    NavbarLoggedInComponent,
   ],
   imports: [
     BrowserModule,
