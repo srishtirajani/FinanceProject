@@ -18,6 +18,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordvalidatorDirective } from './passwordvalidator.directive';
+
 import { HttpClientModule } from '@angular/common/http';
 import { CardTypePipe } from './pipes/card-type.pipe';
 import { AdminService, Data } from './services/admin.service';
@@ -41,6 +43,7 @@ import { NavbarLoggedInComponent } from './components/navbar-logged-in/navbar-lo
     PaymentComponent,
     VerifyUserComponent,
     RegisterComponent,
+    PasswordvalidatorDirective
     CardTypePipe,
     NavbarLoggedInComponent,
   ],
