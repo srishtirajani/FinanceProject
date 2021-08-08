@@ -15,7 +15,7 @@
               <option *ngFor="let emi of emiPeriod" [ngValue]="emi">{{emi.name}}</option>
           </select><br><br>
           <p class="font-weight-bold">EMI Starting {{product.price/selectedEmi.value}} per month</p>
-          <button class="btn btn-primary" [disabled] = "selectedEmi.value!=3 && selectedEmi.value!=6 && selectedEmi.value!=9 && selectedEmi.value!=12" >Pay Now</button>
+          <button class="btn btn-primary"(click)="Payment()" [disabled] = "selectedEmi.value!=3 && selectedEmi.value!=6 && selectedEmi.value!=9 && selectedEmi.value!=12" >Pay Now</button>
           
       </div>
   </div>
