@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(form:NgForm){
-    console.log(this.loginService.logins);
-    console.log(this.loginService.consumers);
-    console.log(this.loginService.admins);
+    // console.log(this.loginService.logins);
+    // console.log(this.loginService.consumers);
+    // console.log(this.loginService.admins);
     var result=this.loginService.login(form.value.userName, form.value.password);
 
     if(result=="consumer")
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     }
     else if(result=="admin")
     {
-      localStorage.setItem("userName",form.value.userName);
+      localStorage.setItem("userNameAdmin",form.value.userName);
       this.router.navigate(['admin']);
     }
     else{

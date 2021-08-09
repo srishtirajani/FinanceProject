@@ -23,7 +23,7 @@
                             <td>{{c.emailId}}</td>
                             <td>{{c.cardType}}</td>
                             <td>
-                              <input type="submit" class="btn btn-primary" value="Verify" (click)="toVerify(c.userName)">
+                              <input type="submit" class="btn btn-primary" value="Verify" [disabled]="c.isVerfied" (click)="toVerify(c.userName)">
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">

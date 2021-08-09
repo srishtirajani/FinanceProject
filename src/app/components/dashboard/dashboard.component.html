@@ -1,12 +1,76 @@
-<h3><u>Dashboard</u></h3>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/productlist">Products</a>
-      </div>
+<app-navbar-logged-in></app-navbar-logged-in>
+<body style="overflow-x: hidden;">
+  <div class="card" id="card_center" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Card Details</h5>
+      <hr>
+      <p class="card-text"><i>Card Number: </i>{{ emicard.cardNo }}</p>
+      <p class="card-text"><i>Name: </i>{{ consumer.cName }}</p>
+      <p class="card-text" *ngIf="consumer.isVerfied"><i>Validity Period: </i>{{ emicard.validityPeriod | date}}</p>
+      <p class="card-text"><i>Card Type: </i> {{ consumer.cardType}}</p>
+      <p class="card-text text-success" *ngIf="consumer.isVerfied"><b>Activated</b></p>
+      <p class="card-text text-danger" *ngIf="!consumer.isVerfied"><b>Not Activated</b></p>
     </div>
-  </nav>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card " id="card_details" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Account Info</h5>
+          <hr>
+          <p class="card-text"><i>Total Credit: </i>{{ emicard.totalCredit }}</p>
+          <p class="card-text"><i>Credit Used: </i>{{ totalcreds - emicard.accBalance }}</p>
+          <p class="card-text"><i>Remaining Credit: </i>{{ emicard.accBalance }}</p>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-8">
+      <div class="card" id="card_details" style="width: 35rem;">
+        <div class="card-body">
+          <h5 class="card-title">Products Purchased</h5>
+          <hr>
+          <div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought">
+          </div>
+            <ng-template #ProductBought>
+              <table>
+                <tr *ngFor="let x of cPurchaseRecord">
+                  <td><i>Name:</i>{{productColl1.get(x.productId)}}</td>&nbsp;
+                  <td><i>Amount:</i>{{productColl2.get(x.productId)}}</td>
+                  <td><i>Paid:</i>{{productColl2.get(x.productId)-x.productBalance}}</td>
+                  <td><i>Balance:</i>{{x.productBalance}}</td>
+                </tr>
+              </table>
+            </ng-template>
+            <ng-template #NotBought>
+              You haven't bought anything yet!
+            </ng-template>
+        </div>
+      </div>
+    </div>  
+  </div>
+</body>
+
+
+
+
+<!-- <div class="container">
+  <table>
+    <tr>
+      <td>{{ emicard.cardNo }}</td>
+    </tr>
+    <tr>
+      <td>{{ consumer.cName }}</td>
+    </tr>
+    <tr>
+      <td>{{ emicard.validityPeriod | date}}</td>
+    </tr>
+    <tr>
+      <td>{{ consumer.cardType}}</td>
+    </tr>
+    <tr>
+      <td *ngIf="consumer.isVerfied" class="text-success">Activated</td>
+      <td *ngIf="!consumer.isVerfied" class="text-danger">Not Activated</td>
+    </tr>
+  </table>
+</div> -->
