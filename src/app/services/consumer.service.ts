@@ -20,6 +20,12 @@ export class ConsumerService {
   purchRecs:PurchaseRecord[]=[];
   products:Product[]=[];
   emicards:EmiCard[]=[];
+  cPurchaseRec:PurchaseRecord[]=[];
+
+  productColl1:any=new Map();
+  productColl2:any=new Map();
+
+  // productsPurchased:any;
 
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
 
@@ -80,6 +86,15 @@ export class ConsumerService {
     }
   }
 
+  getPurchRec(id:number):PurchaseRecord[]{
+    for(let pr of this.purchRecs){
+      if(pr.userId==id){
+        this.cPurchaseRec.push(pr);
+      }
+    }
+    return this.cPurchaseRec;
+  }
+
   getId(userName?:string):number{
     for(let c of this.consumers){
       if(c.userName==userName){
@@ -97,6 +112,26 @@ export class ConsumerService {
       }
     }
     return this.consumer;
+  }
+
+  fillCollection1(){
+    for(let product of this.products){
+      this.productColl1.set(product.pid, product.productName);
+      // this.productColl2.set(product.pid, product.price);
+    }
+    return this.productColl1;
+    // console.log(this.productColl1);
+    // console.log(this.productColl2);
+  }
+
+  fillCollection2(){
+    for(let product of this.products){
+      // this.productColl1.set(product.pid, product.productName);
+      this.productColl2.set(product.pid, product.price);
+    }
+    return this.productColl2;
+    // console.log(this.productColl1);
+    // console.log(this.productColl2);
   }
 
   constructor(private http:HttpClient) { }
