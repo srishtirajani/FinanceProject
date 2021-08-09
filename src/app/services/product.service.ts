@@ -6,7 +6,7 @@ import { Product } from '../models/product';
 @Injectable({
   providedIn: 'root'
 })
-export class Data {
+export class DataProd {
 
   public pid: any;
 
