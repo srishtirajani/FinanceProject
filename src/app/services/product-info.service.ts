@@ -12,7 +12,7 @@ import { PurchaseRecord } from '../models/purchaseRecord';
 })
 export class ProductInfoService {
 
-  reqCons:string="https://localhost:44327/api/Consumers"
+  reqCons:string="https://localhost:44353/api/Consumers"
 
   objC:any;
 
@@ -21,9 +21,9 @@ export class ProductInfoService {
   consumers:Consumer[]=[];
   emicards:EmiCard[]=[];
 
-  reqProdById:string="https://localhost:44327/api/Products"
-  reqEMIC:string="https://localhost:44327/api/Emicards"
-  reqPR:string="https://localhost:44327/api/PurchaseRecords"
+  reqProdById:string="https://localhost:44353/api/Products"
+  reqEMIC:string="https://localhost:44353/api/Emicards"
+  reqPR:string="https://localhost:44353/api/PurchaseRecords"
   
   constructor(private http:HttpClient) { }
 
