@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Consumer } from '../models/consumer';
+// import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -59,40 +60,43 @@ export class AdminService {
     return this.consumer;
   }
 
-  verifyConsumer(id:number, consumer:Consumer):Observable<Consumer>{
+  verifyConsumerCheck(id:number, consumer:Consumer):Observable<any>{
     this.consumer = consumer;
-    console.log(id+ " "+this.consumer);
-    return this.http.put<Consumer>(this.req+"/"+id,consumer,{
+    return this.http.put<any>(this.req+"/"+id,consumer,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
         'Access-Control-Allow-Method':'*'
       })
-    });
+    })
   }
 
-  // updateUser(id:number,player:Player):Observable<any>
-  // {
-    
-  //   return this.http.put<any>(this.req+"/"+id,player,{
+  // verifyConsumer(id:number, consumer:Consumer):Observable<any>{
+  //   // console.log(id+ " "+this.consumer.isVerfied);
+  //   this.consumer = consumer;
+  //   console.log(this.consumer);
+  //   console.log(this.req+"/"+id);
+  //   // debugger;
+  //   // return this.http.put<any>(this.req+"/"+id,consumer);
+  //   return this.http.put<any>(this.req+"/"+id,consumer,{
   //     headers:new HttpHeaders({
   //       'Content-Type':'application/json;charset=UTF-8',
   //       'Access-Control-Allow-Origin':'*',
   //       'Access-Control-Allow-Method':'*'
   //     })
-  //   });
+  //   }).pipe(catchError(this.manageErrors));
   // }
+
+  // private manageErrors(error:HttpErrorResponse){
+  //   // let msg='';
+  //   if(error.error instanceof ErrorEvent){
+  //     console.error("Client Side error",error.error.message);
+  //   }
+  //   else{
+  //     console.error("Server Side Error", error);
+  //   }
+  //   return throwError('There is a little problem while processing your request.Sorry for the inconvenience');
+  // }
+
   
-  // Method to verify an existing player.
-  // updateUser(consumer:any):Observable<Consumer[]>
-  // {
-    
-  //   return this.http.put<Consumer[]>(this.req+"/"+,consumer,{
-  //     headers:new HttpHeaders({
-  //       'Content-Type':'application/json;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-  //     })
-  //   });
-  // }
 }
