@@ -58,16 +58,20 @@ export class AdminService {
     return this.consumer;
   }
 
-  verifyConsumer(id:number, consumer:Consumer):Observable<Consumer>{
+  verifyConsumer(id:number, consumer:Consumer){
+    // console.log(id+ " "+this.consumer.isVerfied);
     this.consumer = consumer;
-    console.log(id+ " "+this.consumer);
-    return this.http.put<Consumer>(this.req+"/"+id,consumer,{
-      headers:new HttpHeaders({
-        'Content-Type':'application/json;charset=UTF-8',
-        'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
-      })
-    });
+    console.log(this.consumer);
+    console.log(this.req+"/"+id);
+    debugger;
+    return this.http.put(this.req+"/"+id,consumer);
+    // return this.http.put(this.req+"/"+id,this.consumer,{
+    //   headers:new HttpHeaders({
+    //     'Content-Type':'application/json;charset=UTF-8',
+    //     'Access-Control-Allow-Origin':'*',
+    //     'Access-Control-Allow-Method':'*'
+    //   })
+    // });
   }
 
   // updateUser(id:number,player:Player):Observable<any>
