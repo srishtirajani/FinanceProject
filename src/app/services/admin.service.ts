@@ -33,7 +33,7 @@ export class AdminService {
 
   id:number=0;
 
-  req:string="https://localhost:44327/api/Consumers";
+  //req:string="https://localhost:44327/api/Consumers";
 
 
   showAllConsumers():Observable<Consumer[]>{
