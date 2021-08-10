@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
 import { EmiCard } from '../models/emicard';
 import { Product } from '../models/product';
@@ -11,10 +12,10 @@ import { PurchaseRecord } from '../models/purchaseRecord';
 })
 export class ConsumerService {
 
-  reqCons:string="https://localhost:44353/api/Consumers";
-  reqPurchRec:string="https://localhost:44353/api/PurchaseRecords";
-  reqProduct:string="https://localhost:44353/api/Products";
-  reqEmiCard:string="https://localhost:44353/api/Emicards";
+  reqCons:string="https://localhost:" + no + "/api/Consumers";
+  reqPurchRec:string="https://localhost:" + no + "/api/PurchaseRecords";
+  reqProduct:string="https://localhost:" + no + "/api/Products";
+  reqEmiCard:string="https://localhost:" + no + "/api/Emicards";
 
   consumers:Consumer[]=[];
   purchRecs:PurchaseRecord[]=[];

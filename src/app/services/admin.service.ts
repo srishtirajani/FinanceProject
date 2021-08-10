@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
 import { EmiCard } from '../models/emicard';
 // import { retry, catchError } from 'rxjs/operators';
@@ -22,11 +23,11 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  req:string="https://localhost:44353/api/Consumers";
-  reqEmiCards:string="https://localhost:44353/api/Emicards"
+  // req:string="https://localhost:44353/api/Consumers";
+  reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
 
   consumers:Consumer[]=[];
-  // emiCards:EmiCard[]=[];
+  emiCards:EmiCard[]=[];
 
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
 
@@ -47,18 +48,18 @@ export class AdminService {
     );
   }
 
-  // GetAllEMICards():Observable<EmiCard[]>{
-  //   console.log("hi");
-  //   return this.http.get<EmiCard[]>(this.reqEmiCards,
-  //     {
-  //       headers:new HttpHeaders({
-  //       'Content-Type':'text/plain;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-  //       })
-  //     }
-  //   );
-  // }
+  GetAllEMICards():Observable<EmiCard[]>{
+    console.log("hi");
+    return this.http.get<EmiCard[]>(this.reqEmiCards,
+      {
+        headers:new HttpHeaders({
+        'Content-Type':'text/plain;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+        })
+      }
+    );
+  }
 
   getId(userName?:string):number{
     for(let c of this.consumers){
@@ -90,7 +91,7 @@ export class AdminService {
   }
 
   assignNewCard(emiCard:EmiCard):Observable<EmiCard>
- {
+  {
     return this.http.post<EmiCard>(this.reqEmiCards,emiCard,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
