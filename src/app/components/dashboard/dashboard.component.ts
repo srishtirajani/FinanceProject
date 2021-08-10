@@ -22,21 +22,29 @@ export class DashboardComponent implements OnInit {
   emicards:EmiCard[]=[];
   cPurchaseRecord:PurchaseRecord[]=[];
 
+
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
   emicard:EmiCard=new EmiCard(0,'NA',0,new Date(),0,'');
 
   productColl1:any=new Map();
   productColl2:any=new Map();
+  productColl3:any=new Map();
+  productColl4:any=new Map();
+
+  showPurch:boolean = true
 
   counter : number = 0;
   showMoreList:number[] = []
+  storeBal:number[] = []
 
   showMore() {
-    this.counter = this.counter+1;
-    if(this.cPurchaseRecord.length > this.counter)
-      this.showMoreList.push(this.cPurchaseRecord[this.counter].productId)
+    if(this.cPurchaseRecord.length > this.counter) {
+      this.showMoreList.push((this.cPurchaseRecord[this.counter]).productId)
+      this.counter = this.counter+1;
+    }
+      
   }
-  
+
 
   constructor(private cService:ConsumerService) { }
 
@@ -58,6 +66,8 @@ export class DashboardComponent implements OnInit {
       this.products=data;
       this.productColl1=this.cService.fillCollection1();
       this.productColl2=this.cService.fillCollection2();
+      this.productColl3=this.productColl1;
+      this.productColl4=this.productColl2;
     });
     this.cService.GetAllEMICards().subscribe(data=>{
       this.cService.emicards=data;
@@ -72,4 +82,3 @@ export class DashboardComponent implements OnInit {
     console.log(this.emicard);
   }
 }
-
