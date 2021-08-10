@@ -6,6 +6,7 @@ import { DataProd } from 'src/app/services/product.service';
 import { AdminService, Data } from 'src/app/services/admin.service';
 import { PurchaseRecord } from 'src/app/models/purchaseRecord';
 import { DatePipe } from '@angular/common';
+import { Consumer } from 'src/app/models/consumer';
 
 @Component({
   selector: 'app-product-info',
@@ -17,7 +18,11 @@ export class ProductInfoComponent implements OnInit {
 
   userName:any;
   // id:number=0;
+  flag_card:boolean=false;
+  flag_valid:boolean=false;
+  flag_isbalance:boolean=false;
 
+  consumer = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
   
   myDate:any;
 
@@ -52,7 +57,6 @@ export class ProductInfoComponent implements OnInit {
       this.productService.emicards=data;
     });
     this.selectedEmi = new Object();
-    console.log
   }
 
   insertPR(data:any):void
@@ -64,6 +68,11 @@ export class ProductInfoComponent implements OnInit {
     })
   }
 
+  conditionCheck(){
+    let id:number=this.productService.getId(this.userName);
+
+    // if(this.co)
+  }
 
   Payment(){
     // var today = new Date();
@@ -75,6 +84,7 @@ export class ProductInfoComponent implements OnInit {
     this.pay.storage=this.product;
     let id:number=this.productService.getId(this.userName);
     console.log(id);
+    //call the condition methods
     this.productService.pay(id, this.product.price);
     // this.purchRec.DOP=(new Date().getMonth()+1)+'-'+(new Date().getDate())+'-'+(new Date().getFullYear()); 
     this.purchRec.cardNo=this.productService.getCardNo(id);
