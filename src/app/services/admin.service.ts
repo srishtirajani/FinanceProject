@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
 import { EmiCard } from '../models/emicard';
 // import { retry, catchError } from 'rxjs/operators';
@@ -23,7 +24,7 @@ export class AdminService {
   constructor(private http:HttpClient) { }
 
   // req:string="https://localhost:44353/api/Consumers";
-  reqEmiCards:string="https://localhost:44327/api/Emicards"
+  reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
 
   consumers:Consumer[]=[];
   emiCards:EmiCard[]=[];

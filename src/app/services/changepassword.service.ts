@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class DataC {
 export class ChangepasswordService {
   consumers:Consumer[]=[];
   constructor(private http: HttpClient) { }
-  readonly ConnUrl = 'https://localhost:44327/api/Consumers'
+  readonly ConnUrl = "https://localhost:" + no + "/api/Consumers"
   GetAllConsumers():Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.ConnUrl,
       {
