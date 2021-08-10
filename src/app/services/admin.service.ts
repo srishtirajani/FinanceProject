@@ -31,7 +31,11 @@ export class AdminService {
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
 
   id:number=0;
+<<<<<<< Updated upstream
   // req:string="https://localhost:44353/api/Consumers"
+=======
+  req:string="https://localhost:44327/api/Consumers"
+>>>>>>> Stashed changes
 
   showAllConsumers():Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.req,
