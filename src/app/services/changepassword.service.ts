@@ -6,6 +6,13 @@ import { Consumer } from '../models/consumer';
 @Injectable({
   providedIn: 'root'
 })
+export class DataC {
+
+  public storage: any;
+
+  public constructor() { }
+
+}
 export class ChangepasswordService {
   consumers:Consumer[]=[];
   constructor(private http: HttpClient) { }

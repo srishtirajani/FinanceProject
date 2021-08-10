@@ -8,6 +8,7 @@ import { PurchaseRecord } from 'src/app/models/purchaseRecord';
 import { DatePipe } from '@angular/common';
 import { Consumer } from 'src/app/models/consumer';
 import { EmiCard } from 'src/app/models/emicard';
+import { DataC } from 'src/app/services/changepassword.service';
 
 @Component({
   selector: 'app-product-info',
@@ -44,7 +45,7 @@ export class ProductInfoComponent implements OnInit {
     {name: '1 Year', value: 12}
   ];
 
-  constructor(private productService:ProductInfoService, private router:Router,private data: DataProd,private pay:Data, private datePipe: DatePipe, private prodInfoService:ProductInfoService){
+  constructor(private productService:ProductInfoService, private router:Router,private data: DataProd,private pay:Data, private datePipe: DatePipe, private prodInfoService:ProductInfoService, private aService:AdminService, private dataC:DataC){
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
 }
 
@@ -143,6 +144,8 @@ export class ProductInfoComponent implements OnInit {
     this.purchRec.productId=this.product.pid;
     this.purchRec.totalMonthsSelected=this.selectedEmi.value--;
     this.purchRec.userId=id;
+    //sending productRecord to payment
+    this.dataC.storage=this.purchRec
     console.log(this.purchRec);
     this.insertPR(this.purchRec);
     this.router.navigate(['payment']);

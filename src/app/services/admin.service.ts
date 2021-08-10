@@ -22,8 +22,8 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  req:string="https://localhost:44327/api/Consumers";
-  reqEmiCards:string="https://localhost:44327/api/Emicards"
+  req:string="https://localhost:44353/api/Consumers";
+  reqEmiCards:string="https://localhost:44353/api/Emicards"
 
   consumers:Consumer[]=[];
   // emiCards:EmiCard[]=[];
@@ -31,7 +31,7 @@ export class AdminService {
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
 
   id:number=0;
-  // req:string="https://localhost:44353/api/Consumers"
+  //req:string="https://localhost:44327/api/Consumers"
 
   showAllConsumers():Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.req,
@@ -87,17 +87,17 @@ export class AdminService {
     })
   }
 
-  assignNewCard(emiCard:EmiCard):Observable<EmiCard>
-  {
-    return this.http.post<EmiCard>(this.reqEmiCards,emiCard,{
+  //assignNewCard(emiCard:EmiCard):Observable<EmiCard>
+  //{
+    /*return this.http.post<EmiCard>(this.reqEmiCards,emiCard,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
         'Access-Control-Allow-Method':'*'
         
       })
-    });
-  }
+    });*/
+  //}
 
 
   //Method  to create a new player.
