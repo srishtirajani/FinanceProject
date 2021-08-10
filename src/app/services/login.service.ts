@@ -16,9 +16,9 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-  req:string="https://localhost:44327/api/LoginTables"
-  reqCons:string="https://localhost:44327/api/Consumers"
-  reqAdmin:string="https://localhost:44327/api/AdminControls"
+  req:string="https://localhost:44353/api/LoginTables"
+  reqCons:string="https://localhost:44353/api/Consumers"
+  reqAdmin:string="https://localhost:44353/api/AdminControls"
 
   GetAllLogins():Observable<Login[]>{
     return this.http.get<Login[]>(this.req,

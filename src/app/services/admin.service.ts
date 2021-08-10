@@ -31,6 +31,7 @@ export class AdminService {
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
 
   id:number=0;
+  req:string="https://localhost:44353/api/Consumers"
 
   showAllConsumers():Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.req,

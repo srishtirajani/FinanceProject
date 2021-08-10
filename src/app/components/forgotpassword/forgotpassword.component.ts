@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { AdminService, Data } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-forgotpassword',
   templateUrl: './forgotpassword.component.html',
@@ -8,7 +9,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 })
 export class ForgotpasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private data: Data) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +26,8 @@ export class ForgotpasswordComponent implements OnInit {
   Check(){
     //alert('successful');
     console.log(this.checkOTP.value);
+    this.data.storage=this.generateOTP.get('phoneno')?.value;
+    this.router.navigate(['changepassword']);
   }
   
 }

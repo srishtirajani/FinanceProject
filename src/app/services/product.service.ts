@@ -21,7 +21,7 @@ export class ProductService {
 
   products:Product[]=[];
   constructor(private http:HttpClient) { }
-  reqProd:string="https://localhost:44327/api/Products"
+  reqProd:string="https://localhost:44353/api/Products"
 
   GetAllProducts():Observable<Product[]>{
     return this.http.get<Product[]>(this.reqProd,
