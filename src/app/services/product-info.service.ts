@@ -16,7 +16,12 @@ export class ProductInfoService {
 
   objC:any;
 
-  product:Product[]=[];
+  consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
+  emiCard = new EmiCard(0,'',0,new Date(),0,'');
+
+  products:Product[]=[];
+
+  productBought:any;
 
   consumers:Consumer[]=[];
   emicards:EmiCard[]=[];
@@ -51,9 +56,20 @@ export class ProductInfoService {
     );
   }
 
+  GetAllProducts():Observable<Product[]>{
+    return this.http.get<Product[]>(this.reqProdById,
+      {
+        headers:new HttpHeaders({
+        'Content-Type':'text/plain;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+        })
+      }
+    );
+  }
+
   GetProdById(id:number):Observable<any>
   {
-    
     return this.http.get<any>(this.reqProdById+"/"+id,
     {
       headers:new HttpHeaders({
@@ -65,17 +81,49 @@ export class ProductInfoService {
   );
   }
 
+  getProduct(pid:number){
+    console.log(pid);
+    console.log(this.products);
+    for(let product of this.products){
+      if(product.pid==pid){
+        this.productBought=product;
+        // return product;
+      }
+    }
+  }
+
+  getCardNo(cid:number):number{
+    for(let card of this.emicards){
+      if(card.userId==cid){
+        this.emiCard=card;
+        return card.eid;
+      }
+    }
+    return 0;
+  }
+
   getId(userName?:string):number{
+    console.log("I am inside getID");
+    console.log(userName);
+    console.log(this.consumers);
     for(let c of this.consumers){
       if(c.userName==userName){
         this.objC=c;
+        console.log(c.cid);
         return c.cid;
       }
     }
     return 0;
   }
 
-  // getConsumer()
+  getConsumer(id:number):Consumer{
+    for(let c of this.consumers){
+      if(c.cid==id){
+        return c;
+      }
+    }
+    return this.consumer;
+  }
 
   pay(cid:number,price:number){
     let proFees:number=0.05*price;
@@ -90,14 +138,15 @@ export class ProductInfoService {
     }
   }
 
-  getCardNo(cid:number):number{
-    for(let card of this.emicards){
-      if(card.userId==cid){
-        return card.eid;
-      }
-    }
-    return 0;
-  }
+  
+
+  // getEMICard(cid:number):any{
+  //   for(let ec of this.emicards){
+  //     if(ec.userId==cid){
+  //       return ec;
+  //     }
+  //   }
+  // }
 
   createPR(purchrec:PurchaseRecord):Observable<PurchaseRecord>
   {
