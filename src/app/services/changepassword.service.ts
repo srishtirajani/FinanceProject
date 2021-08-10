@@ -16,7 +16,7 @@ export class DataC {
 export class ChangepasswordService {
   consumers:Consumer[]=[];
   constructor(private http: HttpClient) { }
-  readonly ConnUrl = 'https://localhost:44353/api/Consumers'
+  readonly ConnUrl = 'https://localhost:44327/api/Consumers'
   GetAllConsumers():Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.ConnUrl,
       {

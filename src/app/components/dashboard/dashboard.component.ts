@@ -27,6 +27,15 @@ export class DashboardComponent implements OnInit {
 
   productColl1:any=new Map();
   productColl2:any=new Map();
+
+  counter : number = 0;
+  showMoreList:number[] = []
+
+  showMore() {
+    this.counter = this.counter+1;
+    if(this.cPurchaseRecord.length > this.counter)
+      this.showMoreList.push(this.cPurchaseRecord[this.counter].productId)
+  }
   
 
   constructor(private cService:ConsumerService) { }

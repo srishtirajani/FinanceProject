@@ -25,3 +25,17 @@
     margin-right: 10px;
     /* size: 50px; */
 }
+
+
+.float-container {
+    
+    padding: 20px;
+}
+
+.float-child {
+    width: 25%;
+    float: left;
+    padding: 20px;
+    border: 2px solid blue;
+    border-radius: 2%;
+} 

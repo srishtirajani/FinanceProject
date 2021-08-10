@@ -48,13 +48,104 @@
         </div>
       </div>
     </div>  
+
+    <div class="col-sm-8">
+      <div class="card" id="card_details" style="width: 35rem;">
+        <div class="card-body">
+          <h5 class="card-title">Recent Purchases</h5>
+          <hr>
+          <div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought">
+          </div>
+            <ng-template #ProductBought>
+              <table>
+                <tr *ngFor="let x of showMoreList">
+                  <td><i>Name:</i>{{ productColl1.get(x) }}</td>&nbsp;
+                  <td><i>Amount:</i>{{ productColl2.get(x) }}</td>
+                </tr>
+                <tr>
+                  <td><button (click) = "showMore()">Show more</button></td>
+                </tr>
+              </table>
+            </ng-template>
+            <ng-template #NotBought>
+              You haven't bought anything yet!
+            </ng-template>
+        </div>
+      </div>
+    </div>  
+
+
+
   </div>
-</body>
+</body>-->
 
 
 
 
-<!-- <div class="container">
+<!--<div id="outer">
+  <div class="inner"> 
+    <div class="card" id="card_center" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Card Details</h5>
+        <hr>
+        <p class="card-text"><i>Card Number: </i>{{ emicard.cardNo }}</p>
+        <p class="card-text"><i>Name: </i>{{ consumer.cName }}</p>
+        <p class="card-text" *ngIf="consumer.isVerfied"><i>Validity Period: </i>{{ emicard.validityPeriod | date}}</p>
+        <p class="card-text"><i>Card Type: </i> {{ consumer.cardType}}</p>
+        <p class="card-text text-success" *ngIf="consumer.isVerfied"><b>Activated</b></p>
+        <p class="card-text text-danger" *ngIf="!consumer.isVerfied"><b>Not Activated</b></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="outer">
+  <div class="inner"> 
+    <div class="col-sm-4">
+      <div class="card " id="card_details" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Account Info</h5>
+          <hr>
+          <p class="card-text"><i>Total Credit: </i>{{ emicard.totalCredit }}</p>
+          <p class="card-text"><i>Credit Used: </i>{{ totalcreds - emicard.accBalance }}</p>
+          <p class="card-text"><i>Remaining Credit: </i>{{ emicard.accBalance }}</p>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="col-sm-8">
+    <div class="card" id="card_details" style="width: 35rem;">
+      <div class="card-body">
+        <h5 class="card-title">Products Purchased</h5>
+        <hr>
+        <div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought">
+        </div>
+          <ng-template #ProductBought>
+            <table>
+              <tr *ngFor="let x of cPurchaseRecord">
+                <td><i>Name:</i>{{productColl1.get(x.productId)}}</td>&nbsp;
+                <td><i>Amount:</i>{{productColl2.get(x.productId)}}</td>
+                <td><i>Paid:</i>{{productColl2.get(x.productId)-x.productBalance}}</td>
+                <td><i>Balance:</i>{{x.productBalance}}</td>
+              </tr>
+            </table>
+          </ng-template>
+          <ng-template #NotBought>
+            You haven't bought anything yet!
+          </ng-template>
+      </div>
+    </div>
+  </div>  
+
+
+
+
+<!--
+    <div class="container">
   <table>
     <tr>
       <td>{{ emicard.cardNo }}</td>
@@ -73,4 +164,84 @@
       <td *ngIf="!consumer.isVerfied" class="text-danger">Not Activated</td>
     </tr>
   </table>
-</div> -->
+</div> 
+
+
+<body style="overflow-x: hidden;">
+  <div class="float-container">
+
+    <div class="float-child">
+      <div class="green" style="width: 18rem;">
+        <h5 class="card-title">Card Details</h5>
+        <hr>
+        <p class="card-text"><i>Card Number: </i>{{ emicard.cardNo }}</p>
+        <p class="card-text"><i>Name: </i>{{ consumer.cName }}</p>
+        <p class="card-text" *ngIf="consumer.isVerfied"><i>Validity Period: </i>{{ emicard.validityPeriod | date}}</p>
+        <p class="card-text"><i>Card Type: </i> {{ consumer.cardType}}</p>
+        <p class="card-text text-success" *ngIf="consumer.isVerfied"><b>Activated</b></p>
+        <p class="card-text text-danger" *ngIf="!consumer.isVerfied"><b>Not Activated</b></p>
+      </div>
+    </div>
+    
+    <div class="float-child" style="margin:10px;">
+      <div class="blue" style="width: 18rem;">
+        <h5 class="card-title">Account Info</h5>
+        <hr>
+        <p class="card-text"><i>Total Credit: </i>{{ emicard.totalCredit }}</p>
+        <p class="card-text"><i>Credit Used: </i>{{ totalcreds - emicard.accBalance }}</p>
+        <p class="card-text"><i>Remaining Credit: </i>{{ emicard.accBalance }}</p>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="col-sm-8">
+    <div class="card" id="card_details" style="width: 35rem;">
+      <div class="card-body">
+        <h5 class="card-title">Products Purchased</h5>
+        <hr>
+        <div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought">
+        </div>
+          <ng-template #ProductBought>
+            <table>
+              <tr *ngFor="let x of cPurchaseRecord">
+                <td><i>Name:</i>{{productColl1.get(x.productId)}}</td>&nbsp;
+                <td><i>Amount:</i>{{productColl2.get(x.productId)}}</td>
+                <td><i>Paid:</i>{{productColl2.get(x.productId)-x.productBalance}}</td>
+                <td><i>Balance:</i>{{x.productBalance}}</td>
+              </tr>
+            </table>
+          </ng-template>
+          <ng-template #NotBought>
+            You haven't bought anything yet!
+          </ng-template>
+      </div>
+    </div>
+  </div>  
+
+</body>
+
+<table>
+  <tr>
+
+    <td>
+      <h5 class="card-title">Card Details</h5>
+      <hr>
+      <p class="card-text"><i>Card Number: </i>{{ emicard.cardNo }}</p>
+      <p class="card-text"><i>Name: </i>{{ consumer.cName }}</p>
+      <p class="card-text" *ngIf="consumer.isVerfied"><i>Validity Period: </i>{{ emicard.validityPeriod | date}}</p>
+      <p class="card-text"><i>Card Type: </i> {{ consumer.cardType}}</p>
+      <p class="card-text text-success" *ngIf="consumer.isVerfied"><b>Activated</b></p>
+      <p class="card-text text-danger" *ngIf="!consumer.isVerfied"><b>Not Activated</b></p>
+    </td>
+
+    <td>
+      <h5 class="card-title">Account Info</h5>
+      <hr>
+      <p class="card-text"><i>Total Credit: </i>{{ emicard.totalCredit }}</p>
+      <p class="card-text"><i>Credit Used: </i>{{ totalcreds - emicard.accBalance }}</p>
+      <p class="card-text"><i>Remaining Credit: </i>{{ emicard.accBalance }}</p>
+    </td>
+
+  </tr>
+</table>-->
