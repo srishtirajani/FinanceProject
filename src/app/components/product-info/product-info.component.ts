@@ -7,6 +7,7 @@ import { AdminService, Data } from 'src/app/services/admin.service';
 import { PurchaseRecord } from 'src/app/models/purchaseRecord';
 import { DatePipe } from '@angular/common';
 import { Consumer } from 'src/app/models/consumer';
+import { EmiCard } from 'src/app/models/emicard';
 
 @Component({
   selector: 'app-product-info',
@@ -23,13 +24,16 @@ export class ProductInfoComponent implements OnInit {
   flag_isbalance:boolean=false;
 
   consumer = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
+  emiCard = new EmiCard(0,'',0,new Date(),0,'');
   
   myDate:any;
+  id:number=0;
 
   purchRec:PurchaseRecord=new PurchaseRecord(0,'',0,0,0,new Date(),0,0);
 
   pid:number=this.data.pid;
-  product:any;
+  product:Product=new Product(0,'','',0,'');
+  // products:Product[]=[]
   emi:number=0;
   selectedEmi:any;
 
@@ -40,7 +44,7 @@ export class ProductInfoComponent implements OnInit {
     {name: '1 Year', value: 12}
   ];
 
-  constructor(private productService:ProductInfoService, private router:Router,private data: DataProd,private pay:Data, private aService:AdminService, private datePipe: DatePipe){
+  constructor(private productService:ProductInfoService, private router:Router,private data: DataProd,private pay:Data, private datePipe: DatePipe, private prodInfoService:ProductInfoService){
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
 }
 
@@ -55,8 +59,14 @@ export class ProductInfoComponent implements OnInit {
     });
     this.productService.GetAllEMICards().subscribe(data=>{
       this.productService.emicards=data;
+      this.selectedEmi = new Object();
+      this.conditionCheck();
     });
-    this.selectedEmi = new Object();
+    this.productService.GetAllProducts().subscribe(data=>{
+      this.prodInfoService.products=data;
+      // this.products=data;
+      // console.log(this.products);
+    });
   }
 
   insertPR(data:any):void
@@ -69,9 +79,49 @@ export class ProductInfoComponent implements OnInit {
   }
 
   conditionCheck(){
-    let id:number=this.productService.getId(this.userName);
-
-    // if(this.co)
+    console.log(this.userName);
+    let cid=this.productService.getId(this.userName);
+    console.log(cid);
+    this.consumer=this.productService.getConsumer(cid);
+    this.prodInfoService.getCardNo(cid);
+    this.emiCard=this.prodInfoService.emiCard;
+    console.log(this.pid);
+    this.prodInfoService.getProduct(this.pid);
+    this.product=this.prodInfoService.productBought;
+    console.log(this.product);
+    // console.log(this.prodInfoService.productBought);
+    // console.log(this.product);
+    // this.productService.GetProdById(this.pid).subscribe(data=>{
+    //   this.product=data;
+    // });
+    
+    console.log(this.consumer);
+    console.log(this.emiCard);
+    // console.log(this.product);
+    // console.log(this.product.price);
+    
+    if(this.consumer.isVerfied==true){
+      this.flag_card=true;
+    }
+    console.log("flag_card:" + this.flag_card)
+    if(this.product.price<this.emiCard.accBalance){
+      this.flag_isbalance=true;
+      // console.log(this.emiCard.validityPeriod > this.datePipe.transform(new Date(), 'yyyy-MM-dd') ? true : false)
+      // console.log(this.emiCard.validityPeriod.getTime());
+      // var date1 = this.emiCard.validityPeriod;
+      // var date2 = new Date();
+      // console.log(typeof(date1));
+      // console.log(date2.getTime());
+      // var Difference_In_Time = (this.emiCard.validityPeriod).getTime() - new Date().getTime();
+      // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      // console.log(Difference_In_Days);
+    }
+    console.log("flag_isbalance:" + this.flag_isbalance);
+    if(this.emiCard.validityPeriod>new Date()){
+      this.flag_valid=true;
+    }
+    console.log("flag_valid:" + this.flag_valid);
+    // console.log("flag_card:" + this.flag_card + "flag_isbalance:" + this.flag_isbalance + "flag_valid:" + this.flag_valid);
   }
 
   Payment(){
@@ -85,6 +135,7 @@ export class ProductInfoComponent implements OnInit {
     let id:number=this.productService.getId(this.userName);
     console.log(id);
     //call the condition methods
+    // this.conditionCheck();
     this.productService.pay(id, this.product.price);
     // this.purchRec.DOP=(new Date().getMonth()+1)+'-'+(new Date().getDate())+'-'+(new Date().getFullYear()); 
     this.purchRec.cardNo=this.productService.getCardNo(id);

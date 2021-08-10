@@ -16,7 +16,11 @@
           </select><br><br>
           <p class="font-weight-bold">EMI Starting {{product.price/selectedEmi.value| number : '1.2-2'}} per month</p>
           <button class="btn btn-primary"(click)="Payment()" [disabled] = "selectedEmi.value!=3 && selectedEmi.value!=6 && selectedEmi.value!=9 && selectedEmi.value!=12" >Pay Now</button>
-          <span *ngIf="">msg1</span>
+          <span>
+            <div *ngIf="!flag_card">Your card has not been activated yet.</div>
+            <div *ngIf="!flag_isbalance">You do not have enough balance.</div>
+            <div *ngIf="!flag_valid">Your card has expired.</div>
+          </span>
       </div>
   </div>
   </div>
