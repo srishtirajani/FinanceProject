@@ -133,6 +133,23 @@ export class ConsumerService {
     // console.log(this.productColl1);
     // console.log(this.productColl2);
   }
+  public getEMIValues(userId:number,price:number,emicard:EmiCard)
+  {
+    console.log(userId)
+    
+      emicard.accBalance = emicard.accBalance - (price*1.05);
+      console.log(emicard)
+      this.updateEMICard(emicard.eid,emicard).forEach(element=>{})
+  }
+  updateEMICard(id:number, data:EmiCard): Observable<any> {
+    return this.http.put<any>(this.reqEmiCard+"/"+id,data,{
+       headers:new HttpHeaders({
+         'Content-Type':'application/json;charset=UTF-8',
+         'Access-Control-Allow-Origin':'*',
+         'Access-Control-Allow-Method':'*'
+       })
+     });
+   }
 
   constructor(private http:HttpClient) { }
 }
