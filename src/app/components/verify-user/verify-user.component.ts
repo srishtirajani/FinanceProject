@@ -25,8 +25,8 @@ export class VerifyUserComponent implements OnInit {
     // this.aService.GetAllEMICards().subscribe(data=>{
     //   this.aService.emiCards=data;
     //   this.emiCards=data;      
-    //   // this.emicard=this.cService.getEMICard(this.id);
-    //   // this.totalcreds=Number(this.emicard.totalCredit);
+    //   this.emicard=this.cService.getEMICard(this.id);
+    //   this.totalcreds=Number(this.emicard.totalCredit);
     // });
   }
 

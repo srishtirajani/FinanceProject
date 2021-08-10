@@ -22,11 +22,11 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  req:string="https://localhost:44353/api/Consumers";
-  reqEmiCards:string="https://localhost:44353/api/Emicards"
+  // req:string="https://localhost:44353/api/Consumers";
+  reqEmiCards:string="https://localhost:44327/api/Emicards"
 
   consumers:Consumer[]=[];
-  // emiCards:EmiCard[]=[];
+  emiCards:EmiCard[]=[];
 
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
 
@@ -47,18 +47,18 @@ export class AdminService {
     );
   }
 
-  // GetAllEMICards():Observable<EmiCard[]>{
-  //   console.log("hi");
-  //   return this.http.get<EmiCard[]>(this.reqEmiCards,
-  //     {
-  //       headers:new HttpHeaders({
-  //       'Content-Type':'text/plain;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-  //       })
-  //     }
-  //   );
-  // }
+  GetAllEMICards():Observable<EmiCard[]>{
+    console.log("hi");
+    return this.http.get<EmiCard[]>(this.reqEmiCards,
+      {
+        headers:new HttpHeaders({
+        'Content-Type':'text/plain;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+        })
+      }
+    );
+  }
 
   getId(userName?:string):number{
     for(let c of this.consumers){
@@ -89,17 +89,17 @@ export class AdminService {
     })
   }
 
-  //assignNewCard(emiCard:EmiCard):Observable<EmiCard>
-  //{
-    /*return this.http.post<EmiCard>(this.reqEmiCards,emiCard,{
+  assignNewCard(emiCard:EmiCard):Observable<EmiCard>
+  {
+    return this.http.post<EmiCard>(this.reqEmiCards,emiCard,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
         'Access-Control-Allow-Method':'*'
         
       })
-    });*/
-  //}
+    });
+  }
 
 
   //Method  to create a new player.
