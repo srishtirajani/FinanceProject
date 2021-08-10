@@ -11,10 +11,10 @@ import { PurchaseRecord } from '../models/purchaseRecord';
 })
 export class ConsumerService {
 
-  reqCons:string="https://localhost:44353/api/Consumers";
-  reqPurchRec:string="https://localhost:44353/api/PurchaseRecords";
-  reqProduct:string="https://localhost:44353/api/Products";
-  reqEmiCard:string="https://localhost:44353/api/Emicards";
+  reqCons:string="https://localhost:44327/api/Consumers";
+  reqPurchRec:string="https://localhost:44327/api/PurchaseRecords";
+  reqProduct:string="https://localhost:44327/api/Products";
+  reqEmiCard:string="https://localhost:44327/api/Emicards";
 
   consumers:Consumer[]=[];
   purchRecs:PurchaseRecord[]=[];
