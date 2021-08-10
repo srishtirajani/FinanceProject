@@ -75,6 +75,8 @@ export class ProductInfoService {
     return 0;
   }
 
+  // getConsumer()
+
   pay(cid:number,price:number){
     let proFees:number=0.05*price;
     for(let card of this.emicards){
