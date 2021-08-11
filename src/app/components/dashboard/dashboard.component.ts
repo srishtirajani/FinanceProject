@@ -44,11 +44,21 @@ export class DashboardComponent implements OnInit {
     }
       
   }
-
+//   refresh(): string {
+//     window.location.reload();
+//     return 'done';
+// }
 
   constructor(private cService:ConsumerService) { }
 
   ngOnInit(): void {
+
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
     this.userName=localStorage.getItem('userName');
     this.cService.GetAllConsumers().subscribe(data=>{
       this.cService.consumers=data;
@@ -57,8 +67,8 @@ export class DashboardComponent implements OnInit {
       this.consumer=this.cService.getConsumer(this.id);
     });
     this.cService.GetAllPurchRecs().subscribe(data=>{
-      // this.cService.purchRecs=data;
-      // this.purchRecs=data;
+      //this.cService.purchRecs=data;
+       //this.purchRecs=data;
       this.cPurchaseRecord=this.cService.getPurchRec(this.id);
     });
     this.cService.GetAllProducts().subscribe(data=>{
