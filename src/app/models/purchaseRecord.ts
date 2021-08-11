@@ -8,6 +8,6 @@ export class PurchaseRecord{
 	    public DOP:Date,
 	    public productBalance:number,
 	    public totalMonthsSelected:number,
-		public latestEMImonth:number
+		public latestEmimonth:number=0
     ){}
 }

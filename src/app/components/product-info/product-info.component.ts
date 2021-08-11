@@ -159,13 +159,13 @@ export class ProductInfoComponent implements OnInit {
     this.purchRec.cardNo=this.productService.getCardNo(id);
     this.purchRec.productBalance=this.product.price-(this.product.price/this.selectedEmi.value);
     this.purchRec.productId=this.product.pid;
-    this.purchRec.totalMonthsSelected=--this.selectedEmi.value;
+    this.purchRec.totalMonthsSelected=this.selectedEmi.value;
     this.purchRec.userId=id;
     //sending productRecord to payment
     this.dataC.storage=this.purchRec
     console.log(this.purchRec);
-    this.purchRec.latestEMImonth=7; //the month of purchase
-    console.log(this.purchRec.latestEMImonth);
+    this.purchRec.latestEmimonth=new Date().getMonth(); //the month of purchase
+    console.log(this.purchRec.latestEmimonth);
     this.insertPR(this.purchRec); //inserting the current purch Rec in Purchase Records Table
     //update account balance
     this.emicardU = this.consumerservice.getEMICard(id);

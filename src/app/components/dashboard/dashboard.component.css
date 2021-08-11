@@ -74,6 +74,7 @@ div {
 .applyImg {
     background-image: url("src\assets\images\img22.jpg");
     background-color: #cccccc;
+    background-repeat: round;
    }
 
    .applyImgx {
