@@ -90,12 +90,13 @@ export class ConsumerService {
 
   getPurchRec(id:number):PurchaseRecord[]{
     console.log(this.purchRecs)
-    // console.log(this.purchRecs[0])
+    console.log(this.purchRecs[0].latestEMImonth)
     for(let pr of this.purchRecs){
       if(pr.userId==id){
+        console.log(pr)
         this.cPurchaseRec.push(pr);
         console.log(pr.cardNo);
-        console.log(pr.LatestEMImonth);
+        
       }
     }
     return this.cPurchaseRec;

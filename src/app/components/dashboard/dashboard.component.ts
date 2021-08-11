@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.id+" "+this.userName);
     console.log(this.emicard);
     for(let x of this.cPurchaseRecord){
-      console.log(x.LatestEMImonth);
+      console.log(x.latestEMImonth);
     }
   }
 
@@ -111,7 +111,7 @@ export class DashboardComponent implements OnInit {
         this.purchRec=cpr;
       }
     }
-    this.purchRec.LatestEMImonth=new Date().getMonth();
+    this.purchRec.latestEMImonth=new Date().getMonth();
     this.cService.payMonthlyEMI(prid, this.purchRec);
   }
 }

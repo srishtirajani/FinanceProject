@@ -269,11 +269,11 @@
                 </td>
                 <!-- <td>{{x.cardNo}}</td> -->
                 <td>
-                  <button (click)="showData(x.LatestEMImonth)"></button>
+                  <button (click)="showData(x.latestEMImonth)"></button>
                 </td>
                 <td>
                   
-                  <button class="btn btn-primary" [disabled] = "month-x.LatestEMImonth!=1" (click)="payEMI(x.prid)">Pay EMI</button>
+                  <button class="btn btn-primary" [disabled] = "month-x.latestEMImonth!=1" (click)="payEMI(x.prid)">Pay EMI</button>
 
                 </td>
               </tr>
