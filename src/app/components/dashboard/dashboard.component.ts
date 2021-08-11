@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
        //this.purchRecs=data;
       this.cPurchaseRecord=this.cService.getPurchRec(this.id);
       console.log(this.cPurchaseRecord);
-      this.month=(new Date().getMonth());
+      this.month=(new Date().getMonth())+1;  //+1 month here to test
     });
     this.cService.GetAllProducts().subscribe(data=>{
       this.cService.products=data;
@@ -94,16 +94,17 @@ export class DashboardComponent implements OnInit {
       this.totalcreds=Number(this.emicard.totalCredit);
     });
   }
-  showData(latestmonth:number){
-    // this.cService.fillCollections();
-    console.log(this.month);
-    console.log(latestmonth);
-    console.log(this.id+" "+this.userName);
-    console.log(this.emicard);
-    for(let x of this.cPurchaseRecord){
-      console.log(x.LatestEMImonth);
-    }
-  }
+
+  // showData(latestmonth:number){
+  //   // this.cService.fillCollections();
+  //   console.log(this.month);
+  //   console.log(latestmonth);
+  //   console.log(this.id+" "+this.userName);
+  //   console.log(this.emicard);
+  //   for(let x of this.cPurchaseRecord){
+  //     console.log(x.latestEmimonth);
+  //   }
+  // }
 
   payEMI(prid:number){
     for(let cpr of this.cPurchaseRecord){
@@ -111,7 +112,9 @@ export class DashboardComponent implements OnInit {
         this.purchRec=cpr;
       }
     }
-    this.purchRec.LatestEMImonth=new Date().getMonth();
-    this.cService.payMonthlyEMI(prid, this.purchRec);
+    this.purchRec.latestEmimonth=(new Date().getMonth())+1;  //+1 month here to test
+    this.purchRec.productBalance=this.purchRec.productBalance-(this.purchRec.productBalance/this.purchRec.totalMonthsSelected);
+    this.purchRec.totalMonthsSelected=--this.purchRec.totalMonthsSelected;
+    this.cService.payMonthlyEMI(prid, this.purchRec).forEach(element=>{});
   }
 }

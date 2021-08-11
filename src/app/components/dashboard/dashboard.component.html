@@ -146,7 +146,7 @@
 <div style="margin-top: 3%;">
 
 
- <div class="roundBorderX container-fluid mb-5 container center_div w-75 p-3">
+ <div class="roundBorderX container-fluid mb-5 container center_div w-85 p-3">
 
   <div id="wrapper">
 
@@ -248,7 +248,7 @@
 
 
  <!-- <p>{{cPurchaseRecord}}</p> -->
- <div class="roundBorder applyImg" style="margin-top: 1%; width: 93%;">
+ <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
   <div *ngIf="showPurch">
           <h5>Purchase History</h5>
           <hr>
@@ -262,19 +262,20 @@
                   Amount:&nbsp;&nbsp;&nbsp;&nbsp;{{productColl2.get(x.productId)}}&nbsp;&nbsp;INR
                 </td>
                 <td>
-                  Paid: &nbsp;&nbsp;{{productColl2.get(x.productId)-x.productBalance}}&nbsp;&nbsp;INR
+                  Paid: &nbsp;&nbsp;{{productColl2.get(x.productId)-x.productBalance| number : '1.2-2'}}&nbsp;&nbsp;INR
                 </td>
                 <td>
-                  Balance:&nbsp;&nbsp;{{x.productBalance}}&nbsp;&nbsp;INR
+                  Balance:&nbsp;&nbsp;{{x.productBalance | number : '1.2-2'}}&nbsp;&nbsp;INR
                 </td>
+                <!-- <td>
+                  <button (click)="showData(x.latestEmimonth)">Click</button>
+                </td> -->
                 <!-- <td>{{x.cardNo}}</td> -->
                 <td>
-                  <button (click)="showData(x.LatestEMImonth)"></button>
+                  <button class="btn btn-primary" *ngIf="x.totalMonthsSelected!=0" [disabled] = "month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11" (click)="payEMI(x.prid)">Pay EMI</button>
                 </td>
-                <td>
-                  
-                  <button class="btn btn-primary" [disabled] = "month-x.LatestEMImonth!=1" (click)="payEMI(x.prid)">Pay EMI</button>
-
+                <td *ngIf="(month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11)">
+                  You have to next month.
                 </td>
               </tr>
             </table>

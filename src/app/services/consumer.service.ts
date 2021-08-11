@@ -95,7 +95,7 @@ export class ConsumerService {
       if(pr.userId==id){
         this.cPurchaseRec.push(pr);
         console.log(pr.cardNo);
-        console.log(pr.LatestEMImonth);
+        console.log(pr.latestEmimonth);
       }
     }
     return this.cPurchaseRec;
