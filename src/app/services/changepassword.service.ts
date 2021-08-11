@@ -1,5 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
@@ -7,13 +7,7 @@ import { Consumer } from '../models/consumer';
 @Injectable({
   providedIn: 'root'
 })
-export class DataC {
 
-  public storage: any;
-
-  public constructor() { }
-
-}
 export class ChangepasswordService {
   consumers:Consumer[]=[];
   constructor(private http: HttpClient) { }
@@ -48,5 +42,4 @@ export class ChangepasswordService {
       })
     });
   }
-} 
- 
+}
