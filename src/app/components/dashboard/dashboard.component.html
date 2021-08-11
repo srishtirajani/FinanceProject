@@ -274,8 +274,8 @@
                 <td>
                   <button class="btn btn-primary" *ngIf="x.totalMonthsSelected!=0" [disabled] = "month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11" (click)="payEMI(x.prid)">Pay EMI</button>
                 </td>
-                <td *ngIf="(month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11)">
-                  You have to next month.
+                <td *ngIf="(month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11) && x.totalMonthsSelected!=0">
+                  You have to come next month.
                 </td>
               </tr>
             </table>

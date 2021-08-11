@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
        //this.purchRecs=data;
       this.cPurchaseRecord=this.cService.getPurchRec(this.id);
       console.log(this.cPurchaseRecord);
-      this.month=(new Date().getMonth())+1;  //+1 month here to test
+      this.month=(new Date().getMonth());  //+1 month here to test
     });
     this.cService.GetAllProducts().subscribe(data=>{
       this.cService.products=data;
@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit {
         this.purchRec=cpr;
       }
     }
-    this.purchRec.latestEmimonth=(new Date().getMonth())+1;  //+1 month here to test
+    this.purchRec.latestEmimonth=(new Date().getMonth());  //+1 month here to test
     this.purchRec.productBalance=this.purchRec.productBalance-(this.purchRec.productBalance/this.purchRec.totalMonthsSelected);
     this.purchRec.totalMonthsSelected=--this.purchRec.totalMonthsSelected;
     this.cService.payMonthlyEMI(prid, this.purchRec).forEach(element=>{});

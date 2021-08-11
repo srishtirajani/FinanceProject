@@ -159,7 +159,7 @@ export class ProductInfoComponent implements OnInit {
     this.purchRec.cardNo=this.productService.getCardNo(id);
     this.purchRec.productBalance=this.product.price-(this.product.price/this.selectedEmi.value);
     this.purchRec.productId=this.product.pid;
-    this.purchRec.totalMonthsSelected=this.selectedEmi.value;
+    this.purchRec.totalMonthsSelected=--this.selectedEmi.value;
     this.purchRec.userId=id;
     //sending productRecord to payment
     this.dataC.storage=this.purchRec
