@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
 import { EmiCard } from '../models/emicard';
 import { Product } from '../models/product';
@@ -11,10 +12,10 @@ import { PurchaseRecord } from '../models/purchaseRecord';
 })
 export class ConsumerService {
 
-  reqCons:string="https://localhost:44327/api/Consumers";
-  reqPurchRec:string="https://localhost:44327/api/PurchaseRecords";
-  reqProduct:string="https://localhost:44327/api/Products";
-  reqEmiCard:string="https://localhost:44327/api/Emicards";
+  reqCons:string="https://localhost:" + no + "/api/Consumers";
+  reqPurchRec:string="https://localhost:" + no + "/api/PurchaseRecords";
+  reqProduct:string="https://localhost:" + no + "/api/Products";
+  reqEmiCard:string="https://localhost:" + no + "/api/Emicards";
 
   consumers:Consumer[]=[];
   purchRecs:PurchaseRecord[]=[];
@@ -133,6 +134,23 @@ export class ConsumerService {
     // console.log(this.productColl1);
     // console.log(this.productColl2);
   }
+  public getEMIValues(userId:number,price:number,emicard:EmiCard)
+  {
+    console.log(userId)
+    
+      emicard.accBalance = emicard.accBalance - (price*1.05);
+      console.log(emicard)
+      this.updateEMICard(emicard.eid,emicard).forEach(element=>{})
+  }
+  updateEMICard(id:number, data:EmiCard): Observable<any> {
+    return this.http.put<any>(this.reqEmiCard+"/"+id,data,{
+       headers:new HttpHeaders({
+         'Content-Type':'application/json;charset=UTF-8',
+         'Access-Control-Allow-Origin':'*',
+         'Access-Control-Allow-Method':'*'
+       })
+     });
+   }
 
   constructor(private http:HttpClient) { }
 }

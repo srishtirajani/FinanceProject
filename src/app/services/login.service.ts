@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { no } from '../API_LHnumber';
 import { AdminControls } from '../models/admin';
 import { Consumer } from '../models/consumer';
 import { Login } from '../models/login';
@@ -16,9 +17,9 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-  req:string="https://localhost:44327/api/LoginTables"
-  reqCons:string="https://localhost:44327/api/Consumers"
-  reqAdmin:string="https://localhost:44327/api/AdminControls"
+  req:string="https://localhost:" + no + "/api/LoginTables"
+  reqCons:string="https://localhost:" + no + "/api/Consumers"
+  reqAdmin:string="https://localhost:" + no + "/api/AdminControls"
 
   GetAllLogins():Observable<Login[]>{
     return this.http.get<Login[]>(this.req,
