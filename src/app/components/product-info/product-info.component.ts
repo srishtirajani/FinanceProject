@@ -31,7 +31,7 @@ export class ProductInfoComponent implements OnInit {
   myDate:any;
   id:number=0;
 
-  purchRec:PurchaseRecord=new PurchaseRecord(0,'',0,0,0,new Date(),0,0);
+  purchRec:PurchaseRecord=new PurchaseRecord(0,'',0,0,0,new Date(),0,0,0);
 
   pid:number=this.data.pid;
   product:Product=new Product(0,'','',0,'');
@@ -150,7 +150,9 @@ export class ProductInfoComponent implements OnInit {
     //sending productRecord to payment
     this.dataC.storage=this.purchRec
     console.log(this.purchRec);
-    this.insertPR(this.purchRec);
+    this.purchRec.LatestEMImonth=7; //the month of purchase
+    console.log(this.purchRec.LatestEMImonth);
+    this.insertPR(this.purchRec); //inserting the current purch Rec in Purchase Records Table
     //update account balance
     this.emicardU = this.consumerservice.getEMICard(id);
     console.log(this.emicardU)

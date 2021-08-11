@@ -1,3 +1,4 @@
+import { createPipeDefinitionMap } from '@angular/compiler/src/render3/partial/pipe';
 import { Component, OnInit } from '@angular/core';
 import { Consumer } from 'src/app/models/consumer';
 import { EmiCard } from 'src/app/models/emicard';
@@ -12,6 +13,8 @@ import { ConsumerService } from 'src/app/services/consumer.service';
 })
 export class DashboardComponent implements OnInit {
 
+  month:number=0;
+
   userName:any;
   id:number=0;
   totalcreds:number=0;
@@ -25,6 +28,7 @@ export class DashboardComponent implements OnInit {
 
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
   emicard:EmiCard=new EmiCard(0,'NA',0,new Date(),0,'');
+  purchRec:PurchaseRecord=new PurchaseRecord(0,'',0,0,0,new Date(),0,0,0);
 
   productColl1:any=new Map();
   productColl2:any=new Map();
@@ -70,12 +74,16 @@ export class DashboardComponent implements OnInit {
       //this.cService.purchRecs=data;
        //this.purchRecs=data;
       this.cPurchaseRecord=this.cService.getPurchRec(this.id);
+      console.log(this.cPurchaseRecord);
+      this.month=(new Date().getMonth());
     });
     this.cService.GetAllProducts().subscribe(data=>{
       this.cService.products=data;
       this.products=data;
       this.productColl1=this.cService.fillCollection1();
+      console.log(this.productColl1);
       this.productColl2=this.cService.fillCollection2();
+      console.log(this.productColl2);
       this.productColl3=this.productColl1;
       this.productColl4=this.productColl2;
     });
@@ -86,9 +94,24 @@ export class DashboardComponent implements OnInit {
       this.totalcreds=Number(this.emicard.totalCredit);
     });
   }
-  showData(){
+  showData(latestmonth:number){
     // this.cService.fillCollections();
+    console.log(this.month);
+    console.log(latestmonth);
     console.log(this.id+" "+this.userName);
     console.log(this.emicard);
+    for(let x of this.cPurchaseRecord){
+      console.log(x.LatestEMImonth);
+    }
+  }
+
+  payEMI(prid:number){
+    for(let cpr of this.cPurchaseRecord){
+      if(cpr.prid==prid){
+        this.purchRec=cpr;
+      }
+    }
+    this.purchRec.LatestEMImonth=new Date().getMonth();
+    this.cService.payMonthlyEMI(prid, this.purchRec);
   }
 }
