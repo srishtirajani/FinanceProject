@@ -24,6 +24,9 @@ export class AdminService {
   constructor(private http:HttpClient) { }
 
    req:string="https://localhost:" + no + "/api/Consumers";
+  //req:string="https://localhost:44327/api/Consumers";
+  //reqEmiCards:string="https://localhost:44327/api/Emicards"
+  // req:string="https://localhost:44353/api/Consumers";
   reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
 
   consumers:Consumer[]=[];
@@ -32,6 +35,7 @@ export class AdminService {
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
 
   id:number=0;
+
 
   //req:string="https://localhost:44327/api/Consumers";
 
