@@ -247,7 +247,7 @@
  </div>
 
 
-
+ <!-- <p>{{cPurchaseRecord}}</p> -->
  <div class="roundBorder applyImg" style="margin-top: 1%; width: 93%;">
   <div *ngIf="showPurch">
           <h5>Purchase History</h5>
@@ -266,6 +266,15 @@
                 </td>
                 <td>
                   Balance:&nbsp;&nbsp;{{x.productBalance}}&nbsp;&nbsp;INR
+                </td>
+                <!-- <td>{{x.cardNo}}</td> -->
+                <td>
+                  <button (click)="showData(x.LatestEMImonth)"></button>
+                </td>
+                <td>
+                  
+                  <button class="btn btn-primary" [disabled] = "month-x.LatestEMImonth!=1" (click)="payEMI(x.prid)">Pay EMI</button>
+
                 </td>
               </tr>
             </table>

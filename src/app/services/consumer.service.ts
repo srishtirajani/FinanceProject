@@ -29,6 +29,7 @@ export class ConsumerService {
   // productsPurchased:any;
 
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
+  purchRec:PurchaseRecord=new PurchaseRecord(0,'',0,0,0,new Date(),0,0,0);
 
   id:number=0;
 
@@ -88,9 +89,13 @@ export class ConsumerService {
   }
 
   getPurchRec(id:number):PurchaseRecord[]{
+    console.log(this.purchRecs)
+    // console.log(this.purchRecs[0])
     for(let pr of this.purchRecs){
       if(pr.userId==id){
         this.cPurchaseRec.push(pr);
+        console.log(pr.cardNo);
+        console.log(pr.LatestEMImonth);
       }
     }
     return this.cPurchaseRec;
@@ -134,6 +139,7 @@ export class ConsumerService {
     // console.log(this.productColl1);
     // console.log(this.productColl2);
   }
+
   public getEMIValues(userId:number,price:number,emicard:EmiCard)
   {
     console.log(userId)
@@ -142,6 +148,7 @@ export class ConsumerService {
       console.log(emicard)
       this.updateEMICard(emicard.eid,emicard).forEach(element=>{})
   }
+
   updateEMICard(id:number, data:EmiCard): Observable<any> {
     return this.http.put<any>(this.reqEmiCard+"/"+id,data,{
        headers:new HttpHeaders({
@@ -159,5 +166,16 @@ export class ConsumerService {
       // this.purchRecs=data;
       // this.cPurchaseRecord=this.cService.getPurchRec(this.id);
     });
+  }
+
+  payMonthlyEMI(prid:number, purchRec:PurchaseRecord):Observable<any>{
+    this.purchRec = purchRec;
+    return this.http.put<any>(this.reqPurchRec+"/"+prid,purchRec,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    })
   }
 }
