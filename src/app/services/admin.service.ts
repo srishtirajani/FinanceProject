@@ -23,6 +23,8 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
+  //req:string="https://localhost:44327/api/Consumers";
+  //reqEmiCards:string="https://localhost:44327/api/Emicards"
   // req:string="https://localhost:44353/api/Consumers";
   reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
 

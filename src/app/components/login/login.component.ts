@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
     }
     else if(result=="admin")
     {
-      localStorage.setItem("userNameAdmin",form.value.userName);
+      localStorage.setItem("userName",result);
       this.router.navigate(['admin']);
     }
     else{

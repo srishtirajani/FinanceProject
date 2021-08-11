@@ -8,7 +8,7 @@ import { PurchaseRecord } from 'src/app/models/purchaseRecord';
 import { DatePipe } from '@angular/common';
 import { Consumer } from 'src/app/models/consumer';
 import { EmiCard } from 'src/app/models/emicard';
-import { DataC } from 'src/app/services/changepassword.service';
+import { DataC } from 'src/app/services/data-storage.service';
 import { ConsumerService } from 'src/app/services/consumer.service';
 
 @Component({

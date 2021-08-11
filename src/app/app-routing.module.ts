@@ -12,6 +12,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { RegisterComponent } from './components/register/register.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path:'productlist', component:ProductListComponent},
   { path:'productinfo', component:ProductInfoComponent},
   { path:'payment', component:PaymentComponent},
-  { path:'admin', component:AdminComponent},
+  { path:'admin', component:AdminComponent,canActivate: [AuthGuard]},
   { path:'verify', component:VerifyUserComponent},
   { path:'register', component:RegisterComponent},
 ];

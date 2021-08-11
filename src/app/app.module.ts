@@ -24,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardTypePipe } from './pipes/card-type.pipe';
 import { AdminService, Data } from './services/admin.service';
 import { NavbarLoggedInComponent } from './components/navbar-logged-in/navbar-logged-in.component';
+import { ChangepasswordService } from './services/changepassword.service';
+import { LoginService } from './services/login.service';
 
 
 @NgModule({
@@ -51,7 +53,7 @@ import { NavbarLoggedInComponent } from './components/navbar-logged-in/navbar-lo
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [Data, AdminService],
+  providers: [Data, AdminService, ChangepasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

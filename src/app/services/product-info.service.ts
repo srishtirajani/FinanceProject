@@ -13,7 +13,7 @@ import { PurchaseRecord } from '../models/purchaseRecord';
 })
 export class ProductInfoService {
 
-  reqCons:string="https://localhost:44327/api/Consumers"
+  reqCons:string="https://localhost:" + no + "/api/Consumers"
 
   objC:any;
 
