@@ -10,6 +10,8 @@ import { AdminService, Data } from 'src/app/services/admin.service';
   styleUrls: ['./verify-user.component.css']
 })
 export class VerifyUserComponent implements OnInit {
+
+  flag_verify:string='';
   
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
   
@@ -40,6 +42,8 @@ export class VerifyUserComponent implements OnInit {
   }
 
   verifyConsumerCheck(){
+    this.flag_verify="verified";
+    localStorage.setItem('flag_verify',this.flag_verify);
     console.log(this.consumer.isVerfied);
     let id:number=this.aService.getId(this.userName);
     this.consumer=this.aService.getConsumer(id);

@@ -57,8 +57,8 @@ export class DashboardComponent implements OnInit {
       this.consumer=this.cService.getConsumer(this.id);
     });
     this.cService.GetAllPurchRecs().subscribe(data=>{
-      this.cService.purchRecs=data;
-      this.purchRecs=data;
+      // this.cService.purchRecs=data;
+      // this.purchRecs=data;
       this.cPurchaseRecord=this.cService.getPurchRec(this.id);
     });
     this.cService.GetAllProducts().subscribe(data=>{

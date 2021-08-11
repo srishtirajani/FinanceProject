@@ -152,5 +152,12 @@ export class ConsumerService {
      });
    }
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    this.GetAllPurchRecs().subscribe(data=>{
+      this.purchRecs=data;
+      console.log(this.purchRecs);
+      // this.purchRecs=data;
+      // this.cPurchaseRecord=this.cService.getPurchRec(this.id);
+    });
+  }
 }
