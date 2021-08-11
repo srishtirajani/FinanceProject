@@ -24,7 +24,10 @@ export class ProductInfoComponent implements OnInit {
   flag_card:boolean=false;
   flag_valid:boolean=false;
   flag_isbalance:boolean=false;
-
+  count_card=0
+  count_valid=0
+  count_isbalance=0
+  count=0
   consumer = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
   emiCard = new EmiCard(0,'',0,new Date(),0,'');
   
@@ -106,10 +109,12 @@ export class ProductInfoComponent implements OnInit {
     
     if(this.consumer.isVerfied==true){
       this.flag_card=true;
+      this.count_card=1;
     }
     console.log("flag_card:" + this.flag_card)
     if(this.product.price<this.emiCard.accBalance){
       this.flag_isbalance=true;
+      this.count_isbalance=1;
       // console.log(this.emiCard.validityPeriod > this.datePipe.transform(new Date(), 'yyyy-MM-dd') ? true : false)
       // console.log(this.emiCard.validityPeriod.getTime());
       // var date1 = this.emiCard.validityPeriod;
@@ -121,10 +126,19 @@ export class ProductInfoComponent implements OnInit {
       // console.log(Difference_In_Days);
     }
     console.log("flag_isbalance:" + this.flag_isbalance);
-    if(this.emiCard.validityPeriod>new Date()){
-      this.flag_valid=true;
+    let exp = this.emiCard.validityPeriod
+    let vDate = this.datePipe.transform(exp, 'yyyy-MM-dd')||''
+    let cDate= this.datePipe.transform(new Date(), 'yyyy-MM-dd')||''
+    console.log(vDate)
+    console.log(cDate)
+    if(vDate > cDate){
+      this.flag_valid = true;
+
     }
     console.log("flag_valid:" + this.flag_valid);
+    if(this.count_valid==1 && this.count_isbalance==1 && this.count_card==1){
+      this.count=1;
+    }
     // console.log("flag_card:" + this.flag_card + "flag_isbalance:" + this.flag_isbalance + "flag_valid:" + this.flag_valid);
   }
 
