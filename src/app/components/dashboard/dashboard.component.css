@@ -5,6 +5,25 @@
     src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 }
 
+div {
+    font-family: Product Sans;
+}
+
+
+.roundBorder {
+    border: 1px solid black;
+    border-radius: 0%;
+    padding: 4%;
+}
+
+
+.roundBorderX {
+    border: 1px solid black;
+    border-radius: 1%;
+    padding: 4%;
+}
+
+
 #card_center{
     margin: 0 auto; /* Added */
     float: none; /* Added */
@@ -26,6 +45,18 @@
     /* size: 50px; */
 }
 
+#wrapper {
+    display: flex;
+  }
+  
+  #left {
+    flex: 0 0 65%;
+  }
+  
+  #right {
+    flex: 1;
+  }
+
 
 .float-container {
     
@@ -36,6 +67,23 @@
     width: 25%;
     float: left;
     padding: 20px;
-    border: 2px solid blue;
+    border: 2px solid black;
     border-radius: 2%;
 } 
+
+.applyImg {
+    background-image: url("src\assets\images\img22.jpg");
+    background-color: #cccccc;
+   }
+
+   .applyImgx {
+    background-image: url("src\assets\images\img25.jpg");
+    background-color: #cccccc;
+   }
+
+   .applyImgy {
+    background-image: url("src\assets\images\img23.jpg");
+    background-color: #cccccc;
+   }
+
+   body { background: url("src\assets\images\img22.jpg") repeat 0 0; }

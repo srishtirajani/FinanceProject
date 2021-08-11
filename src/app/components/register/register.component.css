@@ -12,12 +12,25 @@
 
   div {
       font-family: Product Sans;
+
   }
 
   label {
       font-size: larger;
-      font-weight: bold;
+      
+      color: whitesmoke;
   }
+
+
+  .applyImgx {
+    background-image: url("src\assets\images\img25.jpg");
+    background-color: #cccccc;
+   }
+
+   .applyImgy {
+    background-image: url("src\assets\images\img24.svg");
+    background-color: #cccccc;
+   }
 
  form {
      margin: 0;
