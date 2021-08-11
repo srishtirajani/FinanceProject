@@ -57,6 +57,7 @@ export class LoginService {
   }
 
   login(uname:string, upass:string):string{
+
     for(let l of this.logins){
       if(l.userName==uname && l.uPassword==upass){
         for(let c of this.consumers){

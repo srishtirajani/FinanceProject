@@ -22,7 +22,7 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  // req:string="https://localhost:44353/api/Consumers";
+  req:string="https://localhost:44327/api/Consumers";
   reqEmiCards:string="https://localhost:44327/api/Emicards"
 
   consumers:Consumer[]=[];
