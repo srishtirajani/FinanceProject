@@ -133,7 +133,7 @@ export class ProductInfoComponent implements OnInit {
     console.log(cDate)
     if(vDate > cDate){
       this.flag_valid = true;
-
+      this.count_valid = 1;
     }
     console.log("flag_valid:" + this.flag_valid);
     if(this.count_valid==1 && this.count_isbalance==1 && this.count_card==1){
