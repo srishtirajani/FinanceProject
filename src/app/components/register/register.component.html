@@ -1,7 +1,9 @@
+<div>
+
 <div class="container-fluid mb-5 container center_div w-50 p-3">
     <h1>Register</h1><br>
   
-    <form #uf="ngForm" (submit) = onSubmit(uf)>
+    <form #uf="ngForm" (submit) = onSubmit(uf) class="applyImgx">
       
 
       <input type="hidden" name = "autoID" [value]="service.formData.cid">
@@ -81,7 +83,7 @@
       </div><br>
   
       <div class="form-group">
-        <p>Please select your preferred card type:</p>
+        <p style="color: whitesmoke;"> Please select your preferred card type:</p>
           <input type="radio" required (click) = "radioClicked()" name = "CardType" id="gold" name="pref_card" value="Gold" [(ngModel)]="service.formData.cardType">
           <label for="gold">Gold</label>
           <input type="radio" required (click) = "radioClicked()" name = "CardType" id="titm" name="pref_card" value="Titanium" [(ngModel)]="service.formData.cardType">
@@ -89,7 +91,7 @@
       </div><br>
   
       <div class="form-group">
-        <p>Please select your bank:</p>
+        <p style="color: white;">Please select your bank:</p>
         <select required #bank = "ngModel" class = "custom-select" name = "bank" [(ngModel)]="service.formData.bankName">
           <option *ngFor = "let bank of banks"> {{bank}} </option>
         </select>
@@ -113,9 +115,10 @@
         <div class="inner"> <button type="reset" value="Reset" style="margin:10px;" class="btn btn-primary">Reset</button> </div>
       </div>
       <div id="outer">
-        <div class="inner"> <p style="margin:10px; padding-top: 10%;">Already a member?</p> </div>
+        <div class="inner"> <p style="margin:10px; padding-top: 10%; color: whitesmoke;">Already a member?</p> </div>
         <div class="inner"> <a routerLink="/login" style="margin:3px;">login</a> </div>
       </div>
   
     </form>
   </div>
+</div>

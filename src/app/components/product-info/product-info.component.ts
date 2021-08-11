@@ -8,7 +8,8 @@ import { PurchaseRecord } from 'src/app/models/purchaseRecord';
 import { DatePipe } from '@angular/common';
 import { Consumer } from 'src/app/models/consumer';
 import { EmiCard } from 'src/app/models/emicard';
-import { DataC } from 'src/app/services/changepassword.service';
+import { DataC } from 'src/app/services/data-storage.service';
+import { ConsumerService } from 'src/app/services/consumer.service';
 
 @Component({
   selector: 'app-product-info',
@@ -44,8 +45,9 @@ export class ProductInfoComponent implements OnInit {
     {name: '9 Months', value: 9}, 
     {name: '1 Year', value: 12}
   ];
+  emicardU: any;
 
-  constructor(private productService:ProductInfoService, private router:Router,private data: DataProd,private pay:Data, private datePipe: DatePipe, private prodInfoService:ProductInfoService, private aService:AdminService, private dataC:DataC){
+  constructor(private productService:ProductInfoService, private router:Router,private data: DataProd,private pay:Data, private datePipe: DatePipe, private prodInfoService:ProductInfoService, private aService:AdminService, private dataC:DataC,private consumerservice:ConsumerService){
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
 }
 
@@ -149,6 +151,10 @@ export class ProductInfoComponent implements OnInit {
     this.dataC.storage=this.purchRec
     console.log(this.purchRec);
     this.insertPR(this.purchRec);
+    //update account balance
+    this.emicardU = this.consumerservice.getEMICard(id);
+    console.log(this.emicardU)
+    this.consumerservice.getEMIValues(id,this.product.price,this.emicardU);
     this.router.navigate(['payment']);
   }
 }

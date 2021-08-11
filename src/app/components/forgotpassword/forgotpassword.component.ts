@@ -10,7 +10,7 @@ import { AdminService, Data } from 'src/app/services/admin.service';
 export class ForgotpasswordComponent implements OnInit {
 
   constructor(private router: Router, private data: Data) { }
-
+  isButtonVisible=false;
   ngOnInit(): void {
   }
   generateOTP=new FormGroup({
@@ -22,12 +22,18 @@ export class ForgotpasswordComponent implements OnInit {
   Generator(){
     //alert('hi');
     console.log(this.generateOTP.value);
+    this.isButtonVisible = true;
   }
   Check(){
     //alert('successful');
     console.log(this.checkOTP.value);
-    this.data.storage=this.generateOTP.get('phoneno')?.value;
-    this.router.navigate(['changepassword']);
+    console.log(this.generateOTP.get('phoneno')?.value%1000)
+    if(this.checkOTP.get('otp')?.value==this.generateOTP.get('phoneno')?.value%1000)
+    {this.data.storage=this.generateOTP.get('phoneno')?.value;
+    this.router.navigate(['changepassword']);}
+    else{
+      alert("Invalid OTP!! Please try again.")
+    }
   }
   
 }

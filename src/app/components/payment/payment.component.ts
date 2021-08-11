@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from 'src/app/services/admin.service';
-import { DataC } from 'src/app/services/changepassword.service';
+import { DataC } from 'src/app/services/data-storage.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',

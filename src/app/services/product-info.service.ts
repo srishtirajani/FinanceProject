@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { createDirectiveDefinitionMap } from '@angular/compiler/src/render3/partial/directive';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
 import { EmiCard } from '../models/emicard';
 import { Product } from '../models/product';
@@ -12,7 +13,7 @@ import { PurchaseRecord } from '../models/purchaseRecord';
 })
 export class ProductInfoService {
 
-  reqCons:string="https://localhost:44327/api/Consumers"
+  reqCons:string="https://localhost:" + no + "/api/Consumers"
 
   objC:any;
 
@@ -26,9 +27,9 @@ export class ProductInfoService {
   consumers:Consumer[]=[];
   emicards:EmiCard[]=[];
 
-  reqProdById:string="https://localhost:44327/api/Products"
-  reqEMIC:string="https://localhost:44327/api/Emicards"
-  reqPR:string="https://localhost:44327/api/PurchaseRecords"
+  reqProdById:string="https://localhost:" + no + "/api/Products"
+  reqEMIC:string="https://localhost:" + no + "/api/Emicards"
+  reqPR:string="https://localhost:" + no + "/api/PurchaseRecords"
   
   constructor(private http:HttpClient) { 
     this.GetAllProducts().subscribe(data=>{
