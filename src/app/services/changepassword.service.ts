@@ -6,6 +6,7 @@ import { Consumer } from '../models/consumer';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataC {
 
   public storage: any;

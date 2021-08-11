@@ -87,10 +87,11 @@ export class ProductInfoComponent implements OnInit {
     this.prodInfoService.getCardNo(cid);
     this.emiCard=this.prodInfoService.emiCard;
     console.log(this.pid);
-    this.prodInfoService.getProduct(this.pid);
-    this.product=this.prodInfoService.productBought;
+    
+    console.log(this.prodInfoService.getProduct(this.pid));
+    this.product=this.prodInfoService.getProduct(this.pid);
     console.log(this.product);
-    // console.log(this.prodInfoService.productBought);
+    
     // console.log(this.product);
     // this.productService.GetProdById(this.pid).subscribe(data=>{
     //   this.product=data;
@@ -142,7 +143,7 @@ export class ProductInfoComponent implements OnInit {
     this.purchRec.cardNo=this.productService.getCardNo(id);
     this.purchRec.productBalance=this.product.price-(this.product.price/this.selectedEmi.value);
     this.purchRec.productId=this.product.pid;
-    this.purchRec.totalMonthsSelected=this.selectedEmi.value--;
+    this.purchRec.totalMonthsSelected=--this.selectedEmi.value;
     this.purchRec.userId=id;
     //sending productRecord to payment
     this.dataC.storage=this.purchRec

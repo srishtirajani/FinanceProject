@@ -1,8 +1,35 @@
-<div class="form-group">
-    <p>Verify:</p>
-      <input type="radio" required name = "Verify" id="yes" value="true" [(ngModel)]="consumer.isVerfied">
-      <label for="gold">Yes</label>
-      <input type="radio" required name = "Verify" id="no" value="false" [(ngModel)]="consumer.isVerfied">
-      <label for="titm">No</label><br>
-    <button (click)="verifyConsumerCheck()" class="btn btn-primary">Submit</button>
-</div><br>
+<!-- <div class="container">
+    <div class="row mt-5">
+        <div class="spContainer mx-auto">
+            <div class="card px-4 py-5 border-0 shadow">
+                <div class="d-inline mb-0">
+                    <div class="form-group">
+                        <p>Verify:</p>
+                          <input type="radio" required name = "Verify" id="yes" value="true" [(ngModel)]="consumer.isVerfied">
+                          <label for="gold">Yes</label>
+                          <input type="radio" required name = "Verify" id="no" value="false" [(ngModel)]="consumer.isVerfied">
+                          <label for="titm">No</label><br>
+                        <button (click)="verifyConsumerCheck()" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="card" id="card_center" style="width: 36rem;">
+    <div class="card-body">
+      <h5 class="card-title">Do you want to verify consumer?</h5>
+      <hr>
+      <div class="form-group">
+          <input type="radio" required name = "Verify" id="yes" value="true" [(ngModel)]="consumer.isVerfied">
+          <label for="gold">Yes</label>&nbsp;&nbsp;
+          <input type="radio" required name = "Verify" id="no" value="false" [(ngModel)]="consumer.isVerfied">
+          <label for="titm">No</label>
+        <br>
+        <br>
+        <button (click)="verifyConsumerCheck()" class="btn btn-primary">Submit</button>
+    </div>
+    </div>
+  </div>
+
