@@ -7,6 +7,13 @@ import { Consumer } from '../models/consumer';
 @Injectable({
   providedIn: 'root'
 })
+<<<<<<< HEAD
+
+export class DataC {
+
+  public storage: any;
+=======
+>>>>>>> dd44842ff3ed86278fa19f5fd0c61ff51b971714
 
 export class ChangepasswordService {
   consumers:Consumer[]=[];

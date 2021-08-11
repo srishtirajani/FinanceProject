@@ -31,7 +31,13 @@ export class ProductInfoService {
   reqEMIC:string="https://localhost:" + no + "/api/Emicards"
   reqPR:string="https://localhost:" + no + "/api/PurchaseRecords"
   
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    this.GetAllProducts().subscribe(data=>{
+      this.products=data;
+      // this.products=data;
+      // console.log(this.products);
+    });
+   }
 
   GetAllConsumers():Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.reqCons,
@@ -88,9 +94,12 @@ export class ProductInfoService {
     for(let product of this.products){
       if(product.pid==pid){
         this.productBought=product;
-        // return product;
+        // return product
       }
+      
     }
+    console.log(this.productBought);
+    return this.productBought;
   }
 
   getCardNo(cid:number):number{
