@@ -10,6 +10,8 @@ import { no } from '../API_LHnumber';
 })
 export class RegService {
 
+  consumers:Consumer[]=[];
+
   constructor(private http : HttpClient) { }
 
   formData : Consumer = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
@@ -29,6 +31,8 @@ export class RegService {
   //     })
   //   });
   // }
+
+
 }
 
 

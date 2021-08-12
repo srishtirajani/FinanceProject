@@ -19,18 +19,18 @@
         <tbody>
             <tr>
                 <td>{{product.productName}}</td>
-                <td>{{purchaseRecord.totalMonthsSelected}} Months</td>
-                <td>Rs. {{EMIvalue}}</td>
+                <td>{{purchaseRecord.totalMonthsSelected+1}} Months</td>
+                <td>₹ {{EMIvalue| number : '1.2-2'}} per month</td>
           </tr>
             <tr>
                 <td></td>
               <th>Processing Fee</th>
-                <td>Rs. {{processingfee}}</td>
+                <td>₹ {{processingfee}}</td>
             </tr>
             <tr>
                 <td></td>
               <th>Total Price</th>
-                <td>Rs. {{totalcost}}</td>
+                <td>₹ {{totalcost}}</td>
             </tr>
         </tbody>
     </table>
