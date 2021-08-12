@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   login(form:NgForm){
     // console.log(this.loginService.logins);
-    // console.log(this.loginService.consumers);
+    console.log(this.loginService.consumers);
     // console.log(this.loginService.admins);
     var result=this.loginService.login(form.value.userName, form.value.password);
 

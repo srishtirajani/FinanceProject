@@ -21,7 +21,7 @@ export class PaymentComponent implements OnInit {
     console.log(this.product)
     console.log(this.product.productName)
     this.processingfee = this.product.price * 0.05;
-    this.EMIvalue = this.product.price/this.purchaseRecord.totalMonthsSelected
+    this.EMIvalue = this.product.price/(this.purchaseRecord.totalMonthsSelected+1)
     this.totalcost = this.product.price  + this.processingfee
 
   }
