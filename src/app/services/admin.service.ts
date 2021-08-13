@@ -21,12 +21,28 @@ export class Data {
 })
 export class AdminService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+
+    // this.showAllConsumers().subscribe(data=>{
+    //   this.consumers=data;
+    //   // this.consumers=data;
+    // });
+    // this.GetAllEMICards().subscribe(data=>{
+    //   this.emiCards=data;
+    //   // this.emiCards=data;
+    // });
+
+    // // this.GetAllEMICards().subscribe(data=>{
+    // //   this.emiCards=data;
+    // //   // this.consumers=data;
+    // // });
+   }
 
   //req:string="https://localhost:44327/api/Consumers";
   //reqEmiCards:string="https://localhost:44327/api/Emicards"
   // req:string="https://localhost:44353/api/Consumers";
   reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
+  // reqEmiCards:string="https://localhost:44327/api/Emicards"
 
   consumers:Consumer[]=[];
   emiCards:EmiCard[]=[];
@@ -35,7 +51,8 @@ export class AdminService {
 
   id:number=0;
 
-  req:string="https://localhost:"+ no +"/api/Consumers";
+  // req:string="https://localhost:"+ no +"/api/Consumers";
+  req:string="https://localhost:44327/api/Consumers";
 
 
   showAllConsumers():Observable<Consumer[]>{
@@ -81,6 +98,18 @@ export class AdminService {
     return this.consumer;
   }
 
+  getCardNo(cid:number):any{
+    console.log("Inside getCardNo");
+    for(let ec of this.emiCards){
+      console.log("Inside for loop of emi cards");
+      if(ec.userId==cid){
+        console.log("User id matched in the emi card table");
+        console.log("Card no: "+ec.eid);
+        return ec.eid;
+      }
+    }
+  }
+
   verifyConsumerCheck(id:number, consumer:Consumer):Observable<any>{
     this.consumer = consumer;
     return this.http.put<any>(this.req+"/"+id,consumer,{
@@ -100,6 +129,27 @@ export class AdminService {
         'Access-Control-Allow-Origin':'*',
         'Access-Control-Allow-Method':'*'
         
+      })
+    });
+  }
+
+  deleteConsumer(id:number){
+    return this.http.delete<any>(this.req+"/"+id,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
+
+  deleteEMICard(eid:number){
+    console.log("Inside delete emi card method")
+    return this.http.delete<any>(this.reqEmiCards+"/"+eid,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
       })
     });
   }

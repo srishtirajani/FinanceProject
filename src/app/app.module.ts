@@ -44,7 +44,7 @@ import { LoginService } from './services/login.service';
     RegisterComponent,
     PasswordvalidatorDirective,
     CardTypePipe,
-    NavbarLoggedInComponent,
+    NavbarLoggedInComponent
   ],
   imports: [
     BrowserModule,
