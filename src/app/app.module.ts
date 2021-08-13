@@ -26,7 +26,7 @@ import { AdminService, Data } from './services/admin.service';
 import { NavbarLoggedInComponent } from './components/navbar-logged-in/navbar-logged-in.component';
 import { ChangepasswordService } from './services/changepassword.service';
 import { LoginService } from './services/login.service';
-
+import * as bootstrap from "bootstrap";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { LoginService } from './services/login.service';
     RegisterComponent,
     PasswordvalidatorDirective,
     CardTypePipe,
-    NavbarLoggedInComponent,
+    NavbarLoggedInComponent
   ],
   imports: [
     BrowserModule,
