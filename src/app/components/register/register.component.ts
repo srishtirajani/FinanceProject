@@ -20,6 +20,7 @@ export class RegisterComponent {
   opw : string = "";
   card : string ="";
   flag : boolean = false;
+  flagTerm : boolean = false;
   flagUnique:boolean=true;
 
   // msg:string="";
@@ -33,7 +34,12 @@ export class RegisterComponent {
   radioClicked() {
     this.flag = true;
   }
-
+  termClicked() {
+    this.flagTerm = true;
+  }
+  terms(){
+    open("/terms");
+  }
   onSubmit(form:NgForm) {
     this.flagUnique=true;
     for(let c of this.consumers){

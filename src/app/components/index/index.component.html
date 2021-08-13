@@ -54,7 +54,7 @@
             <h3></h3>
             <p><b>Product Name</b>: OnePlus 9</p>
             <p style="margin-right: 15%;"> <b>Product Details</b>: The smartphone is powered by Qualcomm SM8350 Snapdragon 888 Octa-core and it comes with 6.55 inches Fluid AMOLED screen. The resolution of the screen is 1080 x 2400 pixels while it is protected by Corning Gorilla Glass.The device is pack with 8 GB and 12 GB RAM while the internal storage is 128 GB and 512 GB.</p>
-            <p><b>Cost</b>: 54000 INR</p>
+            <p><b>Cost</b>: ₹54000 </p>
             <a routerLink="/login"><button class="btn btn-primary">Buy Now</button></a>
           </div>
   </div>
@@ -76,7 +76,7 @@
                           <p>Age must be above 18 years.</p>
                           <p>Must be an Indian citizen.</p>
                           <p>Minimum income should comply with the figures mentioned in terms and conditions.</p>
-                          <p> To know more and register, please visit &nbsp;&nbsp;<a class="link-danger" routerLink="/terms">Terms and Conditions</a>.</p>
+                          <p> To know more and register, please visit &nbsp;&nbsp;<a class="link-danger" (click)="terms()">Terms and Conditions</a>.</p>
                       </div>
                           <div class="col-sm-4"style="margin: auto;">
                               <a class="link-danger" routerLink="/terms"></a>
@@ -94,7 +94,7 @@
     <div class="row">
         <div class="col-sm-6" style="margin: auto;">
             <h3>Charges</h3>
-            <p>500 INR as Joining charges and 5% processing charges will be automatically deducted from your card.</p>
+            <p>₹500 for card type Gold and ₹750 for Titanium type card as Joining charges and 5% processing charges will be automatically deducted from your card.</p>
         </div>
             <div class="col-sm-4"style="margin: auto;">
                 <a class="link-danger" routerLink="/terms"></a>

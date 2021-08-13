@@ -26,6 +26,7 @@ import { AdminService, Data } from './services/admin.service';
 import { NavbarLoggedInComponent } from './components/navbar-logged-in/navbar-logged-in.component';
 import { ChangepasswordService } from './services/changepassword.service';
 import { LoginService } from './services/login.service';
+import { TermsIndexComponent } from './components/terms-index/terms-index.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { LoginService } from './services/login.service';
     PasswordvalidatorDirective,
     CardTypePipe,
     NavbarLoggedInComponent,
+    TermsIndexComponent,
   ],
   imports: [
     BrowserModule,

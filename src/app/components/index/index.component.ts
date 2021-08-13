@@ -11,5 +11,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  terms(){
+    open("/terms-index");
+  }
 }

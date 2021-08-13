@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { AuthGuard } from './auth/auth.guard';
+import { TermsIndexComponent } from './components/terms-index/terms-index.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path:'terms', component:TermsComponent},
+  { path:'terms-index', component:TermsIndexComponent},
   { path:'forgotpassword', component:ForgotpasswordComponent},
   { path:'changepassword', component:ChangepasswordComponent},
   { path:'dashboard', component:DashboardComponent},
