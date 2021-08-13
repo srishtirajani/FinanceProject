@@ -174,6 +174,9 @@ export class ProductInfoComponent implements OnInit {
     this.consumerservice.getEMIValues(id,this.product.price,this.emicardU);
     this.router.navigate(['payment']);
   }
+  terms(){
+    open("/terms-index");
+  }
 }
   
 

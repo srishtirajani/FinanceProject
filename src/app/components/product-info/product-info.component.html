@@ -10,14 +10,16 @@
           <h3></h3>
           <p><b>Product Name:</b> {{product.productName}}</p>
           <p><b>Product Details:</b> {{product.prodDetails}}</p>
-          <p><b>Cost:</b> {{product.price}} ₹</p>
+          <p><b>Cost:</b> ₹{{product.price}} </p>
           <p class="text-danger">EMI Period</p>
           <select [(ngModel)]="selectedEmi">
             <option value="" disabled selected>Select your option</option>
               <option *ngFor="let emi of emiPeriod" [ngValue]="emi">{{emi.name}}</option>
           </select>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="link-danger" (click)="terms()">Terms and Conditions</a>
           <br><br>
-          <p class="font-weight-bold">EMI Starting {{product.price/selectedEmi.value| number : '1.2-2'}} ₹ per month</p>
+          <p class="font-weight-bold">EMI Starting ₹{{product.price/selectedEmi.value| number : '1.2-2'}}  per month</p>
           <button class="btn btn-primary"(click)="Payment()" [disabled] = "(selectedEmi.value!=3 && selectedEmi.value!=6 && selectedEmi.value!=9 && selectedEmi.value!=12 )|| count_card!=1 || count_valid!=1 || count_isbalance!=1" >Pay Now</button>
           <span>
             <div *ngIf="!flag_card">Your card has not been activated yet.</div>

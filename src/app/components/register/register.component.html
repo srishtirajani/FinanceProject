@@ -108,10 +108,15 @@
         <label>IFSC Code</label>
         <input type="text" required #ifsc="ngModel" [class.is-invalid]="ifsc.invalid && ifsc.touched" name = "IFSC" class = "form-control" [(ngModel)]="service.formData.ifscCode">
         <small class="text-danger" [class.d-none] ="ifsc.valid || ifsc.untouched">IFSC Code required</small>
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Please sign the terms and conditions: </label> &nbsp;
+        <input type="radio" required (click) = "termClicked()"> &nbsp; <a class="link-danger" (click)="terms()">Terms and Conditions</a>.
       </div><br>
   
       <div id="outer">
-        <div class="inner"> <button [disabled]="uf.form.invalid || !flag" style="margin:10px;" class="btn btn-primary" type="submit">Register</button><br> </div>
+        <div class="inner"> <button [disabled]="uf.form.invalid || !flagTerm || !flag" style="margin:10px;" class="btn btn-primary" type="submit">Register</button><br> </div>
         <div class="inner"> <button type="reset" value="Reset" style="margin:10px;" class="btn btn-primary">Reset</button> </div>
       </div>
       <div id="outer">

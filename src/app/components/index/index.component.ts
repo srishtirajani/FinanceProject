@@ -16,5 +16,7 @@ export class IndexComponent implements OnInit {
     localStorage.setItem('userName', 'not enterred');
     console.log("I am inside ng onInit of Index");
   }
-
+  terms(){
+    open("/terms-index");
+  }
 }

@@ -223,7 +223,7 @@
           Total Credit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </td>
         <td>
-          {{ emicard.totalCredit }}&nbsp;&nbsp;₹
+          ₹ {{ emicard.totalCredit }}&nbsp;&nbsp;
         </td>
       </tr>
 
@@ -232,7 +232,7 @@
           Credit Used:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </td>
         <td>
-          {{ totalcreds - emicard.accBalance }}&nbsp;&nbsp;₹
+          ₹ {{ totalcreds - emicard.accBalance }}&nbsp;&nbsp;
         </td>
       </tr>
 
@@ -241,7 +241,7 @@
           Remaining Credit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </td>
         <td>
-          {{ emicard.accBalance }}&nbsp;&nbsp;₹
+          ₹ {{ emicard.accBalance }}&nbsp;&nbsp;
         </td>
       </tr>
 
@@ -266,7 +266,7 @@
         <table class="table table-striped table-hover">
           <tr *ngFor="let x of showMoreList">
             <td>Product:&nbsp;&nbsp;&nbsp;&nbsp; {{productColl3.get(x)}}</td>
-            <td>Price: &nbsp;&nbsp;&nbsp;&nbsp;{{productColl4.get(x)}} ₹</td>
+            <td>Price: &nbsp;&nbsp;&nbsp;&nbsp;₹{{productColl4.get(x)}} </td>
           </tr>
         </table>
     </ng-template>
@@ -287,13 +287,13 @@
                 <td>
                   {{productColl1.get(x.productId)}}
                 </td><td>
-                  {{productColl2.get(x.productId)}}&nbsp;&nbsp;₹
+                  ₹{{productColl2.get(x.productId)}}&nbsp;&nbsp;
                 </td>
                 <td>
-                  {{productColl2.get(x.productId)-x.productBalance| number : '1.2-2'}}&nbsp;&nbsp;₹
+                  ₹{{productColl2.get(x.productId)-x.productBalance| number : '1.2-2'}}&nbsp;&nbsp;
                 </td>
                 <td>
-                  {{x.productBalance | number : '1.2-2'}}&nbsp;&nbsp;₹
+                  ₹{{x.productBalance | number : '1.2-2'}}&nbsp;&nbsp;
                 </td>
                 <!-- <td>
                   <button (click)="showData(x.latestEmimonth)">Click</button>
