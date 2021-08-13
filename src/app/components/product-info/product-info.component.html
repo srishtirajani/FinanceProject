@@ -13,6 +13,7 @@
           <p><b>Cost:</b> {{product.price}} ₹</p>
           <p class="text-danger">EMI Period</p>
           <select [(ngModel)]="selectedEmi">
+            <option value="" disabled selected>Select your option</option>
               <option *ngFor="let emi of emiPeriod" [ngValue]="emi">{{emi.name}}</option>
           </select>
           <br><br>

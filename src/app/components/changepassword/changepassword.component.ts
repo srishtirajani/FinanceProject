@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Consumer } from 'src/app/models/consumer';
 import { AdminService, Data } from 'src/app/services/admin.service';
 import { ChangepasswordService } from 'src/app/services/changepassword.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-changepassword',
   templateUrl: './changepassword.component.html',
@@ -15,7 +15,7 @@ export class ChangepasswordComponent implements OnInit {
   message!: string;
   con:Consumer[]=[];
   closeResult = '';
-  constructor(private changepassword:ChangepasswordService,private router: Router, private data: Data,private modalService: NgbModal){
+  constructor(private changepassword:ChangepasswordService,private router: Router, private data: Data){
     
   }
   pno: string = ''
