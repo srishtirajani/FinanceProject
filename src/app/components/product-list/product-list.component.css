@@ -8,3 +8,10 @@
   div {
       font-family: Product Sans;
   }
+  .card{
+    background-color: #f5feff;
+}
+body{
+    background-color: #f5feff;
+    overflow-x: hidden;
+}

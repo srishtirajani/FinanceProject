@@ -11,17 +11,13 @@ div {
 
 
 .roundBorder {
-    border: 1px solid black;
+    border: 0px solid black;
     border-radius: 0%;
     padding: 4%;
+    box-shadow: 2px 2px;
 }
 
 
-.roundBorderX {
-    border: 1px solid black;
-    border-radius: 1%;
-    padding: 4%;
-}
 
 
 #card_center{
@@ -73,6 +69,12 @@ div {
 
 .applyImg {
     background-image: url("src\assets\images\img22.jpg");
+    background-color: #cccccc;
+    background-repeat: round;
+   }
+
+   .applyImgp {
+    background-image: url("src\assets\images\indexbg.jpg");
     background-color: #cccccc;
     background-repeat: round;
    }

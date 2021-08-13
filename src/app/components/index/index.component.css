@@ -5,6 +5,93 @@
     src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 }
 
+div {
+    font-family: Product Sans;
+}
+
+
+.roundBorder {
+    border: 0px solid black;
+    border-radius: 0%;
+    padding: 4%;
+    box-shadow: 3px 3px;
+}
+
+
+
+
+#card_center{
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    margin-top: 20px;
+    text-align-last: center;
+    font-family: 'Product Sans';
+}
+
+#card_details{
+    /* margin: 0 auto; Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    margin-top: 20px;
+    text-align-last: center;
+    font-family: 'Product Sans';
+    margin-left: 20px;
+    margin-right: 10px;
+    /* size: 50px; */
+}
+
+#wrapper {
+    display: flex;
+  }
+  
+  #left {
+    flex: 0 0 65%;
+  }
+  
+  #right {
+    flex: 1;
+  }
+
+
+.float-container {
+    
+    padding: 20px;
+}
+
+.float-child {
+    width: 25%;
+    float: left;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 2%;
+} 
+
+.applyImg {
+    background-image: url("src\assets\images\img22.jpg");
+    background-color: #cccccc;
+    background-repeat: round;
+   }
+
+   .applyImgCard {
+    background-image: url("src\assets\images\card.png");
+    background-color: #cccccc;
+    background-repeat: round;
+   }
+
+   .applyImgx {
+    background-image: url("src\assets\images\img25.jpg");
+    background-color: #cccccc;
+    background-repeat: round;
+   }
+
+   .applyImgy {
+    background-image: url("src\assets\images\img23.jpg");
+    background-color: #cccccc;
+    background-repeat: round;
+   }
+
+
 .align-top{
     vertical-align: middle !important;
 }

@@ -1,17 +1,18 @@
 
 <app-navbar-logged-in></app-navbar-logged-in>
-<h3><u>Product list</u></h3>
+<body>
 <div class="card" style="padding-top: 20px;padding-bottom: 10px;">
-    <div class="row" *ngFor="let prod of product" style="padding-top: 20px;padding-bottom: 10px;">
-      <div class="col-sm-6">
+<div class="row" *ngFor="let prod of product" style="padding-top: 20px;padding-bottom: 10px;">
+    <div class="col-sm-6">
           <img class="img-right" class="img-thumbnail" src="{{prod.img}}" style="height:300px; margin-left:50px" />
           </div>
-      <div class="col-sm-6" style="padding-top: 20px;">  
+        <div class="col-sm-6" style="padding-top: 20px;">  
           <h3></h3>
-          <p><u>Product Name:</u> {{prod.productName}}</p>
-          <p>Product Details: {{prod.prodDetails}}</p>
-          <p>Cost: {{prod.price}}</p>
+          <p><b>Product Name:</b> {{prod.productName}}</p>
+          <p><b>Product Details:</b> {{prod.prodDetails}}</p>
+          <p><b>Cost:</b> {{prod.price}} ₹</p>
           <button class="btn btn-primary" (click)="getProdInfo(prod.pid)">Buy Now</button>
       </div>
   </div>
   </div>
+</body>
