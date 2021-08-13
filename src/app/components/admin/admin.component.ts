@@ -25,6 +25,14 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
+
     this.aService.showAllConsumers().subscribe(data=>{
       this.aService.consumers=data;
       this.consumers=data;
@@ -55,7 +63,12 @@ export class AdminComponent implements OnInit {
       console.log(data);
     });
     this.deleteUser_API(this.id, this.eid);
-
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
   }
   
 
