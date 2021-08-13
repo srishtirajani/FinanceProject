@@ -33,3 +33,15 @@
     background-color: #f44336;
   }
 
+
+.align-top{
+    vertical-align: middle !important;
+}
+
+.navbar{
+    font-family: 'Product Sans';
+}
+
+.navbar-brand{
+    /* font-size: 25px !important; */
+}

@@ -1,3 +1,4 @@
+import { LocationStrategy } from '@angular/common';
 import { createPipeDefinitionMap } from '@angular/compiler/src/render3/partial/pipe';
 import { Component, OnInit } from '@angular/core';
 import { Consumer } from 'src/app/models/consumer';
@@ -27,7 +28,7 @@ export class DashboardComponent implements OnInit {
 
 
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
-  emicard:EmiCard=new EmiCard(0,'NA',0,new Date(),0,'');
+  emicard:EmiCard=new EmiCard(0,'NA',0,new Date(),0,'0');
   purchRec:PurchaseRecord=new PurchaseRecord(0,'',0,0,0,new Date(),0,0,0);
 
   productColl1:any=new Map();
@@ -53,7 +54,9 @@ export class DashboardComponent implements OnInit {
 //     return 'done';
 // }
 
-  constructor(private cService:ConsumerService) { }
+  constructor(private cService:ConsumerService) {
+     
+   }
 
   ngOnInit(): void {
 
@@ -117,4 +120,10 @@ export class DashboardComponent implements OnInit {
     this.purchRec.totalMonthsSelected=--this.purchRec.totalMonthsSelected;
     this.cService.payMonthlyEMI(prid, this.purchRec).forEach(element=>{});
   }
+  // preventBackButton() {
+  //   history.pushState(null, '', location.href);
+  //   this.locationStrategy.onPopState(() => {
+  //     history.pushState(null, '', location.href);
+  //   })
+  // }
 }

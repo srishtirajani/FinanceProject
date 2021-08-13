@@ -54,11 +54,11 @@ export class VerifyUserComponent implements OnInit {
     this.aService.verifyConsumerCheck(id,this.consumer).forEach(element=>{});
     //hard coding the totalCredit
     if(this.consumer.cardType=='Gold'){
-      this.newEmiCard.totalCredit = '250000'; 
+      this.newEmiCard.totalCredit = '249500'; 
       this.newEmiCard.validityPeriod=new Date(new Date().getFullYear() + 3, new Date().getMonth(), new Date().getDate());
     }
     else{
-      this.newEmiCard.totalCredit = '500000'; 
+      this.newEmiCard.totalCredit = '499250'; 
       this.newEmiCard.validityPeriod=new Date(new Date().getFullYear() + 5, new Date().getMonth(), new Date().getDate())
     }     
     this.newEmiCard.accBalance = Number(this.newEmiCard.totalCredit);
