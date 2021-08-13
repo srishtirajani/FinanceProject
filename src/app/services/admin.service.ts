@@ -41,8 +41,8 @@ export class AdminService {
   //req:string="https://localhost:44327/api/Consumers";
   //reqEmiCards:string="https://localhost:44327/api/Emicards"
   // req:string="https://localhost:44353/api/Consumers";
-  // reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
-  reqEmiCards:string="https://localhost:44327/api/Emicards"
+  reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
+  // reqEmiCards:string="https://localhost:44327/api/Emicards"
 
   consumers:Consumer[]=[];
   emiCards:EmiCard[]=[];
