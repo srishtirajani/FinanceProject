@@ -11,6 +11,7 @@ import { EmiCard } from 'src/app/models/emicard';
 import { DataC } from 'src/app/services/data-storage.service';
 import { ConsumerService } from 'src/app/services/consumer.service';
 
+
 @Component({
   selector: 'app-product-info',
   templateUrl: './product-info.component.html',

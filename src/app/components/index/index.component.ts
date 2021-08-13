@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
+    // debugger;
+    localStorage.setItem('flag_verify', 'not verified');
+    localStorage.setItem('userName', 'not enterred');
+    console.log("I am inside ng onInit of Index");
   }
   terms(){
     open("/terms-index");

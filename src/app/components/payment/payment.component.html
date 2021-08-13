@@ -25,12 +25,12 @@
             <tr>
                 <td></td>
               <th>Processing Fee</th>
-                <td>₹ {{processingfee}}</td>
+                <td>₹ {{processingfee| number : '1.2-2'}}</td>
             </tr>
             <tr>
                 <td></td>
               <th>Total Price</th>
-                <td>₹ {{totalcost}}</td>
+                <td>₹ {{totalcost| number : '1.2-2'}}</td>
             </tr>
         </tbody>
     </table>
@@ -39,8 +39,8 @@
 	<p class="legal">
 		<br><br>
 	  <strong>Thank you for your business!!</strong> Payment is expected every
-	  30 days for a period of var months. Hope you had a good experience with
-	  appName!
+	  30 days for a period of {{purchaseRecord.totalMonthsSelected}} more months. Hope you had a good experience with
+	  EMI-nent!
 	</p>
   </div>
 		</div></div></section>
