@@ -20,7 +20,9 @@ export class AdminComponent implements OnInit {
   
   // emiCards:EmiCard[]=[];
 
-  constructor(private aService:AdminService, private aServiceErr:AdminService ,private router: Router, private data: Data) { }
+  constructor(private aService:AdminService, private aServiceErr:AdminService ,private router: Router, private data: Data) {
+    
+  }
 
   ngOnInit(): void {
     this.aService.showAllConsumers().subscribe(data=>{
@@ -46,18 +48,25 @@ export class AdminComponent implements OnInit {
     console.log(this.id);
     this.eid = this.aService.getCardNo(this.id);
     console.log(this.eid);
+    // debugger;
+    this.aService.deleteLogin(uname).subscribe(data=>{
+      console.log("Calling the delete login record from service")
+      this.d_msg="Successfully deleted record from login table with username: "+uname;
+      console.log(data);
+    });
     this.deleteUser_API(this.id, this.eid);
+
   }
   
 
   deleteUser_API(id:number, eid:number){
     console.log("Inside delete emi card.")
-    // debugger;
+    // console.log(this.userName);
     
-    this.aService.deleteEMICard(eid).subscribe(data=>{
-      this.d_msg="Successfully deleted player with jersey "+id;
-      console.log(data);
-    });
+    // this.aService.deleteEMICard(eid).subscribe(data=>{
+    //   this.d_msg="Successfully deleted emi card with card id: "+id;
+    //   console.log(data);
+    // });
 
     //try
     // this.aService.GetAllEMICards().subscribe(data=>{
@@ -66,7 +75,7 @@ export class AdminComponent implements OnInit {
     // });
 
     this.aService.deleteConsumer(id).subscribe(data=>{
-      this.d_msg="Successfully deleted player with jersey "+id;
+      this.d_msg="Successfully deleted consumer with eid: "+id;
       console.log(data);
     });
 

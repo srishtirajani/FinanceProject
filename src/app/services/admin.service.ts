@@ -42,6 +42,7 @@ export class AdminService {
   //reqEmiCards:string="https://localhost:44327/api/Emicards"
   // req:string="https://localhost:44353/api/Consumers";
   reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
+  reqLogins:string="https://localhost:" + no + "/api/LoginTables"
   // reqEmiCards:string="https://localhost:44327/api/Emicards"
 
   consumers:Consumer[]=[];
@@ -146,6 +147,17 @@ export class AdminService {
   deleteEMICard(eid:number){
     console.log("Inside delete emi card method")
     return this.http.delete<any>(this.reqEmiCards+"/"+eid,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
+
+  deleteLogin(uname:string){
+    console.log("Inside delete login method")
+    return this.http.delete<any>(this.reqLogins+"/"+uname,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
