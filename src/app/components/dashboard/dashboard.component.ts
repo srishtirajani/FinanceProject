@@ -37,7 +37,8 @@ export class DashboardComponent implements OnInit {
 
   showPurch:boolean = true
 
-  counter : number = 0;
+  flagX:boolean = true
+  counter : number = 1;
   showMoreList:number[] = []
   storeBal:number[] = []
 
@@ -56,6 +57,8 @@ export class DashboardComponent implements OnInit {
   constructor(private cService:ConsumerService) { }
 
   ngOnInit(): void {
+    
+
 
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
@@ -76,6 +79,14 @@ export class DashboardComponent implements OnInit {
       this.cPurchaseRecord=this.cService.getPurchRec(this.id);
       console.log(this.cPurchaseRecord);
       this.month=(new Date().getMonth());  //+1 month here to test
+      console.log(this.flagX)
+      console.log(this.cPurchaseRecord.length)
+      if(this.flagX && this.cPurchaseRecord.length)
+      {
+        this.showMoreList.push((this.cPurchaseRecord[0]).productId)
+        console.log('this.showMoreList[0]')
+        this.flagX=false;
+      }
     });
     this.cService.GetAllProducts().subscribe(data=>{
       this.cService.products=data;
@@ -93,6 +104,9 @@ export class DashboardComponent implements OnInit {
       this.emicard=this.cService.getEMICard(this.id);
       this.totalcreds=Number(this.emicard.totalCredit);
     });
+
+
+
   }
 
   // showData(latestmonth:number){
