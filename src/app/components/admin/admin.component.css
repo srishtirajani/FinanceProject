@@ -26,13 +26,16 @@
 .cancelbtn {
     background-color: #ccc;
     color: black;
-  }
+}
   
   /* Add a color to the delete button */
-  .deletebtn {
+.deletebtn {
     background-color: #f44336;
-  }
+}
 
+.navbar-custom {
+    background-image: linear-gradient(15deg, #e3f9e2 0%, #a6c0ff 100%);
+}
 
 .align-top{
     vertical-align: middle !important;

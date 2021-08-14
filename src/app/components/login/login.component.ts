@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     if(result=="consumer")
     {
       localStorage.setItem("userName",form.value.userName);
+      localStorage.setItem("userName_guard", result);
       this.router.navigate(['dashboard']);
     }
     else if(result=="admin")

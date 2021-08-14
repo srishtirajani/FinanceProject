@@ -1,15 +1,31 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router} from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ConsumerGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+
+  constructor(private router:Router){}
+
+  canActivate(){
+
+    let result = localStorage.getItem('userName_guard');
+    // let flag_verify=localStorage.getItem('flag_verify');
+
+    console.log(result)
+
+  
+    if(result=="true"){
+      console.log(result)
+      return true;
+    }
+    
+    this.router.navigate([''])
+    return false;
+
   }
   
 }
