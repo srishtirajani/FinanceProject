@@ -45,3 +45,7 @@
 .navbar-brand{
     /* font-size: 25px !important; */
 }
+
+.navbar-custom {
+    background-image: linear-gradient(15deg, #e3f9e2 0%, #a6c0ff 100%);
+}
