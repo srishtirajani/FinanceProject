@@ -14,7 +14,7 @@ import { TermsComponent } from './components/terms/terms.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { AuthGuard } from './auth/auth.guard';
 import { TermsIndexComponent } from './components/terms-index/terms-index.component';
-//import { ConsumerGuard } from './user_guard/consumer.guard';
+import { ConsumerGuard } from './user_guard/consumer.guard';
 
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path:'terms-index', component:TermsIndexComponent},
   { path:'forgotpassword', component:ForgotpasswordComponent},
   { path:'changepassword', component:ChangepasswordComponent},
-  { path:'dashboard', component:DashboardComponent/*, canActivate:[ConsumerGuard]*/},
+  { path:'dashboard', component:DashboardComponent, canActivate:[ConsumerGuard]},
   { path:'productlist', component:ProductListComponent},
   { path:'productinfo', component:ProductInfoComponent},
   { path:'payment', component:PaymentComponent},
