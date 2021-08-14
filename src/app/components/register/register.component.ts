@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Consumer } from 'src/app/models/consumer';
 import { RegService } from 'src/app/services/reg.service';
 import { LoginService } from 'src/app/services/login.service';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class RegisterComponent {
   flag : boolean = false;
   flagTerm : boolean = false;
   flagUnique:boolean=true;
+  dob:Date=new Date();
 
   // msg:string="";
   ngOnInit(){
@@ -64,8 +66,12 @@ export class RegisterComponent {
         break;
       }
     }
-
-    if(form.form.value.dob==new Date()){
+    console.log(form.form.value.dob);
+    console.log(new Date(form.form.value.dob))
+    console.log(new Date());
+    console.log(formatDate(new Date(), 'yyyy-MM-dd', 'en-us'));
+    if(form.form.value.dob==formatDate(new Date(), 'yyyy-MM-dd', 'en-us')){
+      console.log("inside if");
       this.flagUnique=false;
         alert("Enter a valid date!");
     }
@@ -88,6 +94,12 @@ export class RegisterComponent {
   //   console.log(data);
   //   })
   // }
+
+  changeDOB(event:any){
+    console.log(event);
+    this.dob=event;
+    console.log(this.dob);
+  }
 
 }
 
