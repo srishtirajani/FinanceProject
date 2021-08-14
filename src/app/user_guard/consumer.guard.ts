@@ -18,7 +18,7 @@ export class ConsumerGuard implements CanActivate {
     console.log(result)
 
   
-    if(result=="true"){
+    if(result=="consumer"){
       console.log(result)
       return true;
     }
