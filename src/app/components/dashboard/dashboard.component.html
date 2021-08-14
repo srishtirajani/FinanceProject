@@ -260,7 +260,7 @@
   <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
     <h5>Recent Purchases</h5>
     <hr>
-    <button style=" margin-bottom: 3%; " class="btn btn-primary" (click)="showMore()">Show more</button>
+    <button *ngIf = "!isEmpty" [disabled]="allListed" style=" margin-bottom: 3%; " class="btn btn-primary" (click)="showMore()">Show more</button>
     <div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought"></div>
     <ng-template #ProductBought>
         <table class="table table-striped table-hover">
@@ -270,7 +270,7 @@
           </tr>
         </table>
     </ng-template>
-    <ng-template #NotBought> You haven't bought anything yet! </ng-template>
+    <ng-template #NotBought> You haven't bought anything yet!&nbsp;&nbsp; <a routerLink = "/productlist">Shop Now!</a> </ng-template>
  </div>
 
 
@@ -308,7 +308,7 @@
               </tr>
             </table>
           </ng-template>
-          <ng-template #NotBought> You haven't bought anything yet! </ng-template>
+          <ng-template #NotBought> No purchase history to show! </ng-template>
    </div>
 </div>
 

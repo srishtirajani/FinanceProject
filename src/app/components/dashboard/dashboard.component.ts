@@ -37,16 +37,25 @@ export class DashboardComponent implements OnInit {
   productColl4:any=new Map();
 
   showPurch:boolean = true
+  allListed:boolean = false;
 
+  isEmpty:boolean = false;
   flagX:boolean = true
   counter : number = 1;
   showMoreList:number[] = []
   storeBal:number[] = []
 
   showMore() {
+
+
     if(this.cPurchaseRecord.length > this.counter) {
       this.showMoreList.push((this.cPurchaseRecord[this.counter]).productId)
       this.counter = this.counter+1;
+    }
+    console.log(this.cPurchaseRecord.length);
+    console.log(this.counter);
+    if(this.cPurchaseRecord.length == this.counter) {
+      this.allListed = true;
     }
       
   }
@@ -89,6 +98,9 @@ export class DashboardComponent implements OnInit {
         this.showMoreList.push((this.cPurchaseRecord[0]).productId)
         console.log('this.showMoreList[0]')
         this.flagX=false;
+      }
+      else {
+        this.isEmpty = true;
       }
     });
     this.cService.GetAllProducts().subscribe(data=>{
