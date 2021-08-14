@@ -17,7 +17,8 @@
   
       <div class="form-group">
         <label>Date of birth</label>
-        <input type="date" required #date="ngModel" [class.is-invalid]="date.invalid && date.touched" name = "dob" class = "form-control" [(ngModel)]="service.formData.DOB">
+        <!-- <input type="date" required #date="ngModel"  [class.is-invalid]="date.invalid && date.touched" name = "dob" class = "form-control" (change)="changeDOB($event.target.value)"> -->
+        <input type="date" name="dob" class = "form-control" [(ngModel)]="service.formData.DOB" (change)="changeDOB($event.target)">
       </div><br>
   
       <div class="form-group">
