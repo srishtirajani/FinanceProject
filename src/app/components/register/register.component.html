@@ -25,18 +25,27 @@
         <label>Email ID</label>
         <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required email #email="ngModel" [class.is-invalid]="email.invalid && email.touched" name = "email" class = "form-control" [(ngModel)]="service.formData.emailId"> 
         <small class="text-danger" [class.d-none] ="email.valid || email.untouched">Invalid email ID</small>
+        <div *ngIf="!flag_email"><div class="alert alert-danger" role="alert">
+          this emailID is already taken! Please enter a new email ID.
+        </div></div>
       </div><br>
   
       <div class="form-group">
         <label>Mobile Number</label>
         <input type="tel" required pattern="^\d{10}$" #pn="ngModel" [class.is-invalid]="pn.invalid && pn.touched" name= "phone" class = "form-control" [(ngModel)]="service.formData.phoneNumber"> 
         <small class="text-danger" [class.d-none] ="pn.valid || pn.untouched">Invalid Mobile number</small>
+        <div *ngIf="!flag_mobile"><div class="alert alert-danger" role="alert">
+          This mobile number is already taken! Please enter a new mobile number.
+        </div></div>
       </div><br>
   
       <div class="form-group">
         <label>Username</label>
         <input type="text" required #un="ngModel" [class.is-invalid]="un.invalid && un.touched" name = "username" class = "form-control" [(ngModel)]="service.formData.userName">
         <small class="text-danger" [class.d-none] ="un.valid || un.untouched">Username Required</small>
+        <div *ngIf="!flag_username"><div class="alert alert-danger" role="alert">
+          This username is already taken! Please enter a new username.
+        </div></div>
       </div><br>
   
       <div class="form-group">
@@ -103,6 +112,9 @@
         <label>Savings Account Number</label>
         <input type="text" required #an="ngModel" [class.is-invalid]="an.invalid && an.touched" name = "savingsAccount" class = "form-control" [(ngModel)]="service.formData.accNo">
         <small class="text-danger" [class.d-none] ="an.valid || an.untouched">Account number required</small>
+        <div *ngIf="!flag_account"><div class="alert alert-danger" role="alert">
+          this account number is already taken! Please enter a new account number.
+        </div></div>
       </div><br>
   
       <div class="form-group">
@@ -112,7 +124,7 @@
       </div>
       <br>
       <div class="form-group">
-        <label>Please sign the terms and conditions: </label> &nbsp;
+        <label>I have read the terms and conditions: </label> &nbsp;
         <input type="radio" required (click) = "termClicked()"> &nbsp; <a class="link-danger" (click)="terms()">Terms and Conditions</a>.
       </div><br>
   

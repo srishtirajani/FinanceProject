@@ -21,6 +21,10 @@ export class RegisterComponent {
   opw : string = "";
   card : string ="";
   flag : boolean = false;
+  flag_email : boolean = true;
+  flag_account : boolean = true;
+  flag_username : boolean = true;
+  flag_mobile : boolean = true;
   flagTerm : boolean = false;
   flagUnique:boolean=true;
   dob:Date=new Date();
@@ -44,24 +48,31 @@ export class RegisterComponent {
   }
   onSubmit(form:NgForm) {
     this.flagUnique=true;
+    this.flag_mobile=true
+    this.flag_username=true
+    this.flag_email = this.flag_account = true
     for(let c of this.consumers){
       if(c.emailId==form.form.value.email){
         this.flagUnique=false;
-        alert("Email already exists!");
+        this.flag_email=false;
+        //alert("Email already exists!");
         break;
       }
       if(c.userName==form.form.value.username){
         this.flagUnique=false;
-        alert("Username already exists!");
+        this.flag_username=false;
+        //alert("Username already exists!");
         break;
       }
       if(c.accNo==form.form.value.savingsAccount){
         this.flagUnique=false;
-        alert("Account already exists!");
+        this.flag_account=false;
+        //alert("Account already exists!");
         break;
       }
       if(c.phoneNumber==form.form.value.phone){
         this.flagUnique=false;
+        this.flag_mobile=false
         alert("Phone number already exists!");
         break;
       }

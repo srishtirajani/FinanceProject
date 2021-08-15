@@ -13,8 +13,8 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     // debugger;
     localStorage.setItem('flag_verify', 'not verified');
-    localStorage.setItem('userName', 'not enterred');
-    localStorage.setItem('userName_guard', 'not enterred');
+    localStorage.setItem('userName', '');
+    localStorage.setItem('userName_guard', '');
     console.log("I am inside ng onInit of Index");
   }
   terms(){

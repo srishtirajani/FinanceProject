@@ -27,6 +27,7 @@ import { NavbarLoggedInComponent } from './components/navbar-logged-in/navbar-lo
 import { ChangepasswordService } from './services/changepassword.service';
 import { LoginService } from './services/login.service';
 import { TermsIndexComponent } from './components/terms-index/terms-index.component';
+import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { TermsIndexComponent } from './components/terms-index/terms-index.compon
     CardTypePipe,
     NavbarLoggedInComponent,
     TermsIndexComponent,
+    DocumentUploadComponent,
   ],
   imports: [
     BrowserModule,
