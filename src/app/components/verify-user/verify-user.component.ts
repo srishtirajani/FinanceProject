@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Consumer } from 'src/app/models/consumer';
+import { MailSettings } from 'src/app/models/email';
 import { EmiCard } from 'src/app/models/emicard';
 import { AdminService, Data } from 'src/app/services/admin.service';
 
