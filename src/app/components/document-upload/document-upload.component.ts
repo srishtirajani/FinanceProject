@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Dbimg } from 'src/app/models/Dbimg';
 import { UploadImageService } from 'src/app/services/upload-image.service';
-import * as FileSaver from 'file-saver';
+// import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-document-upload',

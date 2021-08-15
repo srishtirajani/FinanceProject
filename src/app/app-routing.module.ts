@@ -15,6 +15,7 @@ import { VerifyUserComponent } from './components/verify-user/verify-user.compon
 import { AuthGuard } from './auth/auth.guard';
 import { TermsIndexComponent } from './components/terms-index/terms-index.component';
 import { ConsumerGuard } from './user_guard/consumer.guard';
+import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path:'admin', component:AdminComponent, canActivate: [AuthGuard]},
   { path:'verify', component:VerifyUserComponent},
   { path:'register', component:RegisterComponent},
+  { path:'documentupload', component:DocumentUploadComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
