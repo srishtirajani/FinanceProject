@@ -1,20 +1,19 @@
-
-
 <div class="container">
     <div class="row">
       <div class="col s8 offset-2">
         <div class="card-panel teal lighten-2">
-          <h4 class="center white-text">Image Library</h4>
+          <label style="color:white">Upload your ID proof:</label>
         </div>
         <form #imageForm=ngForm (ngSubmit)="uploadFileToActivity(imageForm)">
           <div class="row">
             <div class="input-field col s12">
-              <input type="text" #username ngModel name="username" id="username" required>
-              <label for="username">User Name</label>
+              <!-- <input type="text" required #username ngModel id="username" name = "username" class = "form-control"> -->
+              <!-- <input type="text" #username ngModel name="username" id="username" required> -->
+              <!-- <label for="username">User Name</label> -->
             </div>
           </div>
-          <input type="file" #Image id="file" accept="image/*" (change)="handleFileInput($event)">
-          <button type="submit" class="btn-large btn-submit" [disabled]="!imageForm.valid">Submit</button>
+          <input type="file" #Image id="file" accept="image/*" style="color: white;" (change)="handleFileInput($event)">
+          <button type="submit" class="btn btn-primary" [disabled]="!imageForm.valid">Upload</button>
         </form>
       </div>
     </div>
