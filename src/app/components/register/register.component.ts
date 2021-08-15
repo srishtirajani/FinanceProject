@@ -55,25 +55,21 @@ export class RegisterComponent {
       if(c.emailId==form.form.value.email){
         this.flagUnique=false;
         this.flag_email=false;
-        //alert("Email already exists!");
         break;
       }
       if(c.userName==form.form.value.username){
         this.flagUnique=false;
         this.flag_username=false;
-        //alert("Username already exists!");
         break;
       }
       if(c.accNo==form.form.value.savingsAccount){
         this.flagUnique=false;
         this.flag_account=false;
-        //alert("Account already exists!");
         break;
       }
       if(c.phoneNumber==form.form.value.phone){
         this.flagUnique=false;
         this.flag_mobile=false
-        alert("Phone number already exists!");
         break;
       }
     }

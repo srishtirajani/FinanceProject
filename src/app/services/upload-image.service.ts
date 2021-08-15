@@ -8,7 +8,7 @@ import { Dbimg } from '../models/Dbimg';
   providedIn: 'root'
 })
 export class UploadImageService {
-  reqCons:string="https://localhost:44327/api/Dbimgs";
+  reqCons:string="https://localhost:44353/api/Dbimgs";
   constructor(private http : HttpClient) { }
   postFile(db:Dbimg): Observable<any> {
     
