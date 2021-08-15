@@ -8,7 +8,6 @@
 
       <input type="hidden" name = "autoID" [value]="service.formData.cid">
       <input type="hidden" name = "userID" [value]="service.formData.userId"/>
-      <!--{{obj | json}}-->
       <div class="form-group">
         <label>Name</label>
         <input type="text" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" name = "name" class = "form-control" [(ngModel)]="service.formData.cName">
@@ -17,7 +16,6 @@
   
       <div class="form-group">
         <label>Date of birth</label>
-        <!-- <input type="date" required #date="ngModel"  [class.is-invalid]="date.invalid && date.touched" name = "dob" class = "form-control" (change)="changeDOB($event.target.value)"> -->
         <input type="date" name="dob" class = "form-control" [(ngModel)]="service.formData.DOB" (change)="changeDOB($event.target)">
       </div><br>
   
@@ -80,11 +78,6 @@
       </div>
       <br>
   
-      <!--<div class="form-group">
-        <label>Confirm Password</label>
-        <input type="text" [(ngModel)]="rp" required #cp="ngModel" [class.is-invalid]="(cp.invalid || rp!=opw) && cp.touched" name = "cp" class = "form-control" [(ngModel)]="obj.cp">
-        <small class="text-danger" [class.d-none] ="cp.valid || cp.untouched">Confirm your password</small>
-      </div><br>-->
   
       <div class="form-group">
         <label>Address</label>

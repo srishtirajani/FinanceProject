@@ -20,19 +20,6 @@ export class RegService {
   postReg() {
     return this.http.post(this.ConnUrl,this.formData)
   }
-
-  // createUser(form:NgForm):Observable<Consumer>
-  // {
-  //   return this.http.post<Consumer>(this.ConnUrl,form,{
-  //     headers:new HttpHeaders({
-  //       'Content-Type':'application/json;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'        
-  //     })
-  //   });
-  // }
-
-
 }
 
 
