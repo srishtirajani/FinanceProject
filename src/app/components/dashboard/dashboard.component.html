@@ -154,10 +154,24 @@
                 </td>
                 <td>
                   <button class="btn btn-primary" *ngIf="x.totalMonthsSelected!=0" [disabled] = "month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11" (click)="payEMI(x.prid)">Pay EMI</button>
+                <div *ngIf="x.totalMonthsSelected==0">EMI Paid!</div>
                 </td>
-                <td *ngIf="(month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11) && x.totalMonthsSelected!=0">
-                  You have to come next month.
+                <td>
+                  <div *ngIf="(month-x.latestEmimonth==0 ) && x.totalMonthsSelected!=0 ; else notpaid "> Come next month to pay your EMI. </div>
+                  
+                  <ng-template #notpaid>
+                    <div *ngIf="month-x.latestEmimonth>1">  Contact Admin as you haven't paid EMI for more than a month.</div>
+                 
+                  </ng-template>
                 </td>
+
+              <!--  <td *ngIf="(month-x.latestEmimonth==0 ) && x.totalMonthsSelected!=0 ; else notpaid ">
+                  Come next month to pay your EMI.
+                </td>
+                <td *ngIf="month-x.latestEmimonth > 1" >
+                  
+                  Contact Admin as you haven't paid EMI for more than a month.
+                </td>-->
               </tr>
             </table>
           </ng-template>
