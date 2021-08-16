@@ -29,9 +29,6 @@ export class ForgotpasswordComponent implements OnInit {
   checkOTP=new FormGroup({
     otp:new FormControl("",[Validators.required,Validators.pattern("^[0-9]+$")]),
   })
-  // Generator(){
-  //   this.isButtonVisible = true;
-  // }
   Generator(){
     let email = this.generateOTP.get('phoneno')?.value
     let f = this.changepassword.emailexists(email,this.con)

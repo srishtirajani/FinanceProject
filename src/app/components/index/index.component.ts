@@ -11,7 +11,6 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // debugger;
     localStorage.setItem('flag_verify', 'not verified');
     localStorage.setItem('userName', '');
     localStorage.setItem('userName_guard', '');

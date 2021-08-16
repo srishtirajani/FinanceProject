@@ -59,18 +59,12 @@ export class DashboardComponent implements OnInit {
     }
       
   }
-//   refresh(): string {
-//     window.location.reload();
-//     return 'done';
-// }
-
+  
   constructor(private cService:ConsumerService) {
      
    }
 
   ngOnInit(): void {
-    
-
 
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
@@ -86,8 +80,6 @@ export class DashboardComponent implements OnInit {
       this.consumer=this.cService.getConsumer(this.id);
     });
     this.cService.GetAllPurchRecs().subscribe(data=>{
-      //this.cService.purchRecs=data;
-       //this.purchRecs=data;
       this.cPurchaseRecord=this.cService.getPurchRec(this.id);
       console.log(this.cPurchaseRecord);
       this.month=(new Date().getMonth());  //+1 month here to test
@@ -120,20 +112,7 @@ export class DashboardComponent implements OnInit {
       this.totalcreds=Number(this.emicard.totalCredit);
     });
 
-
-
   }
-
-  // showData(latestmonth:number){
-  //   // this.cService.fillCollections();
-  //   console.log(this.month);
-  //   console.log(latestmonth);
-  //   console.log(this.id+" "+this.userName);
-  //   console.log(this.emicard);
-  //   for(let x of this.cPurchaseRecord){
-  //     console.log(x.latestEmimonth);
-  //   }
-  // }
 
   payEMI(prid:number){
     for(let cpr of this.cPurchaseRecord){
@@ -146,10 +125,4 @@ export class DashboardComponent implements OnInit {
     this.purchRec.totalMonthsSelected=--this.purchRec.totalMonthsSelected;
     this.cService.payMonthlyEMI(prid, this.purchRec).forEach(element=>{});
   }
-  // preventBackButton() {
-  //   history.pushState(null, '', location.href);
-  //   this.locationStrategy.onPopState(() => {
-  //     history.pushState(null, '', location.href);
-  //   })
-  // }
 }
