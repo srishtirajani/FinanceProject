@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Consumer } from 'src/app/models/consumer';
 import { Documents } from 'src/app/models/Document';
-import { EmiCard } from 'src/app/models/emicard';
 import { AdminService, Data } from 'src/app/services/admin.service';
 import { DocumentService } from 'src/app/services/document.service';
 
@@ -20,9 +19,8 @@ export class AdminComponent implements OnInit {
   eid:number=0;
   consumers:Consumer[]=[];
   documents:Documents[]=[];
-  // emiCards:EmiCard[]=[];
 
-  constructor(private aService:AdminService, private aServiceErr:AdminService ,private router: Router, private data: Data, private docService:DocumentService) {
+  constructor(private aService:AdminService, private router: Router, private docService:DocumentService) {
     
   }
 
@@ -31,9 +29,7 @@ export class AdminComponent implements OnInit {
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
       location.reload() 
-    } else {
-      localStorage.removeItem('foo') 
-    }
+    } 
 
     this.aService.showAllConsumers().subscribe(data=>{
       this.aService.consumers=data;
@@ -64,8 +60,6 @@ export class AdminComponent implements OnInit {
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
       location.reload() 
-    } else {
-      localStorage.removeItem('foo') 
     }
   }
   

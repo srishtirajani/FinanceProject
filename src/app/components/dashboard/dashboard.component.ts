@@ -1,5 +1,3 @@
-import { LocationStrategy } from '@angular/common';
-import { createPipeDefinitionMap } from '@angular/compiler/src/render3/partial/pipe';
 import { Component, OnInit } from '@angular/core';
 import { Consumer } from 'src/app/models/consumer';
 import { EmiCard } from 'src/app/models/emicard';
@@ -12,19 +10,26 @@ import { ConsumerService } from 'src/app/services/consumer.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
 
   month:number=0;
-
   userName:any;
   id:number=0;
   totalcreds:number=0;
+  isEmpty:boolean = false;
+  flagX:boolean = true
+  counter : number = 1;
+  showPurch:boolean = true
+  allListed:boolean = false;
 
   consumers:Consumer[]=[];
   purchRecs:PurchaseRecord[]=[];
   products:Product[]=[];
   emicards:EmiCard[]=[];
   cPurchaseRecord:PurchaseRecord[]=[];
+  showMoreList:number[] = []
+  storeBal:number[] = []
 
 
   consumer:Consumer=new Consumer(0,"","",new Date(),"","","","","","","","","",false);
@@ -36,42 +41,23 @@ export class DashboardComponent implements OnInit {
   productColl3:any=new Map();
   productColl4:any=new Map();
 
-  showPurch:boolean = true
-  allListed:boolean = false;
-
-  isEmpty:boolean = false;
-  flagX:boolean = true
-  counter : number = 1;
-  showMoreList:number[] = []
-  storeBal:number[] = []
+  constructor(private cService:ConsumerService) { }
 
   showMore() {
-
-
     if(this.cPurchaseRecord.length > this.counter) {
       this.showMoreList.push((this.cPurchaseRecord[this.counter]).productId)
       this.counter = this.counter+1;
     }
-    console.log(this.cPurchaseRecord.length);
-    console.log(this.counter);
     if(this.cPurchaseRecord.length == this.counter) {
       this.allListed = true;
     }
-      
   }
   
-  constructor(private cService:ConsumerService) {
-     
-   }
-
   ngOnInit(): void {
-
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
       location.reload() 
-    } else {
-      localStorage.removeItem('foo') 
-    }
+    } 
     this.userName=localStorage.getItem('userName');
     this.cService.GetAllConsumers().subscribe(data=>{
       this.cService.consumers=data;
@@ -81,14 +67,10 @@ export class DashboardComponent implements OnInit {
     });
     this.cService.GetAllPurchRecs().subscribe(data=>{
       this.cPurchaseRecord=this.cService.getPurchRec(this.id);
-      console.log(this.cPurchaseRecord);
       this.month=(new Date().getMonth());  //+1 month here to test
-      console.log(this.flagX)
-      console.log(this.cPurchaseRecord.length)
       if(this.flagX && this.cPurchaseRecord.length)
       {
         this.showMoreList.push((this.cPurchaseRecord[0]).productId)
-        console.log('this.showMoreList[0]')
         this.flagX=false;
       }
       else {
@@ -99,9 +81,7 @@ export class DashboardComponent implements OnInit {
       this.cService.products=data;
       this.products=data;
       this.productColl1=this.cService.fillCollection1();
-      console.log(this.productColl1);
       this.productColl2=this.cService.fillCollection2();
-      console.log(this.productColl2);
       this.productColl3=this.productColl1;
       this.productColl4=this.productColl2;
     });

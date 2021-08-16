@@ -1,181 +1,100 @@
 <app-navbar-logged-in></app-navbar-logged-in>
-
 <div>
-
-<!-- //card details -->
- <div class="roundBorderX container-fluid mb-5 container center_div w-85 p-3" style="margin-top: 20px;">
-
-  <div id="wrapper">
-
-    <div id="left" class = "roundBorder applyImg" style="margin-right: 10px;">
-      <h5><b>Card Details</b></h5>
-      <hr>
-
-      <table class="table table-striped table-hover">
-
-        <tr>
-          <td>
-            UID:
-          </td>
-          <td>
-            {{ consumer.userId }}
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            Card Number:
-          </td>
-          <td>
-            {{ emicard.cardNo }}
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            Name:
-          </td>
-          <td>
-            {{ consumer.cName }}
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            Card Type:
-          </td>
-          <td>
-            {{ consumer.cardType }}
-          </td>
-        </tr>
-
-        <tr>
-          <td *ngIf="consumer.isVerfied">
-            Validity Period:
-          </td>
-          <td  *ngIf="consumer.isVerfied">
-            {{ emicard.validityPeriod | date}}
-          </td>
-        </tr>
-        
-      </table>
-
-      <p class="card-text text-success" *ngIf="consumer.isVerfied">
-        <b>Activated</b>
-      </p>
-      <p class="card-text text-danger" *ngIf="!consumer.isVerfied">
-        <b>Not Activated</b>
-      </p>
-
-    </div>
-
-
-<!-- //Account info -->
-    <div id="right" class = "roundBorder applyImg">
-      <h5><b>Account Info</b></h5>
-      <hr>
-
-      <tr>
-        <td>
-          Total Credit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </td>
-        <td>
-          ₹ {{ emicard.totalCredit }}&nbsp;&nbsp;
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          Credit Used:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </td>
-        <td>
-          ₹ {{ totalcreds - emicard.accBalance }}&nbsp;&nbsp;
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          Remaining Credit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </td>
-        <td>
-          ₹ {{ emicard.accBalance }}&nbsp;&nbsp;
-        </td>
-      </tr>
-
-
-
-    </div>
-
- </div>
-
-
-
-
-
- 
-<!-- //Recent purchase history -->
-  <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
-    <h5>Recent Purchases</h5>
-    <hr>
-    <button *ngIf = "!isEmpty" [disabled]="allListed" style=" margin-bottom: 3%; " class="btn btn-primary" (click)="showMore()">Show more</button>
-    <div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought"></div>
-    <ng-template #ProductBought>
-        <table class="table table-striped table-hover">
-          <tr *ngFor="let x of showMoreList">
-            <td>Product:&nbsp;&nbsp;&nbsp;&nbsp; {{productColl3.get(x)}}</td>
-            <td>Price: &nbsp;&nbsp;&nbsp;&nbsp;₹{{productColl4.get(x)}} </td>
-          </tr>
-        </table>
-    </ng-template>
-    <ng-template #NotBought> You haven't bought anything yet!&nbsp;&nbsp; <a routerLink = "/productlist">Shop Now!</a> </ng-template>
- </div>
-
-
- <!-- <p>{{cPurchaseRecord}}</p> -->
- <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
-  <div *ngIf="showPurch">
-          <h5><b>Purchase History</b></h5>
-          <hr>
-          <div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought"></div>
-          <ng-template #ProductBought>
-            <table class="table table-striped table-hover">
-              <th>Name</th> <th>Price</th> <th>EMI Paid</th> <th>EMI Balance</th> <th>EMI Status</th>
-              <tr *ngFor="let x of cPurchaseRecord">
-                <td>
-                  {{productColl1.get(x.productId)}}
-                </td><td>
-                  ₹{{productColl2.get(x.productId)}}&nbsp;&nbsp;
-                </td>
-                <td>
-                  ₹{{productColl2.get(x.productId)-x.productBalance| number : '1.2-2'}}&nbsp;&nbsp;
-                </td>
-                <td>
-                  ₹{{x.productBalance | number : '1.2-2'}}&nbsp;&nbsp;
-                </td>
-                <td>
-                  <button class="btn btn-primary" *ngIf="x.totalMonthsSelected!=0" [disabled] = "month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11" (click)="payEMI(x.prid)">Pay EMI</button>
-                <div *ngIf="x.totalMonthsSelected==0">EMI Paid!</div>
-                </td>
-                <td>
-                  <div *ngIf="(month-x.latestEmimonth==0 ) && x.totalMonthsSelected!=0 ; else notpaid "> Come next month to pay your EMI. </div>
-                  
-                  <ng-template #notpaid>
-                    <div *ngIf="month-x.latestEmimonth>1">  Contact Admin as you haven't paid EMI for more than a month.</div>
-                 
-                  </ng-template>
-                </td>
-
-              <!--  <td *ngIf="(month-x.latestEmimonth==0 ) && x.totalMonthsSelected!=0 ; else notpaid ">
-                  Come next month to pay your EMI.
-                </td>
-                <td *ngIf="month-x.latestEmimonth > 1" >
-                  
-                  Contact Admin as you haven't paid EMI for more than a month.
-                </td>-->
-              </tr>
-            </table>
-          </ng-template>
-          <ng-template #NotBought> No purchase history to show! </ng-template>
-   </div>
-</div>
-
+	<!-- //card details -->
+	<div class="roundBorderX container-fluid mb-5 container center_div w-85 p-3" style="margin-top: 20px;">
+		<div id="wrapper">
+			<div id="left" class="roundBorder applyImg" style="margin-right: 10px;">
+				<h5><b>Card Details</b></h5>
+				<hr>
+				<table class="table table-striped table-hover">
+					<tr>
+						<td> UID: </td>
+						<td> {{ consumer.userId }} </td>
+					</tr>
+					<tr>
+						<td> Card Number: </td>
+						<td> {{ emicard.cardNo }} </td>
+					</tr>
+					<tr>
+						<td> Name: </td>
+						<td> {{ consumer.cName }} </td>
+					</tr>
+					<tr>
+						<td> Card Type: </td>
+						<td> {{ consumer.cardType }} </td>
+					</tr>
+					<tr>
+						<td *ngIf="consumer.isVerfied"> Validity Period: </td>
+						<td *ngIf="consumer.isVerfied"> {{ emicard.validityPeriod | date}} </td>
+					</tr>
+				</table>
+				<p class="card-text text-success" *ngIf="consumer.isVerfied"> <b>Activated</b> </p>
+				<p class="card-text text-danger" *ngIf="!consumer.isVerfied"> <b>Not Activated</b> </p>
+			</div>
+			<!-- //Account info -->
+			<div id="right" class="roundBorder applyImg">
+				<h5><b>Account Info</b></h5>
+				<hr>
+				<tr>
+					<td> Total Credit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+					<td> ₹ {{ emicard.totalCredit }}&nbsp;&nbsp; </td>
+				</tr>
+				<tr>
+					<td> Credit Used:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+					<td> ₹ {{ totalcreds - emicard.accBalance }}&nbsp;&nbsp; </td>
+				</tr>
+				<tr>
+					<td> Remaining Credit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+					<td> ₹ {{ emicard.accBalance }}&nbsp;&nbsp; </td>
+				</tr>
+			</div>
+		</div>
+		<!-- //Recent purchase history -->
+		<div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
+			<h5>Recent Purchases</h5>
+			<hr>
+			<button *ngIf="!isEmpty" [disabled]="allListed" style=" margin-bottom: 3%; " class="btn btn-primary" (click)="showMore()">Show more</button>
+			<div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought"></div>
+			<ng-template #ProductBought>
+				<table class="table table-striped table-hover">
+					<tr *ngFor="let x of showMoreList">
+						<td>Product:&nbsp;&nbsp;&nbsp;&nbsp; {{productColl3.get(x)}}</td>
+						<td>Price: &nbsp;&nbsp;&nbsp;&nbsp;₹{{productColl4.get(x)}} </td>
+					</tr>
+				</table>
+			</ng-template>
+			<ng-template #NotBought> You haven't bought anything yet!&nbsp;&nbsp; <a routerLink="/productlist">Shop Now!</a> </ng-template>
+		</div>
+		<div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
+			<div *ngIf="showPurch">
+				<h5><b>Purchase History</b></h5>
+				<hr>
+				<div *ngIf="cPurchaseRecord.length>0;then ProductBought else NotBought"></div>
+				<ng-template #ProductBought>
+					<table class="table table-striped table-hover">
+						<th>Name</th>
+						<th>Price</th>
+						<th>EMI Paid</th>
+						<th>EMI Balance</th>
+						<th>EMI Status</th>
+						<tr *ngFor="let x of cPurchaseRecord">
+							<td> {{productColl1.get(x.productId)}} </td>
+							<td> ₹{{productColl2.get(x.productId)}}&nbsp;&nbsp; </td>
+							<td> ₹{{productColl2.get(x.productId)-x.productBalance| number : '1.2-2'}}&nbsp;&nbsp; </td>
+							<td> ₹{{x.productBalance | number : '1.2-2'}}&nbsp;&nbsp; </td>
+							<td>
+								<button class="btn btn-primary" *ngIf="x.totalMonthsSelected!=0" [disabled]="month-x.latestEmimonth!=1 && month-x.latestEmimonth!=-11" (click)="payEMI(x.prid)">Pay EMI</button>
+								<div *ngIf="x.totalMonthsSelected==0">EMI Paid!</div>
+							</td>
+							<td>
+								<div *ngIf="(month-x.latestEmimonth==0 ) && x.totalMonthsSelected!=0 ; else notpaid "> Come next month to pay your EMI. </div>
+								<ng-template #notpaid>
+									<div *ngIf="month-x.latestEmimonth>1"> Contact Admin as you haven't paid EMI for more than a month.</div>
+								</ng-template>
+							</td>
+						</tr>
+					</table>
+				</ng-template>
+				<ng-template #NotBought> No purchase history to show! </ng-template>
+			</div>
+		</div>

@@ -5,7 +5,6 @@ import { Consumer } from 'src/app/models/consumer';
 import { RegService } from 'src/app/services/reg.service';
 import { LoginService } from 'src/app/services/login.service';
 import { formatDate } from '@angular/common';
-import { DocumentService } from 'src/app/services/document.service';
 import { UploadImageService } from 'src/app/services/upload-image.service';
 
 
@@ -14,14 +13,11 @@ import { UploadImageService } from 'src/app/services/upload-image.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent {
-  consumers:Consumer[]=[];
+
   constructor (public service : RegService, private router:Router,public loginService:LoginService,private imageService : UploadImageService) {}
 
-  banks = ['IDFC','HSBC','HDFC','ICICI']
-  obj = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
-  opw : string = "";
-  card : string ="";
   flag : boolean = false;
   flag_email : boolean = true;
   flag_account : boolean = true;
@@ -30,15 +26,20 @@ export class RegisterComponent {
   flagTerm : boolean = false;
   flagUnique:boolean=true;
   dob:Date=new Date();
-
-
   fileToUpload: any;
   document:string="";
   blob:any;
   reader:any;
   url:any;
-  flagUpload:boolean=false;
-  // msg:string="";
+ 
+  consumers:Consumer[]=[];
+  banks = ['IDFC','HSBC','HDFC','ICICI']
+
+  obj = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
+  opw : string = "";
+  card : string ="";
+  
+
   ngOnInit(){
     this.loginService.GetAllConsumers().subscribe(data=>{
       this.loginService.consumers=data;
@@ -46,15 +47,21 @@ export class RegisterComponent {
       console.log(this.consumers);
     });
   }
+
+
   radioClicked() {
     this.flag = true;
   }
+
   termClicked() {
     this.flagTerm = true;
   }
+
   terms(){
     open("/terms");
   }
+
+
   onSubmit(form:NgForm) {
     this.flagUnique=true;
     this.flag_mobile=true
@@ -82,57 +89,32 @@ export class RegisterComponent {
         break;
       }
     }
-    console.log(form.form.value.dob);
-    console.log(new Date(form.form.value.dob))
-    console.log(new Date());
-    console.log(formatDate(new Date(), 'yyyy-MM-dd', 'en-us'));
     if(form.form.value.dob==formatDate(new Date(), 'yyyy-MM-dd', 'en-us')){
-      console.log("inside if");
       this.flagUnique=false;
-        alert("Enter a valid date!");
+      alert("Enter a valid date!");
     }
 
     if(this.flagUnique){
     this.service.postReg().subscribe(
       res => {this.router.navigate(['login'])},
-      err => {console.log(err);}
-    );
+      err => {console.log(err);});
+    }
 
-  }
-  if(this.fileToUpload!=null ){
-    this.imageService.postFile(this.fileToUpload).subscribe(data => {
-      }, error => {
-        console.log(error);
-      });
-      this.flag=true;
+    if(this.fileToUpload!=null ){
+      this.imageService.postFile(this.fileToUpload).subscribe(data => {}, 
+        error => {
+          console.log(error);
+        }
+      );
     }
   
-}
+  }
 
 
-handleFileInput(event:any) {
-  this.fileToUpload = event.target.files.item(0);
-  this.reader = new FileReader();
-  this.reader.readAsDataURL(this.fileToUpload);
-    this.reader.onload = () => {
-    this.blob = new Blob(event.target.files, { type: event.target.files[0].type });
-    this.url = window.URL.createObjectURL(this.blob);
-
-};
-}
-
-
-
-
-
-
-
-
-
-  changeDOB(event:any){
-    console.log(event);
-    this.dob=event;
-    console.log(this.dob);
+  handleFileInput(event:any) {
+    this.fileToUpload = event.target.files.item(0);
+    this.reader = new FileReader();
+    this.reader.readAsDataURL(this.fileToUpload);
   }
 
 }

@@ -8,20 +8,22 @@ import {  DataProd, ProductService } from 'src/app/services/product.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
 export class ProductListComponent implements OnInit {
 
-
   constructor(private productService:ProductService, private router:Router,private data: DataProd) { }
+  
   product:Product[]=[];
 
-  ngOnInit(): void {this.productService.GetAllProducts().subscribe(data=>{
+  ngOnInit(): void {
+    this.productService.GetAllProducts().subscribe(data=>{
     this.product=data;
-  });
- }
+    });
+  }
 
- getProdInfo(pid:number){
-   this.data.pid=pid;
-  this.router.navigate(['productinfo']);
- }
+  getProdInfo(pid:number){
+    this.data.pid=pid;
+    this.router.navigate(['productinfo']);
+  }
 
 }

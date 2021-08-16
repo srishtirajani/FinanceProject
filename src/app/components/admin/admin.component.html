@@ -1,20 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-  <a class="navbar-brand" routerLink="/admin" style="margin-left: 5%;"><img src="./assets/images/eminent.png" width="85%" height="70px"  class="d-inline-block align-top" style="border-radius: 15%;" alt=""></a>
-  <button class="navbar-toggler" routerLink="/admin" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="navbar-right" id="navbarNavAltMarkup" style="padding-right: 20px;">
-    <div class="navbar-nav">
-      <p class="nav-item" style="padding-top: 15px;">Hello {{userName}}!</p>
-    </div>
-  </div>
-
-  <div class="navbar-right" id="navbarNavAltMarkup" style="padding-right: 20px;">
-    <div class="navbar-nav">
-      <a class="nav-link" routerLink="/">Logout</a>
-    </div>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="justify-content: space-between; padding-right: 20px;">
+  <a style="margin-left: 2%;" class="navbar-brand" routerLink="/"><img src="./assets/images/eminent_Transparent.png" width="100%" height="80px" class="d-inline-block align-top" alt=""> </a>
+  <button class="navbar-toggler" routerLink="/dashboard" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+  
+  <ul class="nav navbar-nav ml-auto" style="padding-left: 10px;">
+    <li class="nav-item" style="font-size: large; padding-right: 15px;">Hello {{userName}}!</li>
+    <li class="nav-item" style="font-size: large;"> <a class="nav-link page-scroll" routerLink="/" style="display: inline;"><b>Logout</b></a></li>
+  </ul>
 </nav>
 
 <div class="container">
@@ -63,8 +54,9 @@
     </div>
 </div>
 
-<button class="btn btn-primary" (click)="showDocs()">Show Documents</button>
-      
+<div style="text-align: center; padding-top: 20px;">
+  <button class="btn btn-primary" (click)="showDocs()">Show Documents</button>
+</div>
       <div class="card" style="padding-top: 20px;padding-bottom: 10px;">
         <div class="row" *ngFor="let doc of documents" style="padding-top: 20px;padding-bottom: 10px;">
             <div class="col-sm-6">
