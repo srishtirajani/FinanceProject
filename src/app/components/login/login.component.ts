@@ -9,6 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
  
   constructor(private loginService:LoginService, private router:Router) { }
@@ -26,9 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(form:NgForm){
-     console.log(this.loginService.logins);
-    console.log(this.loginService.consumers);
-    console.log(this.loginService.admins);
+    
     var result=this.loginService.login(form.value.userName, form.value.password);
 
     if(result=="consumer")

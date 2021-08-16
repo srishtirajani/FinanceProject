@@ -1,95 +1,76 @@
 <html>
 <style>
-    body{
-    overflow: hidden;
+body {
+	overflow: hidden;
 }
 </style>
+
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-  <a style="margin-left: 2%;" class="navbar-brand" routerLink="/"><img src="./assets/images/eminent.jpg" width="100%" height="80px" class="d-inline-block align-top" alt="">
-</a>
-  <button class="navbar-toggler" routerLink="/dashboard"type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-      <ul class="nav navbar-nav ml-auto" style="padding-left: 10px;">
-        <li class="nav-item">
-          <a class="nav-link page-scroll" routerLink="/register">Register</a></li>
-        <li class="nav-item">
-          <a class="nav-link page-scroll" routerLink="/login">Login</a></li>
-      </ul>
-  </nav>
-
-  <div>
-  <div class="roundBorderX container-fluid mb-5 container center_div w-85 p-3">
-    <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
-      <h1><b>EMI-nent</b></h1>
-      <h5>Redefining EMI Purchases</h5><br>
-      <img src="./assets/images/card.png" width="100%" height="400px">
-            </div>
-      <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
-
-<h1 style="margin-top: 2%; "><b>Featured Product</b></h1><br>
-<div class="card" style="padding-top: 20px;padding-bottom: 10px;">
-  <div class="row" style="padding-top: 20px;padding-bottom: 10px;">
-      <div class="col-sm-6">
-            <img class="img-right" class="img-thumbnail" src="assets/images/9.jpg" style="height:300px; margin-left:50px" />
-      </div>
-          <div class="col-sm-6" style="padding-top: 20px;">  
-            <h3></h3>
-            <p><b>Product Name</b>: OnePlus 9</p>
-            <p style="margin-right: 15%;"> <b>Product Details</b>: The smartphone is powered by Qualcomm SM8350 Snapdragon 888 Octa-core and it comes with 6.55 inches Fluid AMOLED screen. The resolution of the screen is 1080 x 2400 pixels while it is protected by Corning Gorilla Glass.The device is pack with 8 GB and 12 GB RAM while the internal storage is 128 GB and 512 GB.</p>
-            <p><b>Cost</b>: ₹54000 </p>
-            <a routerLink="/login"><button class="btn btn-primary">Buy Now</button></a>
-          </div>
-  </div>
-</div>
-
-      </div>
-
-
-      <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
-        <img src="./assets/images/emi.jpg" width="100%" height="400px">
-              </div>
-
-
-              <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
-                <div class="card" style="padding-top: 20px;padding-bottom: 10px;">
-                  <div class="row">
-                      <div class="col-sm-6" style="margin: auto;">
-                          <h3><b>Eligibility</b></h3><br>
-                          <p>Age must be above 18 years.</p>
-                          <p>Must be an Indian citizen.</p>
-                          <p>Minimum income should comply with the figures mentioned in terms and conditions.</p>
-                          <p> To know more and register, please visit &nbsp;&nbsp;<a class="link-danger" (click)="terms()">Terms and Conditions</a>.</p>
-                      </div>
-                          <div class="col-sm-4"style="margin: auto;">
-                              <a class="link-danger" routerLink="/terms"></a>
-                          </div>
-                  </div>
-              
-              </div>
-                      </div>
-
-
-
-      <div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
-
-<div class="card" style="padding-top: 20px;padding-bottom: 10px;">
-    <div class="row">
-        <div class="col-sm-6" style="margin: auto;">
-            <h3>Charges</h3>
-            <p>₹500 for card type Gold and ₹750 for Titanium type card as Joining charges and 5% processing charges on buying a product will be automatically deducted from your card.</p>
-        </div>
-            <div class="col-sm-4"style="margin: auto;">
-                <a class="link-danger" routerLink="/terms"></a>
-            </div>
-    </div>
-
-</div>
-      </div>
-</div>
-  </div>
-
+	<nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="justify-content: space-between; padding-right: 20px;">
+		<a style="margin-left: 2%;" class="navbar-brand" routerLink="/"><img src="./assets/images/eminent_Transparent.png" width="100%" height="80px" class="d-inline-block align-top" alt=""> </a>
+		<button class="navbar-toggler" routerLink="/dashboard" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+		
+		<ul class="nav navbar-nav ml-auto" style="padding-left: 10px;">
+			<li class="nav-item" style="font-size: large; padding-right: 5px;"> <a class="nav-link page-scroll" routerLink="/register"><b>Register</b></a></li>
+			<li class="nav-item" style="font-size: large;"> <a class="nav-link page-scroll" routerLink="/login"><b>Login</b></a></li>
+		</ul>
+	</nav>
+	<div>
+		<div class="roundBorderX container-fluid mb-5 container center_div w-85 p-3">
+			<div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
+				<h1><b>EMI-nent</b></h1>
+				<h5>Redefining EMI Purchases</h5>
+				<br> <img src="./assets/images/card.png" width="100%" height="400px"> </div>
+			<div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
+				<h1 style="margin-top: 2%; "><b>Featured Product</b></h1>
+				<br>
+				<div class="card" style="padding-top: 20px;padding-bottom: 10px;">
+					<div class="row" style="padding-top: 20px;padding-bottom: 10px;">
+						<div class="col-sm-6"> <img class="img-right" class="img-thumbnail" src="assets/images/9.jpg" style="height:300px; margin-left:50px" /> </div>
+						<div class="col-sm-6" style="padding-top: 20px;">
+							<h3></h3>
+							<p><b>Product Name</b>: OnePlus 9</p>
+							<p style="margin-right: 15%;"> <b>Product Details</b>: The smartphone is powered by Qualcomm SM8350 Snapdragon 888 Octa-core and it comes with 6.55 inches Fluid AMOLED screen. The resolution of the screen is 1080 x 2400 pixels while it is protected by Corning Gorilla Glass.The device is pack with 8 GB and 12 GB RAM while the internal storage is 128 GB and 512 GB.</p>
+							<p><b>Cost</b>: ₹54000 </p>
+							<a routerLink="/login">
+								<button class="btn btn-primary">Buy Now</button>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;"> <img src="./assets/images/emi.jpg" width="100%" height="400px"> </div>
+			<div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
+				<div class="card" style="padding-top: 20px;padding-bottom: 10px;">
+					<div class="row">
+						<div class="col-sm-6" style="margin: auto;">
+							<h3><b>Eligibility</b></h3>
+							<br>
+							<p>Age must be above 18 years.</p>
+							<p>Must be an Indian citizen.</p>
+							<p> To know more and register, please visit &nbsp;&nbsp;<a class="link-danger" (click)="terms()">Terms and Conditions</a>.</p>
+						</div>
+						<div class="col-sm-4" style="margin: auto;">
+							<a class="link-danger" routerLink="/terms"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="roundBorder applyImg" style="margin-top: 1%; width: 100%;">
+				<div class="card" style="padding-top: 20px;padding-bottom: 10px;">
+					<div class="row">
+						<div class="col-sm-6" style="margin: auto;">
+							<h3>Charges</h3>
+							<p>₹500 for card type Gold and ₹750 for Titanium type card as Joining charges and 5% processing charges on buying a product will be automatically deducted from your card.</p>
+						</div>
+						<div class="col-sm-4" style="margin: auto;">
+							<a class="link-danger" routerLink="/terms"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

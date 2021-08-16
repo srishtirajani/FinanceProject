@@ -5,17 +5,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
+
 export class IndexComponent implements OnInit {
 
-  constructor() { 
+  constructor() { }
+
+  //Guards 
+  ngOnInit(): void {
+    localStorage.setItem('flag_verify', 'not verified'); //For verify to Admin routing
+    localStorage.setItem('userName', ''); //For login to Admin routing
+    localStorage.setItem('userName_guard', ''); //For login to dashboard routing
   }
 
-  ngOnInit(): void {
-    localStorage.setItem('flag_verify', 'not verified');
-    localStorage.setItem('userName', '');
-    localStorage.setItem('userName_guard', '');
-    console.log("I am inside ng onInit of Index");
-  }
   terms(){
     open("/terms-index");
   }

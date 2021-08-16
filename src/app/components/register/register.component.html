@@ -1,7 +1,10 @@
 <div>
 
 <div class="container-fluid mb-5 container center_div w-50 p-3">
-    <h1>Register</h1><br>
+  <!-- <div style="text-align: center;">
+    <img src="./assets/images/eminent_Transparent.png" style="height: 100%; width: 180px;align-self: center;padding-bottom: 30px;">
+  </div> -->
+  <h2 style="text-align: center;">Register now!</h2><br>
   
     <form #uf="ngForm" (submit) = onSubmit(uf) class="applyImgx">
       
@@ -16,7 +19,7 @@
   
       <div class="form-group">
         <label>Date of birth</label>
-        <input type="date" name="dob" class = "form-control" [(ngModel)]="service.formData.DOB" (change)="changeDOB($event.target)">
+        <input type="date" name="dob" class = "form-control" [(ngModel)]="service.formData.DOB">
       </div><br>
   
       <div class="form-group">

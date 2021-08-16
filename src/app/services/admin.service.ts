@@ -8,6 +8,7 @@ import { EmiCard } from '../models/emicard';
 @Injectable({
   providedIn: 'root'
 })
+
 export class Data {
 
   public storage: any;
@@ -15,9 +16,11 @@ export class Data {
   public constructor() { }
 
 }
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AdminService {
 
   constructor(private http:HttpClient) { }

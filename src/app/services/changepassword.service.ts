@@ -27,24 +27,20 @@ export class ChangepasswordService {
       }
     );
   }
+  
   public emailexists(emailId:string,cons:any):boolean{
-    console.log(cons)
     for(let c of cons){
       if(c.emailId==emailId){
-        console.log(c.cid)
-        //debugger;
         this.adminservice.showConsumerById(c.cid).subscribe(data=>{
           c=data;
           this.otp=c.phoneNumber
         });
-        //console.log(this.otp)
-        //this.adminservice.showConsumerById(c.cid)
         return true;
       }
      }
-return false;
-
+    return false;
   }
+
   public getValues(emailId:string,newpassword:string,cons:any):string{
     for(let c of cons){
           if(c.emailId==emailId){

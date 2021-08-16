@@ -28,31 +28,30 @@ export class ProductInfoComponent implements OnInit {
   count_valid=0
   count_isbalance=0
   count=0
-  consumer = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
-  emiCard = new EmiCard(0,'',0,new Date(),0,'');
-  
   myDate:any;
   id:number=0;
-
-  purchRec:PurchaseRecord=new PurchaseRecord(0,'',0,0,0,new Date(),0,0,0);
-
-  pid:number=this.data.pid;
-  product:Product=new Product(0,'','',0,'');
- 
   emi:number=0;
   selectedEmi:any;
+  emicardU: any;
 
+  consumer = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
+  emiCard = new EmiCard(0,'',0,new Date(),0,'');
+  purchRec:PurchaseRecord=new PurchaseRecord(0,'',0,0,0,new Date(),0,0,0);
+  product:Product=new Product(0,'','',0,'');
+
+  pid:number=this.data.pid;
+  
   emiPeriod: any=[
     {name: '3 Months', value: 3}, 
     {name: '6 Months', value: 6}, 
     {name: '9 Months', value: 9}, 
     {name: '1 Year', value: 12}
   ];
-  emicardU: any;
+  
 
   constructor(private productService:ProductInfoService, private router:Router,private data: DataProd,private pay:Data, private datePipe: DatePipe, private prodInfoService:ProductInfoService, private aService:AdminService, private dataC:DataC,private consumerservice:ConsumerService){
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
-}
+  }
 
   
   ngOnInit(): void { 
@@ -134,6 +133,7 @@ export class ProductInfoComponent implements OnInit {
     this.consumerservice.getEMIValues(id,this.product.price,this.emicardU);
     this.router.navigate(['payment']);
   }
+  
   terms(){
     open("/terms-index");
   }

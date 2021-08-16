@@ -29,7 +29,7 @@ export class VerifyUserComponent implements OnInit {
   createEMICard(data:any):void
   {
     this.aService.assignNewCard(data).subscribe(data=>{
-    console.log("Successfully created ");
+    console.log("Successfully created");
     });
   }
 
@@ -55,7 +55,6 @@ export class VerifyUserComponent implements OnInit {
     }     
     this.newEmiCard.accBalance = Number(this.newEmiCard.totalCredit);
     this.newEmiCard.userId=id;
-    console.log(this.newEmiCard);
     this.createEMICard(this.newEmiCard);
     this.router.navigate(['admin']);
   }
