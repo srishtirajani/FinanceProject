@@ -158,48 +158,5 @@ export class AdminService {
         'Access-Control-Allow-Method':'*'
       })
     });
-  }
-
-
-  //Method  to create a new player.
-  // createUser(player:Player):Observable<Player>
-  // {
-  //   return this.http.post<Player>(this.req,player,{
-  //     headers:new HttpHeaders({
-  //       'Content-Type':'application/json;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-        
-  //     })
-  //   });
-  // }
-
-  // verifyConsumer(id:number, consumer:Consumer):Observable<any>{
-  //   // console.log(id+ " "+this.consumer.isVerfied);
-  //   this.consumer = consumer;
-  //   console.log(this.consumer);
-  //   console.log(this.req+"/"+id);
-  //   // debugger;
-  //   // return this.http.put<any>(this.req+"/"+id,consumer);
-  //   return this.http.put<any>(this.req+"/"+id,consumer,{
-  //     headers:new HttpHeaders({
-  //       'Content-Type':'application/json;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-  //     })
-  //   }).pipe(catchError(this.manageErrors));
-  // }
-
-  // private manageErrors(error:HttpErrorResponse){
-  //   // let msg='';
-  //   if(error.error instanceof ErrorEvent){
-  //     console.error("Client Side error",error.error.message);
-  //   }
-  //   else{
-  //     console.error("Server Side Error", error);
-  //   }
-  //   return throwError('There is a little problem while processing your request.Sorry for the inconvenience');
-  // }
-
-  
+  }  
 }
