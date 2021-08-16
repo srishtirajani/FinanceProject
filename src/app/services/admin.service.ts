@@ -1,11 +1,9 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
-import { MailSettings } from '../models/email';
 import { EmiCard } from '../models/emicard';
-// import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,29 +20,10 @@ export class Data {
 })
 export class AdminService {
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient) { }
 
-    // this.showAllConsumers().subscribe(data=>{
-    //   this.consumers=data;
-    //   // this.consumers=data;
-    // });
-    // this.GetAllEMICards().subscribe(data=>{
-    //   this.emiCards=data;
-    //   // this.emiCards=data;
-    // });
-
-    // // this.GetAllEMICards().subscribe(data=>{
-    // //   this.emiCards=data;
-    // //   // this.consumers=data;
-    // // });
-   }
-
-  //req:string="https://localhost:44327/api/Consumers";
-  //reqEmiCards:string="https://localhost:44327/api/Emicards"
-  // req:string="https://localhost:44353/api/Consumers";
   reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
   reqLogins:string="https://localhost:" + no + "/api/LoginTables"
-  // reqEmiCards:string="https://localhost:44327/api/Emicards"
   reqEmail:string="https://localhost:" + no + "​/api​/Email​/Send"
 
   consumers:Consumer[]=[];
@@ -55,7 +34,6 @@ export class AdminService {
   id:number=0;
 
   req:string="https://localhost:"+ no +"/api/Consumers";
-  //req:string="https://localhost:44327/api/Consumers";
 
 
   showAllConsumers():Observable<Consumer[]>{
@@ -82,18 +60,6 @@ export class AdminService {
       }
     );
   }
-
-  // VerificationEmail(emailDetails:MailSettings):Observable<any>{
-  //   console.log("Calling api now");
-  //   console.log(emailDetails);
-  //   return this.http.post<any>(this.reqEmail,emailDetails,{
-  //     headers:new HttpHeaders({
-  //       'Content-Type':'multipart/form-data;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-  //     })
-  //   });
-  // }
 
   getId(userName?:string):number{
     for(let c of this.consumers){
