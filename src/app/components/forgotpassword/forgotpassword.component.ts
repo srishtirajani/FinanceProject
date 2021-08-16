@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminService, Data } from 'src/app/services/admin.service';
+import { Consumer } from 'src/app/models/consumer';
+import { Data } from 'src/app/services/admin.service';
+import { ChangepasswordService } from 'src/app/services/changepassword.service';
 @Component({
   selector: 'app-forgotpassword',
   templateUrl: './forgotpassword.component.html',
@@ -9,33 +11,47 @@ import { AdminService, Data } from 'src/app/services/admin.service';
 })
 export class ForgotpasswordComponent implements OnInit {
 
-  constructor(private router: Router, private data: Data) { }
+  constructor(private router: Router, private data: Data, private changepassword:ChangepasswordService) { }
   isButtonVisible=false;
+  flag=true;
+  emailpresent=true;
+  con:Consumer[]=[];
   ngOnInit(): void {
+    this.changepassword.GetAllConsumers().subscribe(data=>{
+      this.changepassword.consumers=data;
+      this.con = this.changepassword.consumers;
+    });
+    console.log(this.con)
   }
   generateOTP=new FormGroup({
-    phoneno:new FormControl("",[Validators.required,Validators.pattern("^[0-9]+$"), Validators.maxLength(10), Validators.minLength(10)]),
+    phoneno:new FormControl("",[]),
   })
   checkOTP=new FormGroup({
     otp:new FormControl("",[Validators.required,Validators.pattern("^[0-9]+$")]),
   })
   Generator(){
-    //alert('hi');
-    console.log(this.generateOTP.value);
-    this.isButtonVisible = true;
-  }
-  Check(){
-    //alert('successful');
-    console.log(this.checkOTP.value);
-    console.log(this.generateOTP.get('phoneno')?.value%1000)
-    if(this.checkOTP.get('otp')?.value==this.generateOTP.get('phoneno')?.value%1000)
-    {this.data.storage=this.generateOTP.get('phoneno')?.value;
-    this.router.navigate(['changepassword']);}
+    let email = this.generateOTP.get('phoneno')?.value
+    let f = this.changepassword.emailexists(email,this.con)
+    if(f){
+      this.isButtonVisible = true;
+      this.emailpresent=true;
+      
+    }
     else{
-      alert("Invalid OTP!! Please try again.")
+      this.emailpresent=false;
     }
   }
-  
+  Check(){
+    console.log("OTP:"+this.changepassword.otp)
+    if(this.checkOTP.get('otp')?.value==this.changepassword.otp)
+    {
+      this.flag=true;
+      this.data.storage=this.generateOTP.get('phoneno')?.value;
+    this.router.navigate(['changepassword']);}
+    else{
+      this.flag=false;
+    }
+  }
 }
 export class NameEditorComponent {
   phoneno = new FormControl('');

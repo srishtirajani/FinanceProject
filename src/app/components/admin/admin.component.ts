@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Consumer } from 'src/app/models/consumer';
 import { Documents } from 'src/app/models/Document';
 import { EmiCard } from 'src/app/models/emicard';
@@ -41,30 +41,26 @@ export class AdminComponent implements OnInit {
     });
     this.aService.GetAllEMICards().subscribe(data=>{
       this.aService.emiCards=data;
-      // this.emiCards=data;
     });
     this.userName=localStorage.getItem('userName');
   }
   
   toVerify(uname:string){
-    // this.data.storage=this.consumers;
     localStorage.setItem("userName",uname)
     this.router.navigate(['verify',{consumer:this.consumers}]);
   }
 
   deleteUser(uname:string){
-    // debugger;
     this.id = this.aService.getId(uname);
     console.log(this.id);
     this.eid = this.aService.getCardNo(this.id);
     console.log(this.eid);
-    // debugger;
     this.aService.deleteLogin(uname).subscribe(data=>{
       console.log("Calling the delete login record from service")
       this.d_msg="Successfully deleted record from login table with username: "+uname;
       console.log(data);
     });
-    this.deleteUser_API(this.id, this.eid);
+    this.deleteUser_API(this.id);
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
       location.reload() 
@@ -74,31 +70,11 @@ export class AdminComponent implements OnInit {
   }
   
 
-  deleteUser_API(id:number, eid:number){
-    console.log("Inside delete emi card.")
-    // console.log(this.userName);
-    
-    // this.aService.deleteEMICard(eid).subscribe(data=>{
-    //   this.d_msg="Successfully deleted emi card with card id: "+id;
-    //   console.log(data);
-    // });
-
-    //try
-    // this.aService.GetAllEMICards().subscribe(data=>{
-    //   this.aService.emiCards=data;
-    //   this.emiCards=data;
-    // });
-
+  deleteUser_API(id:number){
     this.aService.deleteConsumer(id).subscribe(data=>{
       this.d_msg="Successfully deleted consumer with eid: "+id;
       console.log(data);
     });
-
-    //try
-    // this.aService.showAllConsumers().subscribe(data=>{
-    //   this.aService.consumers=data;
-    //   this.consumers=data;
-    // });
   }
   showDocs(){
     this.docService.GetAllDocuments().subscribe(data=>{

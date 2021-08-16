@@ -1,11 +1,9 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
-import { MailSettings } from '../models/email';
 import { EmiCard } from '../models/emicard';
-// import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,29 +20,10 @@ export class Data {
 })
 export class AdminService {
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient) { }
 
-    // this.showAllConsumers().subscribe(data=>{
-    //   this.consumers=data;
-    //   // this.consumers=data;
-    // });
-    // this.GetAllEMICards().subscribe(data=>{
-    //   this.emiCards=data;
-    //   // this.emiCards=data;
-    // });
-
-    // // this.GetAllEMICards().subscribe(data=>{
-    // //   this.emiCards=data;
-    // //   // this.consumers=data;
-    // // });
-   }
-
-  //req:string="https://localhost:44327/api/Consumers";
-  //reqEmiCards:string="https://localhost:44327/api/Emicards"
-  // req:string="https://localhost:44353/api/Consumers";
   reqEmiCards:string="https://localhost:" + no + "/api/Emicards"
   reqLogins:string="https://localhost:" + no + "/api/LoginTables"
-  // reqEmiCards:string="https://localhost:44327/api/Emicards"
   reqEmail:string="https://localhost:" + no + "​/api​/Email​/Send"
 
   consumers:Consumer[]=[];
@@ -54,13 +33,26 @@ export class AdminService {
 
   id:number=0;
 
-  // req:string="https://localhost:"+ no +"/api/Consumers";
-  req:string="https://localhost:44327/api/Consumers";
+  req:string="https://localhost:"+ no +"/api/Consumers";
 
 
   showAllConsumers():Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.req,
       {
+        headers:new HttpHeaders({
+        'Content-Type':'text/plain;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+        })
+      }
+    );
+  }
+
+  showConsumerById(id:number):Observable<any>{
+    console.log(this.req+'/'+id)
+    return this.http.get<any>(this.req+'/'+id,
+      {
+        
         headers:new HttpHeaders({
         'Content-Type':'text/plain;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
@@ -82,18 +74,6 @@ export class AdminService {
       }
     );
   }
-
-  // VerificationEmail(emailDetails:MailSettings):Observable<any>{
-  //   console.log("Calling api now");
-  //   console.log(emailDetails);
-  //   return this.http.post<any>(this.reqEmail,emailDetails,{
-  //     headers:new HttpHeaders({
-  //       'Content-Type':'multipart/form-data;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-  //     })
-  //   });
-  // }
 
   getId(userName?:string):number{
     for(let c of this.consumers){
@@ -178,48 +158,5 @@ export class AdminService {
         'Access-Control-Allow-Method':'*'
       })
     });
-  }
-
-
-  //Method  to create a new player.
-  // createUser(player:Player):Observable<Player>
-  // {
-  //   return this.http.post<Player>(this.req,player,{
-  //     headers:new HttpHeaders({
-  //       'Content-Type':'application/json;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-        
-  //     })
-  //   });
-  // }
-
-  // verifyConsumer(id:number, consumer:Consumer):Observable<any>{
-  //   // console.log(id+ " "+this.consumer.isVerfied);
-  //   this.consumer = consumer;
-  //   console.log(this.consumer);
-  //   console.log(this.req+"/"+id);
-  //   // debugger;
-  //   // return this.http.put<any>(this.req+"/"+id,consumer);
-  //   return this.http.put<any>(this.req+"/"+id,consumer,{
-  //     headers:new HttpHeaders({
-  //       'Content-Type':'application/json;charset=UTF-8',
-  //       'Access-Control-Allow-Origin':'*',
-  //       'Access-Control-Allow-Method':'*'
-  //     })
-  //   }).pipe(catchError(this.manageErrors));
-  // }
-
-  // private manageErrors(error:HttpErrorResponse){
-  //   // let msg='';
-  //   if(error.error instanceof ErrorEvent){
-  //     console.error("Client Side error",error.error.message);
-  //   }
-  //   else{
-  //     console.error("Server Side Error", error);
-  //   }
-  //   return throwError('There is a little problem while processing your request.Sorry for the inconvenience');
-  // }
-
-  
+  }  
 }

@@ -23,8 +23,8 @@
           <button class="btn btn-primary"(click)="Payment()" [disabled] = "(selectedEmi.value!=3 && selectedEmi.value!=6 && selectedEmi.value!=9 && selectedEmi.value!=12 )|| count_card!=1 || count_valid!=1 || count_isbalance!=1" >Pay Now</button>
           <span>
             <div *ngIf="!flag_card">Your card has not been activated yet.</div>
-            <div *ngIf="!flag_isbalance">You do not have enough balance.</div>
-            <div *ngIf="!flag_valid">Your card has expired.</div>
+            <div *ngIf="!flag_isbalance && flag_card">You do not have enough balance.</div>
+            <div *ngIf="!flag_valid && flag_card">Your card has expired.</div>
           </span>
       </div>
   </div>

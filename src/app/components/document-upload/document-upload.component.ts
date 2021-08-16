@@ -5,7 +5,6 @@ import { Documents } from 'src/app/models/Document';
 import { DocumentService } from 'src/app/services/document.service';
 import { UploadImageService } from 'src/app/services/upload-image.service';
 
-
 @Component({
   selector: 'app-document-upload',
   templateUrl: './document-upload.component.html',

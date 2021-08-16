@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { no } from '../API_LHnumber';
 import { Consumer } from '../models/consumer';
 import { Login } from '../models/login';
+import { AdminService } from './admin.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { Login } from '../models/login';
 
 export class ChangepasswordService {
   consumers:Consumer[]=[];
-  constructor(private http: HttpClient) { }
+  otp:string="";
+  constructor(private http: HttpClient, private adminservice:AdminService) { }
   readonly ConnUrl = "https://localhost:" + no + "/api/Consumers"
   readonly ConnLogin = "https://localhost:" + no + "/api/LoginTables"
   GetAllConsumers():Observable<Consumer[]>{
@@ -25,9 +27,27 @@ export class ChangepasswordService {
       }
     );
   }
-  public getValues(phoneNumber:string,newpassword:string,cons:any):string{
+  public emailexists(emailId:string,cons:any):boolean{
+    console.log(cons)
     for(let c of cons){
-          if(c.phoneNumber==phoneNumber){
+      if(c.emailId==emailId){
+        console.log(c.cid)
+        //debugger;
+        this.adminservice.showConsumerById(c.cid).subscribe(data=>{
+          c=data;
+          this.otp=c.phoneNumber
+        });
+        //console.log(this.otp)
+        //this.adminservice.showConsumerById(c.cid)
+        return true;
+      }
+     }
+return false;
+
+  }
+  public getValues(emailId:string,newpassword:string,cons:any):string{
+    for(let c of cons){
+          if(c.emailId==emailId){
             c.cPassword = newpassword
              this.updateConsumer(c.cid,c).forEach(element=>{})
              const l = new Login(c.userName,c.cPassword)
