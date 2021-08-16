@@ -1,8 +1,8 @@
-import { Component, OnInit} from '@angular/core';
-import {  NgForm} from '@angular/forms';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Consumer } from 'src/app/models/consumer';
-import { Data } from 'src/app/services/admin.service';
+import { AdminService, Data } from 'src/app/services/admin.service';
 import { ChangepasswordService } from 'src/app/services/changepassword.service';
 
 @Component({
@@ -18,17 +18,19 @@ export class ChangepasswordComponent implements OnInit {
   constructor(private changepassword:ChangepasswordService,private router: Router, private data: Data){
     
   }
-  pno: string = ''
+  emailId: string = ''
   ngOnInit(): void {
     this.changepassword.GetAllConsumers().subscribe(data=>{
       this.changepassword.consumers=data;
       this.con = this.changepassword.consumers;
     });
-    this.pno=this.data.storage;
+    console.log(this.con)
+    this.emailId=this.data.storage;
   } 
   login(loginForm: NgForm) {
     if (loginForm && loginForm.valid) {
       const password = loginForm.form.value.passwordVar;
+      console.log(this.changepassword.getValues(this.emailId,password,this.con))
       this.router.navigate(['login'])
         } else {
       this.errorMessage = 'Please enter a password.';

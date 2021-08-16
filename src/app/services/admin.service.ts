@@ -48,6 +48,20 @@ export class AdminService {
     );
   }
 
+  showConsumerById(id:number):Observable<any>{
+    console.log(this.req+'/'+id)
+    return this.http.get<any>(this.req+'/'+id,
+      {
+        
+        headers:new HttpHeaders({
+        'Content-Type':'text/plain;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+        })
+      }
+    );
+  }
+
   GetAllEMICards():Observable<EmiCard[]>{
     console.log("hi");
     return this.http.get<EmiCard[]>(this.reqEmiCards,
