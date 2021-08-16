@@ -34,8 +34,7 @@ export class ProductInfoService {
   constructor(private http:HttpClient) { 
     this.GetAllProducts().subscribe(data=>{
       this.products=data;
-      // this.products=data;
-      // console.log(this.products);
+
     });
    }
 
@@ -89,16 +88,12 @@ export class ProductInfoService {
   }
 
   getProduct(pid:number){
-    console.log(pid);
-    console.log(this.products);
     for(let product of this.products){
       if(product.pid==pid){
         this.productBought=product;
-        // return product
       }
       
     }
-    console.log(this.productBought);
     return this.productBought;
   }
 
@@ -113,13 +108,10 @@ export class ProductInfoService {
   }
 
   getId(userName?:string):number{
-    console.log("I am inside getID");
-    console.log(userName);
-    console.log(this.consumers);
+  
     for(let c of this.consumers){
       if(c.userName==userName){
         this.objC=c;
-        console.log(c.cid);
         return c.cid;
       }
     }
@@ -141,22 +133,12 @@ export class ProductInfoService {
       if(card.userId==cid){
         if(card.accBalance>(price+proFees)){
           card.accBalance= Number.parseInt(card.totalCredit) - (price+proFees);
-          console.log(card.userId);
-          console.log(card.accBalance);
         }
       }
     }
   }
 
-  
 
-  // getEMICard(cid:number):any{
-  //   for(let ec of this.emicards){
-  //     if(ec.userId==cid){
-  //       return ec;
-  //     }
-  //   }
-  // }
 
   createPR(purchrec:PurchaseRecord):Observable<PurchaseRecord>
   {

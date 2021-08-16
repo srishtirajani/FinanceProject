@@ -5,6 +5,8 @@ import { Consumer } from 'src/app/models/consumer';
 import { RegService } from 'src/app/services/reg.service';
 import { LoginService } from 'src/app/services/login.service';
 import { formatDate } from '@angular/common';
+import { DocumentService } from 'src/app/services/document.service';
+import { UploadImageService } from 'src/app/services/upload-image.service';
 
 
 @Component({
@@ -14,7 +16,7 @@ import { formatDate } from '@angular/common';
 })
 export class RegisterComponent {
   consumers:Consumer[]=[];
-  constructor (public service : RegService, private router:Router,public loginService:LoginService) {}
+  constructor (public service : RegService, private router:Router,public loginService:LoginService,private imageService : UploadImageService) {}
 
   banks = ['IDFC','HSBC','HDFC','ICICI']
   obj = new Consumer(0,"","",new Date(),"","","","","","","","","",false);
@@ -29,6 +31,13 @@ export class RegisterComponent {
   flagUnique:boolean=true;
   dob:Date=new Date();
 
+
+  fileToUpload: any;
+  document:string="";
+  blob:any;
+  reader:any;
+  url:any;
+  flagUpload:boolean=false;
   // msg:string="";
   ngOnInit(){
     this.loginService.GetAllConsumers().subscribe(data=>{
@@ -92,19 +101,37 @@ export class RegisterComponent {
       res => {this.router.navigate(['login'])},
       err => {console.log(err);}
     );
-  }
-
 
   }
+  if(this.fileToUpload!=null ){
+    this.imageService.postFile(this.fileToUpload).subscribe(data => {
+      }, error => {
+        console.log(error);
+      });
+      this.flag=true;
+    }
+  
+}
 
-  // onSubmit(form:NgForm):void
-  // {
-  //   this.service.createUser(form).subscribe(data=>{
-  //   this.msg="Successfully created "+data.cName;
-  //   //Logging the response received from web api.
-  //   console.log(data);
-  //   })
-  // }
+
+handleFileInput(event:any) {
+  this.fileToUpload = event.target.files.item(0);
+  this.reader = new FileReader();
+  this.reader.readAsDataURL(this.fileToUpload);
+    this.reader.onload = () => {
+    this.blob = new Blob(event.target.files, { type: event.target.files[0].type });
+    this.url = window.URL.createObjectURL(this.blob);
+
+};
+}
+
+
+
+
+
+
+
+
 
   changeDOB(event:any){
     console.log(event);

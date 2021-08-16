@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Consumer } from 'src/app/models/consumer';
+import { Documents } from 'src/app/models/Document';
 import { EmiCard } from 'src/app/models/emicard';
 import { AdminService, Data } from 'src/app/services/admin.service';
+import { DocumentService } from 'src/app/services/document.service';
 
 @Component({
   selector: 'app-admin',
@@ -17,10 +19,10 @@ export class AdminComponent implements OnInit {
   id:number=0;
   eid:number=0;
   consumers:Consumer[]=[];
-  
+  documents:Documents[]=[];
   // emiCards:EmiCard[]=[];
 
-  constructor(private aService:AdminService, private aServiceErr:AdminService ,private router: Router, private data: Data) {
+  constructor(private aService:AdminService, private aServiceErr:AdminService ,private router: Router, private data: Data, private docService:DocumentService) {
     
   }
 
@@ -98,4 +100,10 @@ export class AdminComponent implements OnInit {
     //   this.consumers=data;
     // });
   }
+  showDocs(){
+    this.docService.GetAllDocuments().subscribe(data=>{
+      this.documents=data;
+    });
+  }
+  
 }

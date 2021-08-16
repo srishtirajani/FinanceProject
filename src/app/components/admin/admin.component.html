@@ -93,3 +93,16 @@
     <!-- </div> -->
 </div>
 
+<button class="btn btn-primary" (click)="showDocs()">Show Documents</button>
+      
+      <div class="card" style="padding-top: 20px;padding-bottom: 10px;">
+        <div class="row" *ngFor="let doc of documents" style="padding-top: 20px;padding-bottom: 10px;">
+            <div class="col-sm-6">
+                  <img class="img-right" class="img-thumbnail" src="{{doc.docImage}}" style="height:300px; margin-left:50px" />
+                  </div>
+                <div class="col-sm-6" style="padding-top: 20px;">  
+                  <h3></h3>
+                  <p><b>UserName:</b> {{doc.username}}</p>
+              </div>
+          </div>
+          </div>

@@ -16,13 +16,11 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {this.productService.GetAllProducts().subscribe(data=>{
     this.product=data;
-    console.log(this.product);
   });
  }
 
  getProdInfo(pid:number){
    this.data.pid=pid;
-   console.log(this.data.pid);
   this.router.navigate(['productinfo']);
  }
 

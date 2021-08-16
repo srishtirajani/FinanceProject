@@ -8,14 +8,13 @@ import { Dbimg } from '../models/Dbimg';
   providedIn: 'root'
 })
 export class UploadImageService {
-  reqCons:string="https://localhost:44327/api/Dbimgs";
+  reqCons:string="https://localhost:44327/api/Documents";
   constructor(private http : HttpClient) { }
-  postFile(db:Dbimg): Observable<any> {
-    
-    const formData: FormData = new FormData();
-    //formData.append('myFile', blob);
-    //formData.append('username',username);
-    console.log(db);
-    return this.http.post<any>(this.reqCons,db );
+ 
+postFile( fileToUpload: File) {
+  const formData: FormData = new FormData();
+  formData.append('file', fileToUpload, fileToUpload.name);
+  console.log(fileToUpload,formData);
+  return this.http.post(this.reqCons, formData);
 }
 }

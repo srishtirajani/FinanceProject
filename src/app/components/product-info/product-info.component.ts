@@ -21,7 +21,6 @@ import { ConsumerService } from 'src/app/services/consumer.service';
 export class ProductInfoComponent implements OnInit {
 
   userName:any;
-  // id:number=0;
   flag_card:boolean=false;
   flag_valid:boolean=false;
   flag_isbalance:boolean=false;
@@ -39,7 +38,7 @@ export class ProductInfoComponent implements OnInit {
 
   pid:number=this.data.pid;
   product:Product=new Product(0,'','',0,'');
-  // products:Product[]=[]
+ 
   emi:number=0;
   selectedEmi:any;
 
@@ -71,106 +70,67 @@ export class ProductInfoComponent implements OnInit {
     });
     this.productService.GetAllProducts().subscribe(data=>{
       this.prodInfoService.products=data;
-      // this.products=data;
-      // console.log(this.products);
     });
   }
 
   insertPR(data:any):void
   {
     this.productService.createPR(data).subscribe(data=>{
-    console.log("Successfully created ");
-    //Logging the response received from web api.
-    console.log(data);
     })
   }
 
   conditionCheck(){
-    console.log(this.userName);
+
     let cid=this.productService.getId(this.userName);
-    console.log(cid);
+
     this.consumer=this.productService.getConsumer(cid);
     this.prodInfoService.getCardNo(cid);
     this.emiCard=this.prodInfoService.emiCard;
-    console.log(this.pid);
-    
-    console.log(this.prodInfoService.getProduct(this.pid));
+
     this.product=this.prodInfoService.getProduct(this.pid);
-    console.log(this.product);
-    
-    // console.log(this.product);
-    // this.productService.GetProdById(this.pid).subscribe(data=>{
-    //   this.product=data;
-    // });
-    
-    console.log(this.consumer);
-    console.log(this.emiCard);
-    // console.log(this.product);
-    // console.log(this.product.price);
-    
+   
     if(this.consumer.isVerfied==true){
       this.flag_card=true;
       this.count_card=1;
     }
-    console.log("flag_card:" + this.flag_card)
+
     if(this.product.price<this.emiCard.accBalance){
       this.flag_isbalance=true;
       this.count_isbalance=1;
-      // console.log(this.emiCard.validityPeriod > this.datePipe.transform(new Date(), 'yyyy-MM-dd') ? true : false)
-      // console.log(this.emiCard.validityPeriod.getTime());
-      // var date1 = this.emiCard.validityPeriod;
-      // var date2 = new Date();
-      // console.log(typeof(date1));
-      // console.log(date2.getTime());
-      // var Difference_In_Time = (this.emiCard.validityPeriod).getTime() - new Date().getTime();
-      // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-      // console.log(Difference_In_Days);
+ 
     }
-    console.log("flag_isbalance:" + this.flag_isbalance);
     let exp = this.emiCard.validityPeriod
     let vDate = this.datePipe.transform(exp, 'yyyy-MM-dd')||''
     let cDate= this.datePipe.transform(new Date(), 'yyyy-MM-dd')||''
-    console.log(vDate)
-    console.log(cDate)
+    
     if(vDate > cDate){
       this.flag_valid = true;
       this.count_valid = 1;
     }
-    console.log("flag_valid:" + this.flag_valid);
+
     if(this.count_valid==1 && this.count_isbalance==1 && this.count_card==1){
       this.count=1;
     }
-    // console.log("flag_card:" + this.flag_card + "flag_isbalance:" + this.flag_isbalance + "flag_valid:" + this.flag_valid);
+    
   }
 
   Payment(){
-    // var today = new Date();
-    // var dd = String(today.getDate()).padStart(2, '0');
-    // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0! 
-    // var yyyy = today.getFullYear();
-    // today = mm + '/' + dd + '/' + yyyy;
+  
     var today = new Date(); 
     this.pay.storage=this.product;
     let id:number=this.productService.getId(this.userName);
-    console.log(id);
-    //call the condition methods
-    // this.conditionCheck();
+  
     this.productService.pay(id, this.product.price);
-    // this.purchRec.DOP=(new Date().getMonth()+1)+'-'+(new Date().getDate())+'-'+(new Date().getFullYear()); 
+    
     this.purchRec.cardNo=this.productService.getCardNo(id);
     this.purchRec.productBalance=this.product.price-(this.product.price/this.selectedEmi.value);
     this.purchRec.productId=this.product.pid;
     this.purchRec.totalMonthsSelected=--this.selectedEmi.value;
     this.purchRec.userId=id;
-    //sending productRecord to payment
     this.dataC.storage=this.purchRec
-    console.log(this.purchRec);
-    this.purchRec.latestEmimonth=new Date().getMonth(); //the month of purchase
-    console.log(this.purchRec.latestEmimonth);
-    this.insertPR(this.purchRec); //inserting the current purch Rec in Purchase Records Table
-    //update account balance
+    this.purchRec.latestEmimonth=new Date().getMonth(); 
+    this.insertPR(this.purchRec); 
     this.emicardU = this.consumerservice.getEMICard(id);
-    console.log(this.emicardU)
     this.consumerservice.getEMIValues(id,this.product.price,this.emicardU);
     this.router.navigate(['payment']);
   }
